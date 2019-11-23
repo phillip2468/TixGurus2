@@ -157,12 +157,72 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             }
         }
 
+        private string _LevelTwoChar;
+        public string LevelTwoChar
+        {
+            get
+            {
+                if (_LevelTwoChar == null)
+                {
+                    return _LevelTwoChar;
+                }
+
+                return _LevelTwoChar;
+            }
+            set
+            {
+                _LevelTwoChar = value;
+                OnPropertyChanged($"LevelTwoChar");
+            }
+        }
+
+        private decimal _levelTwoPrice;
+        public decimal LevelTwoPrice
+        {
+            get
+            {
+                if (_levelTwoPrice == 0)
+                {
+                    return _levelTwoPrice;
+                }
+
+                return _levelTwoPrice;
+            }
+            set
+            {
+                _levelTwoPrice = value;
+                OnPropertyChanged($"LevelTwoPrice");
+            }
+        }
+
+        private int _levelTwoCapacity;
+        /// <summary>
+        /// Gets the amount of tickets
+        /// </summary>
+        public int LevelTwoCapacity
+        {
+            get
+            {
+                if (_levelTwoCapacity == 0)
+                {
+                    return _levelTwoCapacity;
+                }
+
+                return _levelTwoCapacity;
+            }
+            set
+            {
+                _levelTwoCapacity = value;
+                OnPropertyChanged($"LevelTwoCapacity");
+            }
+        }
+
         #endregion
 
         #region Save changes to database
         private bool SaveChanges()
         {
-            
+
             int numberOfTickets = LevelOneCapacity;
 
             bool output = false;
@@ -179,6 +239,31 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
                 context.Ticket_Details.Add(CurrentTicket);
                 context.SaveChanges();
                 context.Dispose();
+            }
+
+            string levelTwoChar = LevelTwoChar;
+            decimal levelTwoPrice = LevelTwoPrice;
+            int levelTwoCapacity = LevelTwoCapacity;
+
+            if (levelTwoChar == null || levelTwoPrice == null || levelTwoCapacity == 0)
+            {
+                return true;
+            }
+            else if (levelTwoCapacity > 0)
+            {
+                for (int i = 0; i < LevelTwoCapacity; i++)
+                {
+                    CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+                    CurrentTicket.EventTitle = EventTitle;
+                    CurrentTicket.Price = LevelTwoPrice;
+                    CurrentTicket.SeatLetter = LevelTwoChar;
+                    CurrentTicket.SeatNumber = i;
+                    //CurrentTicket.EventStart = EventStartLevelOne;
+                    //CurrentTicket.EventEnd = EventEndLevelOne;
+                    context.Ticket_Details.Add(CurrentTicket);
+                    context.SaveChanges();
+                    context.Dispose();
+                }
             }
             output = true;
 
