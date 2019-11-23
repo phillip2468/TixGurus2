@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Ssample.ViewModel.zEmployees.Event_Management;
+using Syncfusion.UI.Xaml.Grid;
 
 namespace Ssample.Views.zEmployees.Event_Managment
 {
@@ -25,6 +26,7 @@ namespace Ssample.Views.zEmployees.Event_Managment
         {
             InitializeComponent();
             DataContext = new GenerateTicketsViewModel();
+            this.DataGrid.AutoGeneratingColumn += datagrid_AutoGeneratingColumn;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -38,10 +40,13 @@ namespace Ssample.Views.zEmployees.Event_Managment
             // 	myCollectionViewSource.Source = your data
             // }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void datagrid_AutoGeneratingColumn(object sender, AutoGeneratingColumnArgs e)
         {
-
+            if (e.Column.MappingName == "Event_Start" || e.Column.MappingName == "Event_End")
+            {
+                // Setting default date and time format for Event Start and Event End column
+                ((e.Column) as GridDateTimeColumn).Pattern = Syncfusion.Windows.Shared.DateTimePattern.FullDateTime;
+            }
         }
     }
 }

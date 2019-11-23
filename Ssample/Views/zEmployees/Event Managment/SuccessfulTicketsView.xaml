@@ -36,6 +36,7 @@
                                 AllowFiltering="True"
                                 AllowEditing="True"
                                 AutoGenerateColumns="True"
+                                AllowResizingColumns="True"
                                 Grid.Column="1"
                                 Grid.Row="1"
                                 Grid.ColumnSpan="4"

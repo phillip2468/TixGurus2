@@ -70,6 +70,7 @@
                                 AllowFiltering="True"
                                 AllowEditing="True"
                                 AutoGenerateColumns="True"
+                                AllowResizingColumns="True"
                                 NewItemPlaceholderPosition="AtEnd"
                                 SelectionUnit="Row" LiveDataUpdateMode="AllowDataShaping"
                                 ItemsSource="{Binding EventList}">

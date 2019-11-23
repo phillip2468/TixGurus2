@@ -22,6 +22,7 @@ namespace Ssample.Views.zEmployees.Event_Managment
             InitializeComponent();
             this.DataGrid.RowValidated += dataGrid_RowValidated;
             this.DataGrid.RecordDeleting += dataGrid_RecordDeleting;
+            this.DataGrid.AutoGeneratingColumn += datagrid_AutoGeneratingColumn;
         }
         /// <summary>
         /// Adds record
@@ -67,6 +68,15 @@ namespace Ssample.Views.zEmployees.Event_Managment
             context.Entry(item).State = EntityState.Deleted;
             context.SaveChanges();
             context.Dispose();
+        }
+
+        public void datagrid_AutoGeneratingColumn(object sender, AutoGeneratingColumnArgs e)
+        {
+            if (e.Column.MappingName == "Event_Start" || e.Column.MappingName == "Event_End")
+            {
+                // Setting default date and time format for Event Start and Event End column
+                ((e.Column) as GridDateTimeColumn).Pattern = Syncfusion.Windows.Shared.DateTimePattern.FullDateTime;
+            }
         }
     }
 }

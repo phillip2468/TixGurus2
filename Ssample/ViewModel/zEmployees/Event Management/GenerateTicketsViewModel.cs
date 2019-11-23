@@ -46,6 +46,9 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             Navigate(viewModel);
         }
         #region Properties
+
+        #region Level One Properties
+
         public string EventTitle
         {
             get
@@ -157,6 +160,9 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             }
         }
 
+        #endregion
+
+        #region Level Two properties
         private string _LevelTwoChar;
         public string LevelTwoChar
         {
@@ -216,6 +222,71 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
                 OnPropertyChanged($"LevelTwoCapacity");
             }
         }
+        #endregion
+
+        #region Level Three Properties
+        private string _LevelThreeChar;
+        public string LevelThreeChar
+        {
+            get
+            {
+                if (_LevelThreeChar == null)
+                {
+                    return _LevelThreeChar;
+                }
+
+                return _LevelThreeChar;
+            }
+            set
+            {
+                _LevelThreeChar = value;
+                OnPropertyChanged($"LevelThreeChar");
+            }
+        }
+
+        private decimal _levelThreePrice;
+        public decimal LevelThreePrice
+        {
+            get
+            {
+                if (_levelThreePrice == 0)
+                {
+                    return _levelTwoPrice;
+                }
+
+                return _levelThreePrice;
+            }
+            set
+            {
+                _levelThreePrice = value;
+                OnPropertyChanged($"LevelThreePrice");
+            }
+        }
+
+        private int _levelThreeCapacity;
+        /// <summary>
+        /// Gets the amount of tickets
+        /// </summary>
+        public int LevelThreeCapacity
+        {
+            get
+            {
+                if (_levelTwoCapacity == 0)
+                {
+                    return _levelThreeCapacity;
+                }
+
+                return _levelThreeCapacity;
+            }
+            set
+            {
+                _levelThreeCapacity = value;
+                OnPropertyChanged($"LevelThreeCapacity");
+            }
+        }
+
+
+        #endregion
 
         #endregion
 
@@ -245,7 +316,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             decimal levelTwoPrice = LevelTwoPrice;
             int levelTwoCapacity = LevelTwoCapacity;
 
-            if (levelTwoChar == null || levelTwoPrice == null || levelTwoCapacity == 0)
+            if (levelTwoChar == null || levelTwoPrice == 0 || levelTwoCapacity == 0)
             {
                 return true;
             }
@@ -258,8 +329,32 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
                     CurrentTicket.Price = LevelTwoPrice;
                     CurrentTicket.SeatLetter = LevelTwoChar;
                     CurrentTicket.SeatNumber = i;
-                    //CurrentTicket.EventStart = EventStartLevelOne;
-                    //CurrentTicket.EventEnd = EventEndLevelOne;
+                    CurrentTicket.EventStart = EventStartLevelOne;
+                    CurrentTicket.EventEnd = EventEndLevelOne;
+                    context.Ticket_Details.Add(CurrentTicket);
+                    context.SaveChanges();
+                    context.Dispose();
+                }
+            }
+
+            string levelThreeChar = LevelThreeChar;
+            int levelThreeCapacity = LevelThreeCapacity;
+            decimal levelThreePrice = LevelThreePrice;
+            if (levelThreeChar == null || levelThreePrice == 0 || levelTwoCapacity == 0)
+            {
+                return true;
+            }
+            else if (levelTwoCapacity > 0)
+            {
+                for (int i = 0; i < levelThreeCapacity; i++)
+                {
+                    CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+                    CurrentTicket.EventTitle = EventTitle;
+                    CurrentTicket.Price = LevelThreePrice;
+                    CurrentTicket.SeatLetter = LevelThreeChar;
+                    CurrentTicket.SeatNumber = i;
+                    CurrentTicket.EventStart = EventStartLevelOne;
+                    CurrentTicket.EventEnd = EventEndLevelOne;
                     context.Ticket_Details.Add(CurrentTicket);
                     context.SaveChanges();
                     context.Dispose();
