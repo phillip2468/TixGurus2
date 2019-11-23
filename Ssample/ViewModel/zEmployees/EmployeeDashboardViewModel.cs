@@ -14,6 +14,7 @@ namespace Ssample.ViewModel
     {
         private NavigationViewModelBase ModifyCustomerDetailsViewModel;
         private NavigationViewModelBase ModifyEmployeeDetailsViewModel;
+        private NavigationViewModelBase GenerateTicketsViewModel;
         private NavigationViewModelBase ModifyEventViewModel;
         private NavigationViewModelBase DataEventsViewModel;
 
@@ -23,6 +24,7 @@ namespace Ssample.ViewModel
 
         public EmployeeDashboardViewModel()
         {
+            GenerateTicketsViewModel = new GenerateTicketsViewModel();
             ModifyCustomerDetailsViewModel = new ModifyCustomerDetailsViewModel();
             ModifyEmployeeDetailsViewModel = new ModifyEmployeeDetailsViewModel();
             DataEventsViewModel = new DataEventsViewModel();

@@ -18,23 +18,22 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         private NavigationViewModelBase GenerateTicketsViewModel;
         public ICommand NavCommand { get; set; }
 
-        public ICommand GoToGenerateCommand { get; set; }
+        public ICommand Nav2Command { get; set; }
 
         public AddEventsViewModel()
         {
-            GenerateTicketsViewModel = new GenerateTicketsViewModel();
-            //CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-            //NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
-            GoToGenerateCommand = new RelayCommand(GoToGenerate);
+            NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
+            Nav2Command = new RelayCommand<NavigationViewModelBase>(Nav2);
         }
 
         #region Hepler functions
 
-        private void GoToGenerate()
+        private void Nav2(NavigationViewModelBase viewModel)
         {
             if (GoToSuccessful())
             {
-                Navigate(GenerateTicketsViewModel);
+                MessageBox.Show("The event has been added successfully");
+                Navigate(viewModel);
             }
             else
             {
@@ -47,6 +46,11 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             Navigate(viewModel);
         }
 
+        /// <summary>
+        /// Determines if event has been
+        /// added successfully
+        /// </summary>
+        /// <returns></returns>
         private bool GoToSuccessful()
         {
             if (SaveCustomerChanges() != true)

@@ -60,9 +60,13 @@
 
         <Button Grid.Column="5"
                 Grid.Row="4"
-                Content="Go to next page"
+                Content="Save Event"
                 Margin="10 10 10 10"
-                Command="{Binding GoToGenerateCommand}"/>
+                Command="{Binding Nav2Command}">
+            <Button.CommandParameter>
+                <viewModel:EmployeeDashboardViewModel/>
+            </Button.CommandParameter>
+        </Button>
 
         <Grid x:Name="AddDetailsGrid"
               Grid.Column="0"

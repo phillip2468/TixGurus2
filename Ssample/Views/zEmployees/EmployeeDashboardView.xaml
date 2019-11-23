@@ -18,6 +18,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -33,7 +34,7 @@
                Grid.Column="0"
                Grid.Row="0" />
 
-        <Button Grid.Column="1"
+        <Button Grid.Column="0"
                 Grid.Row="3"
                 Margin="10 10 10 10"
                 Command="{Binding NavCommand}">
@@ -44,7 +45,7 @@
             </Button.CommandParameter>
         </Button>
 
-        <Button Grid.Column="2"
+        <Button Grid.Column="1"
                 Grid.Row="3"
                 Margin="10 10 10 10"
                 Command="{Binding NavCommand}">
@@ -55,18 +56,62 @@
             </Button.CommandParameter>
         </Button>
 
-        <Button Grid.Column="3"
+        <Button Grid.Column="2"
                 Grid.Row="3"
                 Margin="10 10 10 10"
                 Command="{Binding NavCommand}">
             <TextBlock TextWrapping="Wrap"
-                       TextAlignment="Center">Add/modify events</TextBlock>
+                       TextAlignment="Center">Add an event</TextBlock>
             <Button.CommandParameter>
                 <eventManagement:AddEventsViewModel/>
             </Button.CommandParameter>
         </Button>
 
+        <Button Grid.Column="3"
+                Grid.Row="3"
+                Margin="10 10 10 10"
+                Command="{Binding NavCommand}">
+            <TextBlock TextWrapping="Wrap"
+                       TextAlignment="Center">Modify an event</TextBlock>
+            <Button.CommandParameter>
+                <eventManagement:AddEventsViewModel />
+            </Button.CommandParameter>
+        </Button>
+
         <Button Grid.Column="4"
+                Grid.Row="3"
+                Margin="10 10 10 10"
+                Command="{Binding NavCommand}">
+            <TextBlock TextWrapping="Wrap"
+                       TextAlignment="Center">Generate Tickets</TextBlock>
+            <Button.CommandParameter>
+                <eventManagement:AddEventsViewModel />
+            </Button.CommandParameter>
+        </Button>
+
+        <Button Grid.Column="5"
+                Grid.Row="3"
+                Margin="10 10 10 10"
+                Command="{Binding NavCommand}">
+            <TextBlock TextWrapping="Wrap"
+                       TextAlignment="Center">Modify ticket details</TextBlock>
+            <Button.CommandParameter>
+                <eventManagement:AddEventsViewModel />
+            </Button.CommandParameter>
+        </Button>
+
+        <Button Grid.Column="3"
+                Grid.Row="3"
+                Margin="10 10 10 10"
+                Command="{Binding NavCommand}">
+            <TextBlock TextWrapping="Wrap"
+                       TextAlignment="Center">Modify an event</TextBlock>
+            <Button.CommandParameter>
+                <eventManagement:AddEventsViewModel />
+            </Button.CommandParameter>
+        </Button>
+
+        <Button Grid.Column="6"
                 Grid.Row="3"
                 Margin="10 10 10 10" Command="{Binding NavCommand}">
             <TextBlock TextWrapping="Wrap"
@@ -87,14 +132,14 @@
         </Button>
 
         <Label Content="Employee's Dashboard"
-               Grid.Column="1"
+               Grid.Column="2"
                Grid.Row="1"
                FontSize="23"
                Grid.ColumnSpan="3"
                VerticalAlignment="Center"
                HorizontalAlignment="Center" />
 
-        <TextBlock Grid.Column="4"
+        <TextBlock Grid.Column="5"
                    Grid.Row="0"
                    TextWrapping="Wrap"
                    FontSize="14"
