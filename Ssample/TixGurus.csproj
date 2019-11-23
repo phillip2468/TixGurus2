@@ -154,6 +154,7 @@
     <Compile Include="ViewModel\zEmployees\Employee\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\zEmployees\Event Management\AddEventsViewModel.cs" />
     <Compile Include="ViewModel\zEmployees\Event Management\GenerateTicketsViewModel.cs" />
+    <Compile Include="ViewModel\zEmployees\Event Management\ModifyEventsViewModel.cs" />
     <Compile Include="ViewModel\zEmployees\Event Management\SuccessfulTicketsViewModel.cs" />
     <Compile Include="ViewModel\zEmployees\zData about event\DataEventsViewModel.cs" />
     <Compile Include="ViewModel\zEmployees\EmployeeDashboardViewModel.cs" />
@@ -206,6 +207,9 @@
     </Compile>
     <Compile Include="Views\zEmployees\Event Managment\GenerateTicketsView.xaml.cs">
       <DependentUpon>GenerateTicketsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\zEmployees\Event Managment\ModifyEventsView.xaml.cs">
+      <DependentUpon>ModifyEventsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\zEmployees\Event Managment\SuccessfulTicketsView.xaml.cs">
       <DependentUpon>SuccessfulTicketsView.xaml</DependentUpon>
@@ -287,6 +291,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\zEmployees\Event Managment\GenerateTicketsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\zEmployees\Event Managment\ModifyEventsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

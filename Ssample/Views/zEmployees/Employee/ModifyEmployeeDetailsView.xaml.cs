@@ -20,6 +20,11 @@ namespace Ssample.Views
             this.DataGrid.RecordDeleting += dataGrid_RecordDeleting;
         }
 
+        /// <summary>
+        /// Changes record
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void dataGrid_RowValidated(object sender, Syncfusion.UI.Xaml.Grid.RowValidatedEventArgs args)
         {
             Employee_Details newRecord = args.RowData as Employee_Details;

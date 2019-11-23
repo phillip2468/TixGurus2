@@ -107,7 +107,7 @@
             <TextBlock TextWrapping="Wrap"
                        TextAlignment="Center">Modify an event</TextBlock>
             <Button.CommandParameter>
-                <eventManagement:AddEventsViewModel />
+                <eventManagement:ModifyEventsViewModel />
             </Button.CommandParameter>
         </Button>
 

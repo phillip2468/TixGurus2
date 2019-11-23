@@ -81,18 +81,16 @@
                                Grid.RowSpan="3"
                                x:Name="DataGrid"
                                ItemsSource="{Binding CustomerDetails}"
-                               LiveDataUpdateMode="AllowDataShaping"
                                AllowDeleting="True"
                                AllowFiltering="True"
+                               AllowEditing="True"
+                               AutoGenerateColumns="True"
                                NewItemPlaceholderPosition="AtEnd"
                                SelectionUnit="Row"
-                               >
+                               LiveDataUpdateMode="AllowDataShaping">
             <Syncfusion:SfDataGrid.DataContext>
                 <viewModel:ModifyCustomerDetailsViewModel />
             </Syncfusion:SfDataGrid.DataContext>
-            <Syncfusion:SfDataGrid.Columns>
-                <Syncfusion:GridCheckBoxSelectorColumn MappingName="SelectorColumn" Width="30" />
-            </Syncfusion:SfDataGrid.Columns>
         </Syncfusion:SfDataGrid>
     </Grid>
 </UserControl>

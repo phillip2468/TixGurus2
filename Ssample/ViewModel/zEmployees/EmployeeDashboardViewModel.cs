@@ -15,7 +15,7 @@ namespace Ssample.ViewModel
         private NavigationViewModelBase ModifyCustomerDetailsViewModel;
         private NavigationViewModelBase ModifyEmployeeDetailsViewModel;
         private NavigationViewModelBase GenerateTicketsViewModel;
-        private NavigationViewModelBase ModifyEventViewModel;
+        private NavigationViewModelBase ModifyEventsViewModel;
         private NavigationViewModelBase DataEventsViewModel;
 
 
@@ -28,6 +28,7 @@ namespace Ssample.ViewModel
             ModifyCustomerDetailsViewModel = new ModifyCustomerDetailsViewModel();
             ModifyEmployeeDetailsViewModel = new ModifyEmployeeDetailsViewModel();
             DataEventsViewModel = new DataEventsViewModel();
+            ModifyEventsViewModel = new ModifyEventsViewModel();
 
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
             NavLogoutCommand = new RelayCommand<NavigationViewModelBase>(Nav2);
