@@ -54,7 +54,7 @@
                 Grid.Row="4"
                 Content="Save changes"
                 Margin="10 10 10 10"
-                Command="GoToSucCommand"/>
+                Command="{Binding GoToSucCommand}"/>
 
         <Syncfusion:SfDataGrid  Name="DataGrid"
                                 Grid.Column="1"

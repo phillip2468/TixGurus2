@@ -33,7 +33,10 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             {
                 Navigate(successfulTicketsViewModel);
             }
-            MessageBox.Show("Something went wrong");
+            else
+            {
+                MessageBox.Show("Something went wrong");
+            }
         }
         #region Properties
         public string EventTitle
@@ -149,16 +152,17 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
 
         #endregion
 
-
+        #region Save changes to database
         private bool SaveChanges()
         {
-            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+            
             int numberOfTickets = LevelOneCapacity;
 
             bool output = false;
 
             for (int i = 0; i < numberOfTickets; i++)
             {
+                CustomerDatabaseEntities context = new CustomerDatabaseEntities();
                 CurrentTicket.EventTitle = EventTitle;
                 CurrentTicket.Price = LevelOnePrice;
                 CurrentTicket.SeatLetter = LevelOneChar;
@@ -166,13 +170,15 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
                 CurrentTicket.EventStart = EventStartLevelOne;
                 CurrentTicket.EventEnd = EventEndLevelOne;
                 context.Ticket_Details.Add(CurrentTicket);
-
                 context.SaveChanges();
-                output = true;
+                context.Dispose();
             }
+            output = true;
 
             return output;
         }
+
+        #endregion
 
         #region For datagrid
         private List<Event_Details> Event { get; set; }

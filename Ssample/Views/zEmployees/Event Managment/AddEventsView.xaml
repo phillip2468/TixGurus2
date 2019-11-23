@@ -62,8 +62,7 @@
                 Grid.Row="4"
                 Content="Go to next page"
                 Margin="10 10 10 10"
-                Command="{Binding GoToGenerateCommand}">
-        </Button>
+                Command="{Binding GoToGenerateCommand}"/>
 
         <Grid x:Name="AddDetailsGrid"
               Grid.Column="0"

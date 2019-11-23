@@ -23,8 +23,8 @@ namespace Ssample.Views.zEmployees.Event_Managment
     {
         public GenerateTicketsView()
         {
-            DataContext = new GenerateTicketsViewModel();
             InitializeComponent();
+            DataContext = new GenerateTicketsViewModel();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

@@ -50,7 +50,7 @@
           <Key>
             <PropertyRef Name="TicketID" />
           </Key>
-          <Property Name="TicketID" Type="int" Nullable="false" />
+          <Property Name="TicketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EventTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="EventStart" Type="datetime" Nullable="false" />
           <Property Name="EventEnd" Type="datetime" Nullable="false" />

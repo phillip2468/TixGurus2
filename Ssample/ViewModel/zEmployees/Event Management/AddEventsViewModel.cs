@@ -23,7 +23,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         public AddEventsViewModel()
         {
             GenerateTicketsViewModel = new GenerateTicketsViewModel();
-            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+            //CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             //NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
             GoToGenerateCommand = new RelayCommand(GoToGenerate);
         }
@@ -36,17 +36,15 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             {
                 Navigate(GenerateTicketsViewModel);
             }
-            MessageBox.Show("Something wrong");
+            else
+            {
+                MessageBox.Show("Something wrong");
+            }
         }
 
         private void Nav(NavigationViewModelBase viewModel)
         {
-            //if (GoToSuccessful())
-            //{
-                Navigate(viewModel);
-            //}
-
-            //MessageBox.Show("Something wrong");
+            Navigate(viewModel);
         }
 
         private bool GoToSuccessful()
