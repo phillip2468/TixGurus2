@@ -16,6 +16,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         private NavigationViewModelBase successfulTicketsViewModel;
 
         public ICommand GoToSucCommand { get; set; }
+        public ICommand NavCommand { get; set; }
 
         public GenerateTicketsViewModel()
         {
@@ -23,6 +24,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             EventList = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
             GoToSucCommand = new RelayCommand(Navigate);
+            NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
         }
 
         public Ticket_Details CurrentTicket = new Ticket_Details();
@@ -37,6 +39,11 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             {
                 MessageBox.Show("Something went wrong");
             }
+        }
+
+        private void Nav(NavigationViewModelBase viewModel)
+        {
+            Navigate(viewModel);
         }
         #region Properties
         public string EventTitle

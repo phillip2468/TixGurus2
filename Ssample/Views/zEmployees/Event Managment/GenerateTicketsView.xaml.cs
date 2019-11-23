@@ -38,5 +38,10 @@ namespace Ssample.Views.zEmployees.Event_Managment
             // 	myCollectionViewSource.Source = your data
             // }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

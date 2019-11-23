@@ -56,6 +56,16 @@
                 Margin="10 10 10 10"
                 Command="{Binding GoToSucCommand}"/>
 
+        <Button Grid.Column="0"
+                Grid.Row="4"
+                Content="Go back"
+                Margin="10 10 10 10"
+                Command="{Binding NavCommand}">
+            <Button.CommandParameter>
+                <viewModel:EmployeeDashboardViewModel/>
+            </Button.CommandParameter>
+        </Button>
+
         <Syncfusion:SfDataGrid  Name="DataGrid"
                                 Grid.Column="1"
                                 Grid.Row="1"
@@ -88,6 +98,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />

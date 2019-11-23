@@ -85,7 +85,7 @@
             <TextBlock TextWrapping="Wrap"
                        TextAlignment="Center">Generate Tickets</TextBlock>
             <Button.CommandParameter>
-                <eventManagement:AddEventsViewModel />
+                <eventManagement:GenerateTicketsViewModel />
             </Button.CommandParameter>
         </Button>
 
@@ -96,7 +96,7 @@
             <TextBlock TextWrapping="Wrap"
                        TextAlignment="Center">Modify ticket details</TextBlock>
             <Button.CommandParameter>
-                <eventManagement:AddEventsViewModel />
+                <eventManagement:SuccessfulTicketsViewModel />
             </Button.CommandParameter>
         </Button>
 
