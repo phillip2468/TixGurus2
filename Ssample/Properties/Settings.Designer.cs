@@ -45,5 +45,17 @@ namespace Ssample.Properties {
                 return ((string)(this["CustomerDatabaseConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Not a value")]
+        public string SeatLocation {
+            get {
+                return ((string)(this["SeatLocation"]));
+            }
+            set {
+                this["SeatLocation"] = value;
+            }
+        }
     }
 }

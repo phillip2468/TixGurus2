@@ -13,5 +13,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CustomerDatabase;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="SeatLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Not a value</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

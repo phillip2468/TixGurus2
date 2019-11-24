@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="CustomerDatabaseModel.Employee_Details" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="CustomerDatabaseModel.Ticket_Details" Width="1.5" PointX="9" PointY="1.375" />
         <EntityTypeShape EntityType="CustomerDatabaseModel.Event_Details" Width="1.5" PointX="6" PointY="1" />
+        <EntityTypeShape EntityType="CustomerDatabaseModel.Booked_Tickets_Details" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

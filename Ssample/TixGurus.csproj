@@ -118,6 +118,9 @@
     <Compile Include="Helpers\Authorisation\CustomIdentity.cs" />
     <Compile Include="Helpers\Authorisation\CustomPrincipal.cs" />
     <Compile Include="Helpers\PasswordHelper.cs" />
+    <Compile Include="Model\Booked_Tickets_Details.cs">
+      <DependentUpon>Customer_Details_Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Customer_Details.cs">
       <DependentUpon>Customer_Details_Model.tt</DependentUpon>
     </Compile>
@@ -147,6 +150,8 @@
     </Compile>
     <Compile Include="ViewModel\Base view models\AppViewModel.cs" />
     <Compile Include="ViewModel\Base view models\DefaultViewModel.cs" />
+    <Compile Include="ViewModel\Buying tickets\PurchaseTicketsViewModel.cs" />
+    <Compile Include="ViewModel\Buying tickets\ViewEventsViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\ChangeMyDetailsViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\HomePageSignedInViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\MyAccountViewModel.cs" />
@@ -168,6 +173,12 @@
     <Compile Include="ViewModel\Signing In\SuccessfulSignInViewModel.cs" />
     <Compile Include="Views\Base View\DefaultView.xaml.cs">
       <DependentUpon>DefaultView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Buying tickets\PurchaseTicketsView.xaml.cs">
+      <DependentUpon>PurchaseTicketsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Buying tickets\ViewEventsView.xaml.cs">
+      <DependentUpon>ViewEventsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dashboard\ChangeMyDetailsView.xaml.cs">
       <DependentUpon>ChangeMyDetailsView.xaml</DependentUpon>
@@ -239,6 +250,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Base View\DefaultView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Buying tickets\PurchaseTicketsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Buying tickets\ViewEventsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

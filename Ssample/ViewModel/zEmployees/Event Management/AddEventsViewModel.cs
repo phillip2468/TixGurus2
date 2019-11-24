@@ -268,6 +268,48 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             }
         }
 
+
+        private string imagePath2;
+        /// <summary>
+        /// Property for getting the path of the image
+        /// of the layout
+        /// </summary>
+        public string ImagePath2
+        {
+            get { return imagePath2; }
+            set
+            {
+                imagePath2 = value;
+                OnPropertyChanged("ImagePath2");
+            }
+        }
+
+        ICommand _loadImageCommand2;
+        /// <summary>
+        /// Command to open the file dialog
+        /// </summary>
+        public ICommand LoadImageCommand2
+        {
+            get
+            {
+                if (_loadImageCommand2 == null)
+                {
+                    _loadImageCommand2 = new RelayCommand<NavigationViewModelBase>(param => LoadImage2());
+                }
+                return _loadImageCommand2;
+            }
+        }
+
+        private void LoadImage2()
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.DefaultExt = (".png");
+            open.Filter = "Pictures (*.jpg;*.gif;*.png)|*.jpg;*.gif;*.png";
+
+            if (open.ShowDialog() == true)
+                ImagePath2 = open.FileName;
+        }
+
         #endregion
 
         #region Save to database
@@ -285,7 +327,9 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             if (!isNull)
             {
                 byte[] imageBytes = ConvertImageToByteArray(ImagePath);
+                byte[] imageBytes2 = ConvertImageToByteArray(ImagePath2);
                 CurrentEvent.Event_Picture = imageBytes;
+                CurrentEvent.Event_Layout = imageBytes2;
                 CurrentEvent.Event_Title = EventTitle.Trim();
                 CurrentEvent.Event_Description = EventDescription.Trim();
                 CurrentEvent.Event_Start = EventStart;

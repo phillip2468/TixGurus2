@@ -40,6 +40,8 @@ public partial class CustomerDatabaseEntities : DbContext
 
     public virtual DbSet<Event_Details> Event_Details { get; set; }
 
+    public virtual DbSet<Booked_Tickets_Details> Booked_Tickets_Details { get; set; }
+
 }
 
 }
