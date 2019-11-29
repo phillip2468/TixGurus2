@@ -66,6 +66,9 @@
 
         <!--#endregion-->
 
+        <!--#region Buttons for navigation-->
+
+        <!--Button for going back-->
         <Button Name="Back"
                 Content="Go Back"
                 Grid.Column="0"
@@ -77,6 +80,7 @@
             </Button.CommandParameter>
         </Button>
 
+        <!--Button to change details-->
         <Button Name="ChangeDetails"
                 Grid.Column="2"
                 Grid.Row="4"
@@ -88,12 +92,14 @@
             </Button.CommandParameter>
         </Button>
 
+        <!--Button to view past transactions-->
         <Button Name="ViewPastRecords"
                 Grid.Column="3"
                 Grid.Row="4"
                 Content="View past transactions"
                 Margin="10 10 10 10" />
 
+        <!--Button to log out of account-->
         <Button Grid.Column="4"
                 Grid.Row="4"
                 Content="Logout"
@@ -104,6 +110,11 @@
             </Button.CommandParameter>
         </Button>
 
+        <!--#endregion-->
+
+        <!--#region Text block indicating what user has logged in-->
+
+        <!--Text block of user logged in-->
         <TextBlock Grid.Column="4"
                    Grid.Row="0"
                    TextWrapping="Wrap"
@@ -111,6 +122,8 @@
             <Run Text="Successfully signed in as" />
             <Run Text="{Binding Source={x:Static properties:Settings.Default},Path=Email}" />
         </TextBlock>
+
+        <!--#endregion-->
 
     </Grid>
 </UserControl>

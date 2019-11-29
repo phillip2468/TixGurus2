@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:Ssample="clr-namespace:Ssample"
-             xmlns:local="clr-namespace:Ssample.Helpers" 
-             xmlns:viewModel="clr-namespace:Ssample.ViewModel"
+             xmlns:local="clr-namespace:Ssample.Helpers"
              xmlns:baseViewModels="clr-namespace:Ssample.ViewModel.Base_view_models"
              x:Class="Ssample.Views.RegisterView"
              mc:Ignorable="d"
@@ -18,6 +17,10 @@
     </UserControl.Resources>
 
     <Grid Background="Pink">
+
+        <!--#region Grid column + row definitions-->
+
+        <!--Column definitions-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -26,6 +29,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <!--Row definitions-->
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -36,22 +40,29 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!-- Command Binding-->
+        <!--#endregion-->
 
-        <!-- Labels for page-->
+        <!-- #region Labels for page-->
+
+        <!--Label for TixGurus-->
         <Label Grid.Column="0"
                Grid.Row="0"
                Content="TixGurus"
                FontSize="24"
                Margin="10 10 10 10" />
+
+        <!--Label for register page-->
         <Label Grid.Column="2"
                Grid.Row="0"
                FontSize="24"
                Content="Register Page"
                Margin="10 10 10 10" Grid.ColumnSpan="2" />
 
-        <!--Buttons for going back and registering-->
+        <!--#endregion-->
 
+        <!--#region Buttons for going back and registering-->
+
+        <!--Button to navigate to default view model-->
         <Button Grid.Row="6"
                 Grid.Column="0"
                 Command="{Binding NavCommand}"
@@ -62,15 +73,18 @@
             </Button.CommandParameter>
         </Button>
 
+        <!--Button to navigate to successful view model register-->
         <Button Grid.Row="6"
                 Grid.Column="4"
                 Command="{Binding GoToSuccessfulViewCommand}"
                 Content="Register"
                 Margin="10 10 10 10" />
 
-        <!--Textboxes and labels to sign up-->
-        <!--Another grid inside the main grid for signing up-->
+        <!--#endregion-->
 
+        <!--#region Another grid inside the main grid for signing up-->
+
+        <!--Grid for signing up-->
         <Grid x:Name="GridForSigningUp"
               Grid.Column="0"
               Grid.Row="1"
@@ -79,7 +93,9 @@
               Grid.RowSpan="5"
               Grid.ColumnSpan="5">
 
-            <!--Column definitions for grid sign up-->
+            <!--#region Column + row definitions for grid sign up-->
+
+            <!--Column definition-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -87,7 +103,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!--Row definitions for grid sign up-->
+            <!--Row definition-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -101,13 +117,19 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <!--Label and text box for email -->
+            <!--#endregion-->
+
+            <!--#region Label and text box for email -->
+
+            <!--Label for email-->
             <Label Content="Email:"
                    Grid.Column="0"
                    HorizontalAlignment="Right"
                    Grid.Row="0"
                    VerticalAlignment="Center"
                    FontSize="16" />
+
+            <!--Text box for email-->
             <TextBox x:Name="EmailTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
@@ -118,15 +140,23 @@
                      Width="200"
                      Grid.ColumnSpan="2"
                      Margin="3" />
+
+            <!--Text block for email-->
             <TextBlock Grid.Column="2" Grid.Row="0" Text="Email must be contain @ symbol and be longer than 8 characters" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2" HorizontalAlignment="Center"/>
 
-            <!--Label and password box for Password-->
+            <!--#endregion-->
+
+            <!--#region Label and password box for Password-->
+            
+            <!--Label for password-->
             <Label Content="Password:"
                    Grid.Column="0"
                    HorizontalAlignment="Right"
                    Grid.Row="1"
                    VerticalAlignment="Center"
                    FontSize="16" />
+
+            <!--Password box for password-->
             <PasswordBox Grid.Column="1"
                      Grid.Row="1"
                      Grid.ColumnSpan="2"
@@ -137,6 +167,8 @@
                          local:PasswordHelper.Attach="True"
                          local:PasswordHelper.Password="{Binding Password, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                      Margin="3" />
+
+            <!--Text block for password-->
             <TextBlock Grid.Column="2"
                        Grid.Row="1"
                        Text="Password must be longer than 5 characters"
@@ -144,13 +176,19 @@
                        Grid.ColumnSpan="2"
                        HorizontalAlignment="Center" />
 
-            <!--Label and text box for first name-->
+            <!--#endregion-->
+
+            <!--#region Label and text box for first name-->
+
+            <!--Label for first name-->
             <Label Content="First Name:"
                    Grid.Column="0"
                    HorizontalAlignment="Right"
                    Grid.Row="2"
                    VerticalAlignment="Center"
                    FontSize="16" />
+
+            <!--Text box for first name-->
             <TextBox x:Name="FirstNameTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
@@ -161,6 +199,8 @@
                      VerticalAlignment="Center"
                      Width="200"
                      Grid.ColumnSpan="2" />
+
+            <!--Text block for first name-->
             <TextBlock Grid.Column="2"
                        Grid.Row="2"
                        Text="First name must contain valid characters and be longer than 2 letters"
@@ -168,14 +208,19 @@
                        Grid.ColumnSpan="2"
                        HorizontalAlignment="Center"/>
 
-            <!--Label and text box for last name-->
+            <!--#endregion-->
 
+            <!--#region Label and text box for last name-->
+
+            <!--Label for last name-->
             <Label Content="Last Name:"
                    Grid.Column="0"
                    HorizontalAlignment="Right"
                    Grid.Row="3"
                    VerticalAlignment="Center"
                    FontSize="16" />
+
+            <!--Text box for last name-->
             <TextBox x:Name="LastNameTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
@@ -186,6 +231,8 @@
                      VerticalAlignment="Center"
                      Width="200"
                      Grid.ColumnSpan="2" />
+
+            <!--Text block for last name-->
             <TextBlock Grid.Column="2"
                        Grid.Row="3"
                        Text="Last name must contain valid characters and be longer than 2 letters"
@@ -193,14 +240,19 @@
                        Grid.ColumnSpan="2"
                        HorizontalAlignment="Center"/>
 
-            <!--Label and text box for phone number-->
+            <!--#endregion-->
 
+            <!--#region Label and text box for phone number-->
+
+            <!--Label for phone number-->
             <Label Content="Phone number:"
                    Grid.Column="0"
                    HorizontalAlignment="Right"
                    Grid.Row="4"
                    VerticalAlignment="Center"
                    FontSize="16" />
+
+            <!--Text box for phone number-->
             <TextBox x:Name="PhoneNumberTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
@@ -211,6 +263,8 @@
                      VerticalAlignment="Center"
                      Width="200"
                      Grid.ColumnSpan="2" />
+
+            <!--Text block for phone number-->
             <TextBlock Grid.Column="2"
                        Grid.Row="4"
                        Text="Phone number must contain numbers"
@@ -218,14 +272,19 @@
                        Grid.ColumnSpan="2"
                        HorizontalAlignment="Center" />
 
-            <!--Label and text box for address-->
+            <!--#endregion-->
 
+            <!--#region Label and text box for address-->
+
+            <!--Label for address-->
             <Label Content="Address:"
                    Grid.Column="0"
                    HorizontalAlignment="Right"
                    Grid.Row="5"
                    VerticalAlignment="Center"
                    FontSize="16" />
+
+            <!--Text box for address-->
             <TextBox x:Name="AddressTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
@@ -236,6 +295,8 @@
                      VerticalAlignment="Center"
                      Width="200"
                      Grid.ColumnSpan="2" />
+
+            <!--Text block for address-->
             <TextBlock Grid.Column="2"
                        Grid.Row="5"
                        Text="Must type an address with digits as the first word and second or more words with numbers and digits"
@@ -243,14 +304,19 @@
                        Grid.ColumnSpan="2"
                        HorizontalAlignment="Center" />
 
-            <!--Label and text box for City-->
+            <!--#endregion-->
 
+            <!--#region Label and text box for City-->
+
+            <!--Label for city-->
             <Label Content="City:"
                    Grid.Column="0"
                    HorizontalAlignment="Right"
                    Grid.Row="6"
                    VerticalAlignment="Center"
                    FontSize="16" />
+
+            <!--Text box for city-->
             <TextBox x:Name="CityTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
@@ -261,6 +327,8 @@
                      VerticalAlignment="Center"
                      Width="200"
                      Grid.ColumnSpan="2" />
+
+            <!--Text block for city-->
             <TextBlock Grid.Column="2"
                        Grid.Row="6"
                        Text="City must be longer than 3 letters"
@@ -268,14 +336,19 @@
                        Grid.ColumnSpan="2"
                        HorizontalAlignment="Center" />
 
-            <!--Combo Box for State-->
+            <!--#endregion-->
 
+            <!--#region Label and text box for State-->
+
+            <!--Label for state-->
             <Label Content="State:"
                    Grid.Column="0"
                    HorizontalAlignment="Right"
                    Grid.Row="7"
                    VerticalAlignment="Center"
                    FontSize="16" />
+
+            <!--Text box for state-->
             <TextBox x:Name="StateTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
@@ -286,20 +359,27 @@
                      VerticalAlignment="Center"
                      Width="200"
                      Grid.ColumnSpan="2" />
+
+            <!--Text block for state-->
             <TextBlock Grid.Column="2"
                        Grid.Row="7"
                        Text="State must not contain more than 3 letters"
                        Grid.ColumnSpan="2"
                        HorizontalAlignment="Center" />
 
-            <!--Label and text box for postcode-->
+            <!--#endregion-->
 
+            <!--#region Label and text box for postcode-->
+
+            <!--Label for postcode-->
             <Label Content="Postcode:"
                    Grid.Column="0"
                    HorizontalAlignment="Right"
                    Grid.Row="8"
                    VerticalAlignment="Center"
                    FontSize="16" />
+
+            <!--Text box for postcode-->
             <TextBox x:Name="PostcodeTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
@@ -310,6 +390,8 @@
                      VerticalAlignment="Center"
                      Width="200"
                      Grid.ColumnSpan="2" />
+
+            <!--Text block for postcode-->
             <TextBlock Grid.Column="2"
                        Grid.Row="8"
                        Text="Postcode must contain only 4 numbers"
@@ -317,14 +399,19 @@
                        Grid.ColumnSpan="2"
                        HorizontalAlignment="Center" />
 
-            <!--Label and Datepicker for date of birth-->
+            <!--#endregion-->
 
+            <!--#region Label and Datepicker for date of birth-->
+
+            <!--Label for date of birth-->
             <Label Content="Date of birth:"
                    Grid.Column="0"
                    HorizontalAlignment="Right"
                    Grid.Row="9"
                    VerticalAlignment="Center"
                    FontSize="16" />
+
+            <!--Date picker for date of birth-->
             <DatePicker x:Name="DatePickerDateOfBirth"
                         Grid.Column="1"
                         HorizontalAlignment="Left"
@@ -337,6 +424,10 @@
                         Grid.ColumnSpan="2"
                          />
 
+            <!--#endregion-->
         </Grid>
+
+        <!--#endregion-->
+
     </Grid>
 </UserControl>
