@@ -48,7 +48,6 @@ namespace Ssample.ViewModel.Buying_tickets
         }
 
         private Booked_Tickets_Details CurrentTicket { get; set; }
-        private List<Ticket_Details> Tickets;
         private List<Event_Details> Event;
 
         private void SaveChanges()

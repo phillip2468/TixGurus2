@@ -11,11 +11,6 @@
              d:DesignWidth="800"
              Loaded="UserControl_Loaded">
 
-    <UserControl.Resources>
-        <Ssample:CustomerDatabaseDataSet x:Key="CustomerDatabaseDataSet" />
-
-    </UserControl.Resources>
-
     <Grid Background="Pink">
 
         <!--#region Grid column + row definitions-->

@@ -110,21 +110,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CustomerDatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CustomerDatabaseDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="CustomerDatabaseDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CustomerDatabaseDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Event_details.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Event_details.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\Authorisation\AnonymousIdentity.cs" />
     <Compile Include="Helpers\Authorisation\AuthenticationService.cs" />
     <Compile Include="Helpers\Authorisation\CustomIdentity.cs" />
@@ -380,39 +365,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Customer_Details_Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="CustomerDatabaseDataSet.xsc">
-      <DependentUpon>CustomerDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="CustomerDatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CustomerDatabaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="CustomerDatabaseDataSet.xss">
-      <DependentUpon>CustomerDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="CustomerDatabaseDataSet1.xsc">
-      <DependentUpon>CustomerDatabaseDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="CustomerDatabaseDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CustomerDatabaseDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="CustomerDatabaseDataSet1.xss">
-      <DependentUpon>CustomerDatabaseDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="Event_details.xsc">
-      <DependentUpon>Event_details.xsd</DependentUpon>
-    </None>
-    <None Include="Event_details.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>Event_details.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Event_details.xss">
-      <DependentUpon>Event_details.xsd</DependentUpon>
-    </None>
     <None Include="Model\Customer_Details_Model.edmx.diagram">
       <DependentUpon>Customer_Details_Model.edmx</DependentUpon>
     </None>

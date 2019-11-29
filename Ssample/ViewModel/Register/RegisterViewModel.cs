@@ -20,8 +20,6 @@ namespace Ssample.ViewModel.Register
         //Field for successful register view model
         private NavigationViewModelBase successfulRegisterViewModel;
 
-        //Field for success view
-        private NavigationViewModelBase _goToSuccessRegisterView;
         #endregion
 
         #region Navigation Commands

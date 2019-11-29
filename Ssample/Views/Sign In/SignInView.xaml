@@ -2,7 +2,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:Ssample="clr-namespace:Ssample"
              xmlns:local="clr-namespace:Ssample.Helpers"
              xmlns:baseViewModels="clr-namespace:Ssample.ViewModel.Base_view_models"
              x:Class="Ssample.Views.SignInView"
@@ -11,9 +10,6 @@
              d:DesignWidth="800"
              Loaded="UserControl_Loaded">
 
-    <UserControl.Resources>
-        <Ssample:CustomerDatabaseDataSet x:Key="customerDatabaseDataSet" />
-    </UserControl.Resources>
 
     <Grid Background="Yellow">
 
@@ -134,7 +130,6 @@
                          local:PasswordHelper.Password="{Binding Password, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
 
         </Grid>
-
 
     </Grid>
 </UserControl>

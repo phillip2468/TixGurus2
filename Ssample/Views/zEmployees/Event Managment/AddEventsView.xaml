@@ -5,13 +5,14 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:Ssample="clr-namespace:Ssample"
              xmlns:viewModel="clr-namespace:Ssample.ViewModel"
+             xmlns:model="clr-namespace:Ssample.Model"
              x:Class="Ssample.Views.zEmployees.Event_Managment.AddEventsView"
              mc:Ignorable="d"
              d:DesignHeight="650"
              d:DesignWidth="800"
              Loaded="AddEventsView_OnLoaded">
     <UserControl.Resources>
-        <Ssample:Event_details x:Key="event_details" />
+        <model:Event_Details x:Key="event_details" />
     </UserControl.Resources>
     <Grid Background="LightBlue">
 
