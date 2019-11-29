@@ -89,7 +89,8 @@
                              Grid.ColumnSpan="6"
                              Grid.RowSpan="4"
                              ItemsSource="{Binding Events}"
-                            SelectedItem="{Binding SelectedItem}">    
+                             IsSynchronizedWithCurrentItem="True"
+                            SelectedItem="{Binding SelectedItem,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">    
             <syncfusion:TileViewControl.ItemTemplate>
                 <DataTemplate>
                     <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -113,9 +114,9 @@
                             </ListBoxItem.DataContext>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Go to page:" />
-                                <Button Command="{Binding NavCommand}" Content="Go to book">
+                                <Button Command="{Binding Nav3Command}" Content="Go to book">
                                     <Button.CommandParameter>
-                                        <viewModel:SignInViewModel/>
+                                        <buyingTickets:ViewEventsViewModel/>
                                     </Button.CommandParameter>
                                 </Button>
                             </StackPanel>

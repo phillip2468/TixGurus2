@@ -43,6 +43,8 @@ namespace Ssample.ViewModel
         public ICommand NavCommand { get; set; }
 
         public ICommand Nav2Command { get; set; }
+
+        public ICommand Nav3Command { get; set; }
         #endregion
 
         #region Constructor
@@ -62,6 +64,7 @@ namespace Ssample.ViewModel
 
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
             Nav2Command = new RelayCommand<NavigationViewModelBase>(Nav2);
+            Nav3Command = new RelayCommand<NavigationViewModelBase>(Nav3);
 
         }
 
@@ -73,10 +76,10 @@ namespace Ssample.ViewModel
             set
             {
                 _selectedItem = value;
+                Properties.Settings.Default.EventTitle = _selectedItem.eventTitle;
                 OnPropertyChanged($"SelectedItem");
             }
         }
-
 
         #endregion
 
@@ -91,6 +94,12 @@ namespace Ssample.ViewModel
         private void Nav2(NavigationViewModelBase viewModel)
         {
             Properties.Settings.Default.SearchText = SearchText.Trim();
+            Navigate(viewModel);
+        }
+
+        private void Nav3(NavigationViewModelBase viewModel)
+        {
+            MessageBox.Show(Properties.Settings.Default.EventTitle);
             Navigate(viewModel);
         }
         #endregion

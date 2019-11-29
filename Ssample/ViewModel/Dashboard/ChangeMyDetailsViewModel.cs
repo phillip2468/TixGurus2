@@ -96,29 +96,29 @@ namespace Ssample.ViewModel.Dashboard
         {
             get
             {
-                if (CurrentCustomer.Email == null)
+                if (CurrentCustomer.email == null)
                 {
                     return EmailSet();
                 }
 
-                if (CurrentCustomer.Email != EmailSet())
+                if (CurrentCustomer.email != EmailSet())
                 {
                     Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-                    Match match = regex.Match(CurrentCustomer.Email);
+                    Match match = regex.Match(CurrentCustomer.email);
                     if (!match.Success)
                     {
                         return null;
                     }
 
-                    return CurrentCustomer.Email;
+                    return CurrentCustomer.email;
                 }
-                CurrentCustomer.Email = EmailSet();
-                return CurrentCustomer.Email;
+                CurrentCustomer.email = EmailSet();
+                return CurrentCustomer.email;
 
             }
             set
             {
-                CurrentCustomer.Email = value;
+                CurrentCustomer.email = value;
                 OnPropertyChanged($"Email");
             }
         }
@@ -129,25 +129,25 @@ namespace Ssample.ViewModel.Dashboard
         {
             get
             {
-                if (CurrentCustomer.Password == null)
+                if (CurrentCustomer.password == null)
                 {
                     return PasswordSet();
                 }
 
-                if (CurrentCustomer.Password != PasswordSet())
+                if (CurrentCustomer.password != PasswordSet())
                 {
-                    if (CurrentCustomer.Password.Length < 5)
+                    if (CurrentCustomer.password.Length < 5)
                     {
                         return null;
                     }
-                    return CurrentCustomer.Password;
+                    return CurrentCustomer.password;
                 }
-                CurrentCustomer.Password = PasswordSet();
-                return CurrentCustomer.Password;
+                CurrentCustomer.password = PasswordSet();
+                return CurrentCustomer.password;
             }
             set
             {
-                CurrentCustomer.Password = value;
+                CurrentCustomer.password = value;
                 OnPropertyChanged($"Password");
             }
         }
@@ -158,25 +158,25 @@ namespace Ssample.ViewModel.Dashboard
         {
             get
             {
-                if (CurrentCustomer.First_Name == null)
+                if (CurrentCustomer.firstName == null)
                 {
                     return FirstNameSet();
                 }
 
-                if (CurrentCustomer.First_Name != FirstNameSet())
+                if (CurrentCustomer.firstName != FirstNameSet())
                 {
-                    if (CurrentCustomer.First_Name.Length < 3)
+                    if (CurrentCustomer.firstName.Length < 3)
                     {
                         return null;
                     }
-                    return CurrentCustomer.First_Name;
+                    return CurrentCustomer.firstName;
                 }
-                CurrentCustomer.First_Name = FirstNameSet();
-                return CurrentCustomer.First_Name;
+                CurrentCustomer.firstName = FirstNameSet();
+                return CurrentCustomer.firstName;
             }
             set
             {
-                CurrentCustomer.First_Name = value;
+                CurrentCustomer.firstName = value;
                 OnPropertyChanged($"First_Name");
             }
         }
@@ -188,24 +188,24 @@ namespace Ssample.ViewModel.Dashboard
         {
             get
             {
-                if (CurrentCustomer.Last_Name == null)
+                if (CurrentCustomer.lastName == null)
                 {
                     return LastNameSet();
                 }
-                if (CurrentCustomer.Last_Name != LastNameSet())
+                if (CurrentCustomer.lastName != LastNameSet())
                 {
-                    if (CurrentCustomer.Last_Name.Length < 3)
+                    if (CurrentCustomer.lastName.Length < 3)
                     {
                         return null;
                     }
-                    return CurrentCustomer.Last_Name;
+                    return CurrentCustomer.lastName;
                 }
-                CurrentCustomer.Last_Name = LastNameSet();
-                return CurrentCustomer.Last_Name;
+                CurrentCustomer.lastName = LastNameSet();
+                return CurrentCustomer.lastName;
             }
             set
             {
-                CurrentCustomer.Last_Name = value;
+                CurrentCustomer.lastName = value;
                 OnPropertyChanged($"Last_Name");
             }
         }
@@ -217,30 +217,30 @@ namespace Ssample.ViewModel.Dashboard
         {
             get
             {
-                if (CurrentCustomer.Phone_Number == 0)
+                if (CurrentCustomer.phoneNumber == 0)
                 {
                     return PhoneNumberSet();
                 }
 
-                if (CurrentCustomer.Phone_Number != PhoneNumberSet())
+                if (CurrentCustomer.phoneNumber != PhoneNumberSet())
                 {
                     Regex regex = new Regex("^[0-9]+$");
-                    Match match = regex.Match(CurrentCustomer.Phone_Number.ToString());
-                    var num1 = CurrentCustomer.Phone_Number.ToString();
+                    Match match = regex.Match(CurrentCustomer.phoneNumber.ToString());
+                    var num1 = CurrentCustomer.phoneNumber.ToString();
 
                     if (!match.Success || num1.Length < 5)
                     {
                         return 0;
                     }
 
-                    return CurrentCustomer.Phone_Number;
+                    return CurrentCustomer.phoneNumber;
                 }
-                CurrentCustomer.Phone_Number = PhoneNumberSet();
-                return CurrentCustomer.Phone_Number;
+                CurrentCustomer.phoneNumber = PhoneNumberSet();
+                return CurrentCustomer.phoneNumber;
             }
             set
             {
-                CurrentCustomer.Phone_Number = value;
+                CurrentCustomer.phoneNumber = value;
                 OnPropertyChanged($"Phone_Number");
             }
         }
@@ -252,28 +252,28 @@ namespace Ssample.ViewModel.Dashboard
         {
             get
             {
-                if (CurrentCustomer.Address == null)
+                if (CurrentCustomer.address == null)
                 {
                     return AddressSet();
                 }
 
-                if (CurrentCustomer.Address != AddressSet())
+                if (CurrentCustomer.address != AddressSet())
                 {
                     Regex regex = new Regex(@"^[A-Za-z0-9]+(?:\s[A-Za-z0-9'_-]+)+$");
-                    Match match = regex.Match(CurrentCustomer.Address);
+                    Match match = regex.Match(CurrentCustomer.address);
                     if (!match.Success)
                     {
                         return null;
                     }
 
-                    return CurrentCustomer.Address;
+                    return CurrentCustomer.address;
                 }
-                CurrentCustomer.Address = AddressSet();
-                return CurrentCustomer.Address;
+                CurrentCustomer.address = AddressSet();
+                return CurrentCustomer.address;
             }
             set
             {
-                CurrentCustomer.Address = value;
+                CurrentCustomer.address = value;
                 OnPropertyChanged($"Address");
             }
         }
@@ -285,28 +285,28 @@ namespace Ssample.ViewModel.Dashboard
         {
             get
             {
-                if (CurrentCustomer.City == null)
+                if (CurrentCustomer.city == null)
                 {
                     return CitySet();
                 }
 
-                if (CurrentCustomer.City != CitySet())
+                if (CurrentCustomer.city != CitySet())
                 {
                     Regex regex = new Regex(@"^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$");
-                    Match match = regex.Match(CurrentCustomer.City);
+                    Match match = regex.Match(CurrentCustomer.city);
                     if (!match.Success)
                     {
                         return null;
                     }
 
-                    return CurrentCustomer.City;
+                    return CurrentCustomer.city;
                 }
-                CurrentCustomer.City = CitySet();
-                return CurrentCustomer.City;
+                CurrentCustomer.city = CitySet();
+                return CurrentCustomer.city;
             }
             set
             {
-                CurrentCustomer.City = value;
+                CurrentCustomer.city = value;
                 OnPropertyChanged($"City");
             }
         }
@@ -318,29 +318,29 @@ namespace Ssample.ViewModel.Dashboard
         {
             get
             {
-                if (CurrentCustomer.State == null)
+                if (CurrentCustomer.state == null)
                 {
                     return StateSet();
                 }
 
-                if (CurrentCustomer.State != StateSet())
+                if (CurrentCustomer.state != StateSet())
                 {
                     Regex regex = new Regex(@"^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$");
-                    Match match = regex.Match(CurrentCustomer.State);
+                    Match match = regex.Match(CurrentCustomer.state);
 
-                    if (!match.Success || CurrentCustomer.State.Length > 3)
+                    if (!match.Success || CurrentCustomer.state.Length > 3)
                     {
                         return null;
                     }
 
-                    return CurrentCustomer.State;
+                    return CurrentCustomer.state;
                 }
-                CurrentCustomer.State = StateSet();
-                return CurrentCustomer.State;
+                CurrentCustomer.state = StateSet();
+                return CurrentCustomer.state;
             }
             set
             {
-                CurrentCustomer.State = value;
+                CurrentCustomer.state = value;
                 OnPropertyChanged($"State");
             }
         }
@@ -351,30 +351,30 @@ namespace Ssample.ViewModel.Dashboard
         {
             get
             {
-                if (CurrentCustomer.Postcode == 0)
+                if (CurrentCustomer.postcode == 0)
                 {
                     return PostcodeSet();
                 }
 
-                if (CurrentCustomer.Postcode != PostcodeSet())
+                if (CurrentCustomer.postcode != PostcodeSet())
                 {
                     Regex regex = new Regex(@"^\d{4}(?:[-\s]\d{4})?$");
-                    Match match = regex.Match(CurrentCustomer.Postcode.ToString());
-                    var pc = CurrentCustomer.Postcode.ToString();
+                    Match match = regex.Match(CurrentCustomer.postcode.ToString());
+                    var pc = CurrentCustomer.postcode.ToString();
 
                     if (!match.Success || pc.Length < 4 || pc.Length > 4)
                     {
                         return 0;
                     }
 
-                    return CurrentCustomer.Postcode;
+                    return CurrentCustomer.postcode;
                 }
-                CurrentCustomer.Postcode = PostcodeSet();
-                return CurrentCustomer.Postcode;
+                CurrentCustomer.postcode = PostcodeSet();
+                return CurrentCustomer.postcode;
             }
             set
             {
-                CurrentCustomer.Postcode = value;
+                CurrentCustomer.postcode = value;
                 OnPropertyChanged($"Postcode");
             }
         }
@@ -385,21 +385,21 @@ namespace Ssample.ViewModel.Dashboard
         {
             get
             {
-                if (CurrentCustomer.Date_Of_Birth == DateTime.MinValue)
+                if (CurrentCustomer.dateOfBirth == DateTime.MinValue)
                 {
                     return DateOfBirthSet();
                 }
 
-                if (CurrentCustomer.Date_Of_Birth != DateOfBirthSet())
+                if (CurrentCustomer.dateOfBirth != DateOfBirthSet())
                 {
-                    return CurrentCustomer.Date_Of_Birth;
+                    return CurrentCustomer.dateOfBirth;
                 }
-                CurrentCustomer.Date_Of_Birth = DateOfBirthSet();
-                return CurrentCustomer.Date_Of_Birth;
+                CurrentCustomer.dateOfBirth = DateOfBirthSet();
+                return CurrentCustomer.dateOfBirth;
             }
             set
             {
-                CurrentCustomer.Date_Of_Birth = value;
+                CurrentCustomer.dateOfBirth = value;
                 OnPropertyChanged($"Date_Of_Birth");
             }
         }
@@ -408,19 +408,19 @@ namespace Ssample.ViewModel.Dashboard
         {
             get
             {
-                if (CurrentCustomer.Date_Created == DateTime.MinValue)
+                if (CurrentCustomer.dateCreated == DateTime.MinValue)
                 {
                     return DateCreatedSet();
                 }
 
-                if (CurrentCustomer.Date_Created != DateCreatedSet())
+                if (CurrentCustomer.dateCreated != DateCreatedSet())
                 {
-                    return CurrentCustomer.Date_Created;
+                    return CurrentCustomer.dateCreated;
                 }
-                CurrentCustomer.Date_Created = DateCreatedSet();
-                return CurrentCustomer.Date_Created;
+                CurrentCustomer.dateCreated = DateCreatedSet();
+                return CurrentCustomer.dateCreated;
             }
-            set => CurrentCustomer.Date_Created = value;
+            set => CurrentCustomer.dateCreated = value;
         }
 
         #endregion
@@ -438,7 +438,7 @@ namespace Ssample.ViewModel.Dashboard
             //Attempts to search the database for
             //a matching customer
             var currentCustomer = context.Customer_Details
-                .FirstOrDefault(c => c.Email == Settings.Default.Email);
+                .FirstOrDefault(c => c.email == Settings.Default.Email);
 
             //Set the initial value to false
             bool output = false;
@@ -461,29 +461,29 @@ namespace Ssample.ViewModel.Dashboard
             var postcode = Postcode;
             var dob = DateOfBirth;
             var dc = DateCreated;
-            var ID = currentCustomer.Customer_ID;
+            var ID = currentCustomer.customerID;
 
             #endregion
 
 
             //Statement which checks if there are any changes to the 
             //entered in fields
-            if (isNull == false || email != currentCustomer.Email || password != currentCustomer.Password || FirstName != currentCustomer.First_Name || PhoneNumber != currentCustomer.Phone_Number || Address != currentCustomer.Address || City != currentCustomer.City || State != currentCustomer.State || Postcode != currentCustomer.Postcode || DateOfBirth != currentCustomer.Date_Of_Birth)
+            if (isNull == false || email != currentCustomer.email || password != currentCustomer.password || FirstName != currentCustomer.firstName || PhoneNumber != currentCustomer.phoneNumber || Address != currentCustomer.address || City != currentCustomer.city || State != currentCustomer.state || Postcode != currentCustomer.postcode || DateOfBirth != currentCustomer.dateOfBirth)
             {
                 //Assign each value to be sent to the database
                 #region Assigning values to entity framework
-                CurrentCustomer.Customer_ID = ID;
-                CurrentCustomer.Email = email;
-                CurrentCustomer.Password = password;
-                CurrentCustomer.First_Name = firstName;
-                CurrentCustomer.Last_Name = lastName;
-                CurrentCustomer.Phone_Number = phoneNumber;
-                CurrentCustomer.Address = address;
-                CurrentCustomer.City = city;
-                CurrentCustomer.State = state;
-                CurrentCustomer.Postcode = postcode;
-                CurrentCustomer.Date_Of_Birth = dob;
-                CurrentCustomer.Date_Created = dc;
+                CurrentCustomer.customerID = ID;
+                CurrentCustomer.email = email;
+                CurrentCustomer.password = password;
+                CurrentCustomer.firstName = firstName;
+                CurrentCustomer.lastName = lastName;
+                CurrentCustomer.phoneNumber = phoneNumber;
+                CurrentCustomer.address = address;
+                CurrentCustomer.city = city;
+                CurrentCustomer.state = state;
+                CurrentCustomer.postcode = postcode;
+                CurrentCustomer.dateOfBirth = dob;
+                CurrentCustomer.dateCreated = dc;
                 #endregion
 
                 //Saving if new customer field otherwise updating current field
@@ -510,10 +510,10 @@ namespace Ssample.ViewModel.Dashboard
         private string FirstNameSet()
         {
             var currentCustomer = context.Customer_Details
-                .FirstOrDefault(c => c.Email == Settings.Default.Email);
+                .FirstOrDefault(c => c.email == Settings.Default.Email);
             if (currentCustomer != null)
             {
-                var firstName = currentCustomer.First_Name;
+                var firstName = currentCustomer.firstName;
                 return firstName;
             }
 
@@ -528,10 +528,10 @@ namespace Ssample.ViewModel.Dashboard
         private string LastNameSet()
         {
             var currentCustomer = context.Customer_Details
-                .FirstOrDefault(c => c.Email == Settings.Default.Email);
+                .FirstOrDefault(c => c.email == Settings.Default.Email);
             if (currentCustomer != null)
             {
-                var lastName = currentCustomer.First_Name;
+                var lastName = currentCustomer.firstName;
                 return lastName;
             }
 
@@ -545,10 +545,10 @@ namespace Ssample.ViewModel.Dashboard
         private string EmailSet()
         {
             var currentCustomer = context.Customer_Details
-                .FirstOrDefault(c => c.Email == Settings.Default.Email);
+                .FirstOrDefault(c => c.email == Settings.Default.Email);
             if (currentCustomer != null)
             {
-                var email = currentCustomer.Email;
+                var email = currentCustomer.email;
                 return email;
             }
 
@@ -561,10 +561,10 @@ namespace Ssample.ViewModel.Dashboard
         private string PasswordSet()
         {
             var currentCustomer = context.Customer_Details
-                .FirstOrDefault(c => c.Email == Settings.Default.Email);
+                .FirstOrDefault(c => c.email == Settings.Default.Email);
             if (currentCustomer != null)
             {
-                var password = currentCustomer.Password;
+                var password = currentCustomer.password;
                 return password;
             }
 
@@ -577,10 +577,10 @@ namespace Ssample.ViewModel.Dashboard
         private int PhoneNumberSet()
         {
             var currentCustomer = context.Customer_Details
-                .FirstOrDefault(c => c.Email == Settings.Default.Email);
+                .FirstOrDefault(c => c.email == Settings.Default.Email);
             if (currentCustomer != null)
             {
-                var phoneNumber = currentCustomer.Phone_Number;
+                var phoneNumber = currentCustomer.phoneNumber;
                 return phoneNumber;
             }
 
@@ -593,10 +593,10 @@ namespace Ssample.ViewModel.Dashboard
         private string AddressSet()
         {
             var currentCustomer = context.Customer_Details
-                .FirstOrDefault(c => c.Email == Settings.Default.Email);
+                .FirstOrDefault(c => c.email == Settings.Default.Email);
             if (currentCustomer != null)
             {
-                var address = currentCustomer.Address;
+                var address = currentCustomer.address;
                 return address;
             }
 
@@ -609,10 +609,10 @@ namespace Ssample.ViewModel.Dashboard
         private string CitySet()
         {
             var currentCustomer = context.Customer_Details
-                .FirstOrDefault(c => c.Email == Settings.Default.Email);
+                .FirstOrDefault(c => c.email == Settings.Default.Email);
             if (currentCustomer != null)
             {
-                var city = currentCustomer.City;
+                var city = currentCustomer.city;
                 return city;
             }
 
@@ -625,10 +625,10 @@ namespace Ssample.ViewModel.Dashboard
         private string StateSet()
         {
             var currentCustomer = context.Customer_Details
-                .FirstOrDefault(c => c.Email == Settings.Default.Email);
+                .FirstOrDefault(c => c.email == Settings.Default.Email);
             if (currentCustomer != null)
             {
-                var state = currentCustomer.State;
+                var state = currentCustomer.state;
                 return state;
             }
 
@@ -641,10 +641,10 @@ namespace Ssample.ViewModel.Dashboard
         private int PostcodeSet()
         {
             var currentCustomer = context.Customer_Details
-                .FirstOrDefault(c => c.Email == Settings.Default.Email);
+                .FirstOrDefault(c => c.email == Settings.Default.Email);
             if (currentCustomer != null)
             {
-                var postcode = currentCustomer.Postcode;
+                var postcode = currentCustomer.postcode;
                 return postcode;
             }
 
@@ -657,10 +657,10 @@ namespace Ssample.ViewModel.Dashboard
         private DateTime DateOfBirthSet()
         {
             var currentCustomer = context.Customer_Details
-                .FirstOrDefault(c => c.Email == Settings.Default.Email);
+                .FirstOrDefault(c => c.email == Settings.Default.Email);
             if (currentCustomer != null)
             {
-                var dob = currentCustomer.Date_Of_Birth;
+                var dob = currentCustomer.dateOfBirth;
                 return dob;
             }
 
@@ -674,10 +674,10 @@ namespace Ssample.ViewModel.Dashboard
         private DateTime DateCreatedSet()
         {
             var currentCustomer = context.Customer_Details
-                .FirstOrDefault(c => c.Email == Settings.Default.Email);
+                .FirstOrDefault(c => c.email == Settings.Default.Email);
             if (currentCustomer != null)
             {
-                var dc = currentCustomer.Date_Created;
+                var dc = currentCustomer.dateCreated;
                 return dc;
             }
 

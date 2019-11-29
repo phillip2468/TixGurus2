@@ -98,10 +98,10 @@ namespace Ssample.ViewModel
         /// </summary>
         public string Email
         {
-            get => CurrentCustomer.Email;
+            get => CurrentCustomer.email;
             set
             {
-                CurrentCustomer.Email = value;
+                CurrentCustomer.email = value;
                 OnPropertyChanged($"Email");
             }
         }
@@ -111,10 +111,10 @@ namespace Ssample.ViewModel
         /// </summary>
         public string Password
         {
-            get => CurrentCustomer.Password;
+            get => CurrentCustomer.password;
             set
             {
-                CurrentCustomer.Password = value;
+                CurrentCustomer.password = value;
                 OnPropertyChanged($"Password");
             }
         }
@@ -135,15 +135,15 @@ namespace Ssample.ViewModel
             bool output = false;
 
             //Checks for null values
-            var user = context.Customer_Details.FirstOrDefault(u => u.Email == Email);
+            var user = context.Customer_Details.FirstOrDefault(u => u.email == Email);
 
             //Checks if the entered in values are longer than 0
             if (email?.Length > 0 && password?.Length > 0 && user != null)
             {
                 //If an entry equals a values in the database return true
-                if (user.Password == Password)
+                if (user.password == Password)
                 {
-                    Properties.Settings.Default.Email = CurrentCustomer.Email;
+                    Properties.Settings.Default.Email = CurrentCustomer.email;
                     Properties.Settings.Default.Save();
                     return true;
                 }

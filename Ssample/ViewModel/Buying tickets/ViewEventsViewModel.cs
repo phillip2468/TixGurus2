@@ -30,7 +30,7 @@ namespace Ssample.ViewModel.Buying_tickets
 
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
             NavCommand2 = new RelayCommand<NavigationViewModelBase>(Nav2);
-            Tickets = (from data in context.Ticket_Details select data).ToList();
+            Tickets = (from data in context.Ticket_Details where data.eventTitle == Properties.Settings.Default.EventTitle select data).ToList();
 
         }
         
@@ -99,7 +99,7 @@ namespace Ssample.ViewModel.Buying_tickets
         {
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             Event = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
-            var selectedEvent = Event.Find(x => x.eventTitle == "The Opera with Snakes");
+            var selectedEvent = Event.Find(x => x.eventTitle == Properties.Settings.Default.EventTitle);
             byte[] selectedImage = selectedEvent.eventPicture;
             return selectedImage;
         }
@@ -127,7 +127,7 @@ namespace Ssample.ViewModel.Buying_tickets
         {
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             Tickets = (from data in context.Ticket_Details select data).ToList();
-            var selectedEvent = tickets.Find(x => x.eventTitle == "The Opera with Snakes");
+            var selectedEvent = tickets.Find(x => x.eventTitle == Properties.Settings.Default.EventTitle);
 
             if (SeatPlace == null) 
             {

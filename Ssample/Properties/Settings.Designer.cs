@@ -69,5 +69,17 @@ namespace Ssample.Properties {
                 this["SearchText"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Nothing")]
+        public string EventTitle {
+            get {
+                return ((string)(this["EventTitle"]));
+            }
+            set {
+                this["EventTitle"] = value;
+            }
+        }
     }
 }

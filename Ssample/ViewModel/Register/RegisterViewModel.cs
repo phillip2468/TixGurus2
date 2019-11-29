@@ -90,22 +90,22 @@ namespace Ssample.ViewModel
         {
             get
             {
-                if (CurrentCustomer.Email == null)
+                if (CurrentCustomer.email == null)
                 {
-                    return CurrentCustomer.Email;
+                    return CurrentCustomer.email;
                 }
                 Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-                Match match = regex.Match(CurrentCustomer.Email);
+                Match match = regex.Match(CurrentCustomer.email);
                 if (!match.Success)
                 {
                     return null;
                 }
-                return CurrentCustomer.Email;
+                return CurrentCustomer.email;
 
             }
             set
             {
-                CurrentCustomer.Email = value;
+                CurrentCustomer.email = value;
                 OnPropertyChanged($"Email");
             }
         }
@@ -117,20 +117,20 @@ namespace Ssample.ViewModel
         {
             get
             {
-                if (CurrentCustomer.Password == null)
+                if (CurrentCustomer.password == null)
                 {
-                    return CurrentCustomer.Password;
+                    return CurrentCustomer.password;
                 }
 
-                if (CurrentCustomer.Password.Length < 5)
+                if (CurrentCustomer.password.Length < 5)
                 {
                     return null;
                 }
-                return CurrentCustomer.Password;
+                return CurrentCustomer.password;
             } 
             set
             {
-                CurrentCustomer.Password = value;
+                CurrentCustomer.password = value;
                 OnPropertyChanged($"Password");
             }
         }
@@ -141,20 +141,20 @@ namespace Ssample.ViewModel
         {
             get
             {
-                if (CurrentCustomer.First_Name == null)
+                if (CurrentCustomer.firstName == null)
                 {
-                    return CurrentCustomer.First_Name;
+                    return CurrentCustomer.firstName;
                 }
 
-                if (CurrentCustomer.First_Name.Length < 3)
+                if (CurrentCustomer.firstName.Length < 3)
                 {
                     return null;
                 }
-                return CurrentCustomer.First_Name;
+                return CurrentCustomer.firstName;
             }
             set
             {
-                CurrentCustomer.First_Name = value;
+                CurrentCustomer.firstName = value;
                 OnPropertyChanged($"First_Name");
             }
         }
@@ -166,20 +166,20 @@ namespace Ssample.ViewModel
         {
             get
             {
-                if (CurrentCustomer.Last_Name == null)
+                if (CurrentCustomer.lastName == null)
                 {
-                    return CurrentCustomer.Last_Name;
+                    return CurrentCustomer.lastName;
                 }
 
-                if (CurrentCustomer.Last_Name.Length < 3)
+                if (CurrentCustomer.lastName.Length < 3)
                 {
                     return null;
                 }
-                return CurrentCustomer.Last_Name;
+                return CurrentCustomer.lastName;
             }
             set
             {
-                CurrentCustomer.Last_Name = value;
+                CurrentCustomer.lastName = value;
                 OnPropertyChanged($"Last_Name");
             }
         }
@@ -191,24 +191,24 @@ namespace Ssample.ViewModel
         {
             get
             {
-                if (CurrentCustomer.Last_Name == null)
+                if (CurrentCustomer.lastName == null)
                 {
-                    return CurrentCustomer.Phone_Number;
+                    return CurrentCustomer.phoneNumber;
                 }
                 Regex regex = new Regex("^[0-9]+$");
-                Match match = regex.Match(CurrentCustomer.Phone_Number.ToString());
-                var num1 = CurrentCustomer.Phone_Number.ToString();
+                Match match = regex.Match(CurrentCustomer.phoneNumber.ToString());
+                var num1 = CurrentCustomer.phoneNumber.ToString();
 
                 if (!match.Success || num1.Length < 5)
                 {
                     return 0;
                 }
 
-                return CurrentCustomer.Phone_Number;
+                return CurrentCustomer.phoneNumber;
             }
             set
             {
-                CurrentCustomer.Phone_Number = value;
+                CurrentCustomer.phoneNumber = value;
                 OnPropertyChanged($"Phone_Number");
             }
         }
@@ -220,22 +220,22 @@ namespace Ssample.ViewModel
         {
             get
             {
-                if (CurrentCustomer.Address == null)
+                if (CurrentCustomer.address == null)
                 {
-                    return CurrentCustomer.Address;
+                    return CurrentCustomer.address;
                 }
                 Regex regex = new Regex(@"^[A-Za-z0-9]+(?:\s[A-Za-z0-9'_-]+)+$");
-                Match match = regex.Match(CurrentCustomer.Address);
+                Match match = regex.Match(CurrentCustomer.address);
                 if (!match.Success)
                 {
                     return null;
                 }
 
-                return CurrentCustomer.Address;
+                return CurrentCustomer.address;
             }
             set
             {
-                CurrentCustomer.Address = value;
+                CurrentCustomer.address = value;
                 OnPropertyChanged($"Address");
             }
         }
@@ -247,22 +247,22 @@ namespace Ssample.ViewModel
         {
             get
             {
-                if (CurrentCustomer.City == null)
+                if (CurrentCustomer.city == null)
                 {
-                    return CurrentCustomer.City;
+                    return CurrentCustomer.city;
                 }
                 Regex regex = new Regex(@"^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$");
-                Match match = regex.Match(CurrentCustomer.City);
+                Match match = regex.Match(CurrentCustomer.city);
                 if (!match.Success)
                 {
                     return null;
                 }
 
-                return CurrentCustomer.City;
+                return CurrentCustomer.city;
             }
             set
             {
-                CurrentCustomer.City = value;
+                CurrentCustomer.city = value;
                 OnPropertyChanged($"City");
             }
         }
@@ -274,23 +274,23 @@ namespace Ssample.ViewModel
         {
             get
             {
-                if (CurrentCustomer.State == null)
+                if (CurrentCustomer.state == null)
                 {
-                    return CurrentCustomer.State;
+                    return CurrentCustomer.state;
                 }
                 Regex regex = new Regex(@"^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$");
-                Match match = regex.Match(CurrentCustomer.State);
+                Match match = regex.Match(CurrentCustomer.state);
 
-                if (!match.Success || CurrentCustomer.State.Length > 3)
+                if (!match.Success || CurrentCustomer.state.Length > 3)
                 {
                     return null;
                 }
 
-                return CurrentCustomer.State;
+                return CurrentCustomer.state;
             }
             set
             {
-                CurrentCustomer.State = value;
+                CurrentCustomer.state = value;
                 OnPropertyChanged($"State");
             }
         }
@@ -301,24 +301,24 @@ namespace Ssample.ViewModel
         {
             get
             {
-                if (CurrentCustomer.Postcode == 0)
+                if (CurrentCustomer.postcode == 0)
                 {
-                    return CurrentCustomer.Postcode;
+                    return CurrentCustomer.postcode;
                 }
                 Regex regex = new Regex(@"^\d{4}(?:[-\s]\d{4})?$");
-                Match match = regex.Match(CurrentCustomer.Postcode.ToString());
-                var pc = CurrentCustomer.Postcode.ToString();
+                Match match = regex.Match(CurrentCustomer.postcode.ToString());
+                var pc = CurrentCustomer.postcode.ToString();
 
                 if (!match.Success || pc.Length < 4 || pc.Length > 4)
                 {
                     return 0;
                 }
 
-                return CurrentCustomer.Postcode;
+                return CurrentCustomer.postcode;
             }
             set
             {
-                CurrentCustomer.Postcode = value;
+                CurrentCustomer.postcode = value;
                 OnPropertyChanged($"Postcode");
             }
         }
@@ -329,16 +329,16 @@ namespace Ssample.ViewModel
         {
             get
             {
-                if (CurrentCustomer.Date_Of_Birth == DateTime.MinValue)
+                if (CurrentCustomer.dateOfBirth == DateTime.MinValue)
                 {
                     return DateTime.Now;
                 }
 
-                return CurrentCustomer.Date_Of_Birth;
+                return CurrentCustomer.dateOfBirth;
             }
             set
             {
-                CurrentCustomer.Date_Of_Birth = value;
+                CurrentCustomer.dateOfBirth = value;
                 OnPropertyChanged($"Date_Of_Birth");
             }
         }
@@ -364,17 +364,17 @@ namespace Ssample.ViewModel
             //Checks if helper class returns true or false
             if (isNull)
             {
-                CurrentCustomer.Email = Email.Trim();
-                CurrentCustomer.Password = Password.Trim();
-                CurrentCustomer.First_Name = FirstName.Trim();
-                CurrentCustomer.Last_Name = LastName.Trim();
-                CurrentCustomer.Phone_Number = PhoneNumber;
-                CurrentCustomer.Address = Address.Trim();
-                CurrentCustomer.City = City.Trim();
-                CurrentCustomer.State = State.Trim();
-                CurrentCustomer.Postcode = Postcode;
-                CurrentCustomer.Date_Of_Birth = DateOfBirth;
-                CurrentCustomer.Date_Created = DateTime.Now;
+                CurrentCustomer.email = Email.Trim();
+                CurrentCustomer.password = Password.Trim();
+                CurrentCustomer.firstName = FirstName.Trim();
+                CurrentCustomer.lastName = LastName.Trim();
+                CurrentCustomer.phoneNumber = PhoneNumber;
+                CurrentCustomer.address = Address.Trim();
+                CurrentCustomer.city = City.Trim();
+                CurrentCustomer.state = State.Trim();
+                CurrentCustomer.postcode = Postcode;
+                CurrentCustomer.dateOfBirth = DateOfBirth;
+                CurrentCustomer.dateCreated = DateTime.Now;
 
                 context.Customer_Details.Add(CurrentCustomer);
 

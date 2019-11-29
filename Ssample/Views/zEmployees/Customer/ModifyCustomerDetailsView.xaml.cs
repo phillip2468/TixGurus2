@@ -34,23 +34,23 @@ namespace Ssample.Views
             {
                 return;
             }
-            Customer_Details order = context.Customer_Details.First(i => i.Customer_ID == newRecord.Customer_ID);
+            Customer_Details order = context.Customer_Details.First(i => i.customerID == newRecord.customerID);
 
             if (newRecord != null)
             {
-                order.Customer_ID = newRecord.Customer_ID;
-                order.Email = newRecord.Email;
-                order.Password = newRecord.Password;
-                order.First_Name = newRecord.First_Name;
-                order.Last_Name = newRecord.Last_Name;
-                order.Address = newRecord.Address;
-                order.City = newRecord.City;
-                order.State = newRecord.State;
-                order.Postcode = newRecord.Postcode;
-                order.Date_Of_Birth = newRecord.Date_Of_Birth;
-                order.Date_Created = newRecord.Date_Created;
+                order.customerID = newRecord.customerID;
+                order.email = newRecord.email;
+                order.password = newRecord.password;
+                order.firstName = newRecord.firstName;
+                order.lastName = newRecord.lastName;
+                order.address = newRecord.address;
+                order.city = newRecord.city;
+                order.state = newRecord.state;
+                order.postcode = newRecord.postcode;
+                order.dateOfBirth = newRecord.dateOfBirth;
+                order.dateCreated = newRecord.dateCreated;
             }
-
+            
             context.Entry(order).State = EntityState.Modified;
             context.SaveChanges();
             context.Dispose();
@@ -64,17 +64,17 @@ namespace Ssample.Views
         {
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             var item = args.Items[0] as Customer_Details;
-            var id = item.Customer_ID;
-            var email = item.Email;
-            var password = item.Password;
-            var firstName = item.First_Name;
-            var lastName = item.Last_Name;
-            var address = item.Address;
-            var city = item.City;
-            var state = item.State;
-            var postcode = item.Postcode;
-            var dateOfBirth = item.Date_Of_Birth;
-            var dateCreated = item.Date_Created;
+            var id = item.customerID;
+            var email = item.email;
+            var password = item.password;
+            var firstName = item.firstName;
+            var lastName = item.lastName;
+            var address = item.address;
+            var city = item.city;
+            var state = item.state;
+            var postcode = item.postcode;
+            var dateOfBirth = item.dateOfBirth;
+            var dateCreated = item.dateCreated;
 
             context.Entry(item).State = EntityState.Deleted;
             context.SaveChanges();

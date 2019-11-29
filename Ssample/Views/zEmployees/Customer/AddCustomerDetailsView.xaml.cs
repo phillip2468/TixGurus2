@@ -35,18 +35,18 @@ namespace Ssample.Views.zEmployees
 
             if (newRecord != null)
             {
-                currentCustomer.Customer_ID = newRecord.Customer_ID;
-                currentCustomer.Email = newRecord.Email;
-                currentCustomer.Password = newRecord.Password;
-                currentCustomer.First_Name = newRecord.First_Name;
-                currentCustomer.Last_Name = newRecord.Last_Name;
-                currentCustomer.Address = newRecord.Address;
-                currentCustomer.Phone_Number = newRecord.Phone_Number;
-                currentCustomer.City = newRecord.City;
-                currentCustomer.State = newRecord.State;
-                currentCustomer.Postcode = newRecord.Postcode;
-                currentCustomer.Date_Of_Birth = newRecord.Date_Of_Birth;
-                currentCustomer.Date_Created = newRecord.Date_Created;
+                currentCustomer.customerID = newRecord.customerID;
+                currentCustomer.email = newRecord.email;
+                currentCustomer.password = newRecord.password;
+                currentCustomer.firstName = newRecord.firstName;
+                currentCustomer.lastName = newRecord.lastName;
+                currentCustomer.address = newRecord.address;
+                currentCustomer.phoneNumber = newRecord.phoneNumber;
+                currentCustomer.city = newRecord.city;
+                currentCustomer.state = newRecord.state;
+                currentCustomer.postcode = newRecord.postcode;
+                currentCustomer.dateOfBirth = newRecord.dateOfBirth;
+                currentCustomer.dateCreated = newRecord.dateCreated;
             }
 
 

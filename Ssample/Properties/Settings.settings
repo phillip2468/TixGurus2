@@ -19,5 +19,8 @@
     <Setting Name="SearchText" Type="System.String" Scope="User">
       <Value Profile="(Default)">Nothing</Value>
     </Setting>
+    <Setting Name="EventTitle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Nothing</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

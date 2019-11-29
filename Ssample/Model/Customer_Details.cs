@@ -18,29 +18,29 @@ using System;
 public partial class Customer_Details
 {
 
-    public int Customer_ID { get; set; }
+    public int customerID { get; set; }
 
-    public string Email { get; set; }
+    public string email { get; set; }
 
-    public string Password { get; set; }
+    public string password { get; set; }
 
-    public string First_Name { get; set; }
+    public string firstName { get; set; }
 
-    public string Last_Name { get; set; }
+    public string lastName { get; set; }
 
-    public int Phone_Number { get; set; }
+    public int phoneNumber { get; set; }
 
-    public string Address { get; set; }
+    public string address { get; set; }
 
-    public string City { get; set; }
+    public string city { get; set; }
 
-    public string State { get; set; }
+    public string state { get; set; }
 
-    public int Postcode { get; set; }
+    public int postcode { get; set; }
 
-    public System.DateTime Date_Of_Birth { get; set; }
+    public System.DateTime dateOfBirth { get; set; }
 
-    public System.DateTime Date_Created { get; set; }
+    public System.DateTime dateCreated { get; set; }
 
 }
 
