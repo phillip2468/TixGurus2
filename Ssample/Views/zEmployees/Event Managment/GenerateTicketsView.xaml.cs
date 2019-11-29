@@ -26,7 +26,7 @@ namespace Ssample.Views.zEmployees.Event_Managment
         {
             InitializeComponent();
             DataContext = new GenerateTicketsViewModel();
-            this.DataGrid.AutoGeneratingColumn += datagrid_AutoGeneratingColumn;
+            //this.DataGrid.AutoGeneratingColumn += datagrid_AutoGeneratingColumn;
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

@@ -18,25 +18,29 @@ using System;
 public partial class Event_Details
 {
 
-    public int Event_ID { get; set; }
+    public int eventID { get; set; }
 
-    public string Event_Title { get; set; }
+    public string eventTitle { get; set; }
 
-    public string Event_Description { get; set; }
+    public string eventDescription { get; set; }
 
-    public System.DateTime Event_Start { get; set; }
+    public System.DateTime eventStart { get; set; }
 
-    public System.DateTime Event_End { get; set; }
+    public System.DateTime eventEnd { get; set; }
 
-    public int Capacity { get; set; }
+    public int capacity { get; set; }
 
-    public byte[] Event_Picture { get; set; }
+    public byte[] eventPicture { get; set; }
 
-    public string Event_Location { get; set; }
+    public string eventLocation { get; set; }
 
-    public string Event_Address { get; set; }
+    public string eventAddress { get; set; }
 
-    public byte[] Event_Layout { get; set; }
+    public byte[] eventLayout { get; set; }
+
+    public Nullable<bool> showOnHomePage { get; set; }
+
+    public string eventGenre { get; set; }
 
 }
 

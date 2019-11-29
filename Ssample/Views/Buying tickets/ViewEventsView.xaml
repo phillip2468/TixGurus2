@@ -46,11 +46,12 @@
                                Grid.Row="1"
                                Grid.ColumnSpan="4"
                                Grid.RowSpan="5"
-                               ItemsSource="{Binding Tickets}" 
-                               SelectionMode="Extended" 
+                               ItemsSource="{Binding Tickets}"
+                               SelectionMode="Extended"
                                IsReadOnly="True"
                                SnapsToDevicePixels="True"
-        >
+                               
+                               Margin="-4,0,4,0">
         </Syncfusion:SfDataGrid>
 
         <Label Grid.Column="4"
@@ -72,18 +73,25 @@
         <TextBlock Grid.Column="4"
                    Grid.Row="4"
                    Grid.ColumnSpan="2"
-                   Text="Please enter your desired seats(make sure there is commas in between e.g. A1,A3,Z3)" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                   Text="Please enter your desired seats(make sure there is commas in between e.g. A1,A3,Z3)"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   TextWrapping="Wrap" />
 
-        <TextBox Grid.Column="4" Grid.Row="5" Margin="10 10 10 10" Text="{Binding SeatLetter}"/>
+        <TextBox Grid.Column="4"
+                 Grid.Row="5"
+                 Margin="10 10 10 10"
+                 Text="{Binding SeatPlace}" />
         <Button Grid.Column="5"
                 Grid.Row="6"
                 Content="Next"
-                Margin="10 10 10 10" Command="{Binding NavCommand}">
+                Margin="10 10 10 10"
+                Command="{Binding NavCommand2}">
             <Button.CommandParameter>
-                <buyingTickets:PurchaseTicketsViewModel/>
+                <buyingTickets:PurchaseTicketsViewModel />
             </Button.CommandParameter>
         </Button>
     </Grid>
 
-   
+
 </UserControl>

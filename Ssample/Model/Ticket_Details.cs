@@ -18,19 +18,17 @@ using System;
 public partial class Ticket_Details
 {
 
-    public int TicketID { get; set; }
+    public int ticketId { get; set; }
 
-    public string EventTitle { get; set; }
+    public string eventTitle { get; set; }
 
-    public System.DateTime EventStart { get; set; }
+    public System.DateTime eventStart { get; set; }
 
-    public System.DateTime EventEnd { get; set; }
+    public System.DateTime eventEnd { get; set; }
 
-    public string SeatLetter { get; set; }
+    public string seatLocation { get; set; }
 
-    public int SeatNumber { get; set; }
-
-    public decimal Price { get; set; }
+    public decimal price { get; set; }
 
 }
 

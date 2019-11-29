@@ -33,15 +33,14 @@ namespace Ssample.Views.zEmployees.Event_Managment
         public void dataGrid_RowValidated(object sender, Syncfusion.UI.Xaml.Grid.RowValidatedEventArgs args)
         {
             Ticket_Details newRecord = args.RowData as Ticket_Details;
-            Ticket_Details order = context.Ticket_Details.First(i => i.TicketID == newRecord.TicketID);
+            Ticket_Details order = context.Ticket_Details.First(i => i.ticketId == newRecord.ticketId);
 
-            order.TicketID = newRecord.TicketID;
-            order.EventTitle = newRecord.EventTitle;
-            order.EventStart = newRecord.EventStart;
-            order.EventEnd = newRecord.EventEnd;
-            order.Price = newRecord.Price;
-            order.SeatLetter = newRecord.SeatLetter;
-            order.SeatNumber = newRecord.SeatNumber;
+            order.ticketId = newRecord.ticketId;
+            order.eventTitle = newRecord.eventTitle;
+            order.eventStart = newRecord.eventStart;
+            order.eventEnd = newRecord.eventEnd;
+            order.price = newRecord.price;
+            order.seatLocation = newRecord.seatLocation;
             context.Entry(order).State = EntityState.Modified;
             context.SaveChanges();
         }
@@ -55,13 +54,12 @@ namespace Ssample.Views.zEmployees.Event_Managment
         {
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             var item = args.Items[0] as Ticket_Details;
-            var id = item.TicketID;
-            var title = item.EventTitle;
-            var start = item.EventStart;
-            var end = item.EventEnd;
-            var price = item.Price;
-            var seatLetter = item.SeatLetter;
-            var seatNumber = item.SeatNumber;
+            var id = item.ticketId;
+            var title = item.eventTitle;
+            var start = item.eventStart;
+            var end = item.eventEnd;
+            var price = item.price;
+            var seatLocation = item.seatLocation;
 
             context.Entry(item).State = EntityState.Deleted;
             context.SaveChanges();

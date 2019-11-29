@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.Entity.Infrastructure.Design;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Ssample.Model;
+using Ssample.ViewModel.Base_view_models;
 using Ssample.ViewModel.Buying_tickets;
 using Syncfusion.Windows.Shared;
 
@@ -25,6 +31,8 @@ namespace Ssample.ViewModel
         private NavigationViewModelBase signInViewModel;
 
         private NavigationViewModelBase viewEventsViewModel;
+
+        private NavigationViewModelBase searchEventViewModel;
         #endregion
 
         #region Commands
@@ -33,6 +41,8 @@ namespace Ssample.ViewModel
         /// user controls
         /// </summary>
         public ICommand NavCommand { get; set; }
+
+        public ICommand Nav2Command { get; set; }
         #endregion
 
         #region Constructor
@@ -41,14 +51,45 @@ namespace Ssample.ViewModel
         /// </summary>
         public DefaultViewModel()
         {
-            //Initialisation
+            //Initialization
             registerViewModel = new RegisterViewModel();
             viewEventsViewModel = new ViewEventsViewModel();
             signInViewModel = new SignInViewModel();
+            searchEventViewModel = new SearchEventViewModel();
+
+            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+            Events = (from data in context.Event_Details select data).ToList();
 
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
+            Nav2Command = new RelayCommand<NavigationViewModelBase>(Nav2);
 
         }
+
+
+
+        /*
+
+        private string SetEventName()
+        {
+            List<string> eventNameList = new List<string>();
+            foreach (var events in Events)
+            {
+                eventNameList.Add(events);
+            }
+
+            var number = eventNameList.Count;
+            for (int i = 0; i <= number; i++)
+            {
+                if (i == 0)
+                {
+                    return eventNameList.FirstOrDefault();
+                }
+
+            }
+
+            return "something went wrong";
+        }*/
+
         #endregion
 
         #region Helper Functions
@@ -58,108 +99,42 @@ namespace Ssample.ViewModel
         {
             Navigate(viewModel);
         }
+
+        private void Nav2(NavigationViewModelBase viewModel)
+        {
+            Properties.Settings.Default.SearchText = SearchText.Trim();
+            Navigate(viewModel);
+        }
         #endregion
 
-        public List<Event_Details> Event { get; set; }
 
-        #region Properties for location 1
-
-        private BitmapImage _image;
-        public BitmapImage Image
-        {
-            get
-            {
-                _image = LoadImage(LoadImage());
-                return _image;
-            }
-            set
-            {
-                _image = value;
-                OnPropertyChanged("Image");
-            }
-        }
+        #region MyRegion
+        /// <summary>
+        /// Search text
+        /// </summary>
+        private string _searchText;
 
         /// <summary>
-        /// Function which converts imageData to
-        /// an actual image
+        /// Property for getting the
+        /// search text from the
+        /// text box
         /// </summary>
-        /// <param name="imageData"></param>
-        /// <returns></returns>
-        public BitmapImage LoadImage(byte[] imageData)
+        public string SearchText
         {
-            if (imageData == null || imageData.Length == 0) return null;
-            var image = new BitmapImage();
-            using (var mem = new MemoryStream(imageData))
-            {
-                mem.Position = 0;
-                image.BeginInit();
-                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
-                image.CacheOption = BitmapCacheOption.OnLoad;
-                image.UriSource = null;
-                image.StreamSource = mem;
-                image.EndInit();
-            }
-            image.Freeze();
-            return image;
-        }
-
-        public byte[] LoadImage()
-        {
-            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-            Event = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
-            var selectedEvent = Event.Find(x => x.Event_Title == "The Opera with Snakes");
-            byte[] selectedImage = selectedEvent.Event_Picture;
-            return selectedImage;
-        }
-
-        private string _eventName;
-        public string EventName
-        {
-            get
-            {
-                _eventName = LoadEventName();
-                return _eventName;
-            }
+            get { return _searchText; }
             set
             {
-                _eventName = value;
-                OnPropertyChanged("EventName");
+                _searchText = value;
+                OnPropertyChanged($"SearchText");
             }
         }
-
-        public string LoadEventName()
-        {
-            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-            Event = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
-            var selectedEvent = Event.Find(x => x.Event_Title == "The Opera with Snakes");
-            string selectedEventName = selectedEvent.Event_Title;
-            return selectedEventName;
-        }
-
-        private string _eventStart;
-        public string EventStart
-        {
-            get
-            {
-                _eventStart = LoadEventDate();
-                return _eventStart;
-            }
-            set
-            {
-                _eventStart = value;
-                OnPropertyChanged("EventStart");
-            }
-        }
-
-        public string LoadEventDate()
-        {
-            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-            Event = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
-            var selectedEvent = Event.Find(x => x.Event_Title == "The Opera with Snakes");
-            string selectedStart = selectedEvent.Event_Start.ToShortDateString();
-            return selectedStart;
-        }
+        /// <summary>
+        /// Property of Events
+        /// </summary>
+        public List<Event_Details> Events { get; set; }
 
         #endregion
+
     }
 }
+

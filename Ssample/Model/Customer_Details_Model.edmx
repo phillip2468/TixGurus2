@@ -11,8 +11,8 @@
           </Key>
           <Property Name="ticketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="placeName" Type="nvarchar" MaxLength="50" />
-          <Property Name="timeStart" Type="time" Precision="7" />
-          <Property Name="timeEnd" Type="time" Precision="7" />
+          <Property Name="timeStart" Type="datetime" />
+          <Property Name="timeEnd" Type="datetime" />
           <Property Name="price" Type="money" />
           <Property Name="fullName" Type="nvarchar" MaxLength="50" />
           <Property Name="address" Type="nvarchar" MaxLength="50" />
@@ -50,30 +50,31 @@
         </EntityType>
         <EntityType Name="Event_Details">
           <Key>
-            <PropertyRef Name="Event_ID" />
+            <PropertyRef Name="eventID" />
           </Key>
-          <Property Name="Event_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Event_Title" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Event_Description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Event_Start" Type="datetime" Nullable="false" />
-          <Property Name="Event_End" Type="datetime" Nullable="false" />
-          <Property Name="Capacity" Type="int" Nullable="false" />
-          <Property Name="Event_Picture" Type="image" Nullable="false" />
-          <Property Name="Event_Location" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Event_Address" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Event_Layout" Type="image" Nullable="false" />
+          <Property Name="eventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eventTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eventDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="eventStart" Type="datetime" Nullable="false" />
+          <Property Name="eventEnd" Type="datetime" Nullable="false" />
+          <Property Name="capacity" Type="int" Nullable="false" />
+          <Property Name="eventPicture" Type="image" Nullable="false" />
+          <Property Name="eventLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eventAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eventLayout" Type="image" Nullable="false" />
+          <Property Name="showOnHomePage" Type="bit" />
+          <Property Name="eventGenre" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Ticket_Details">
           <Key>
-            <PropertyRef Name="TicketID" />
+            <PropertyRef Name="ticketId" />
           </Key>
-          <Property Name="TicketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EventTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="EventStart" Type="datetime" Nullable="false" />
-          <Property Name="EventEnd" Type="datetime" Nullable="false" />
-          <Property Name="SeatLetter" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="SeatNumber" Type="int" Nullable="false" />
-          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="ticketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eventTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eventStart" Type="datetime" Nullable="false" />
+          <Property Name="eventEnd" Type="datetime" Nullable="false" />
+          <Property Name="seatLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
         </EntityType>
         <EntityContainer Name="CustomerDatabaseModelStoreContainer">
           <EntitySet Name="Booked_Tickets_Details" EntityType="Self.Booked_Tickets_Details" Schema="dbo" store:Type="Tables" />
@@ -122,30 +123,31 @@
         </EntityType>
         <EntityType Name="Ticket_Details">
           <Key>
-            <PropertyRef Name="TicketID" />
+            <PropertyRef Name="ticketId" />
           </Key>
-          <Property Name="TicketID" Type="Int32" Nullable="false" />
-          <Property Name="EventTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EventStart" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EventEnd" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SeatLetter" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="SeatNumber" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="ticketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eventTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eventStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="eventEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="seatLocation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="Event_Details">
           <Key>
-            <PropertyRef Name="Event_ID" />
+            <PropertyRef Name="eventID" />
           </Key>
-          <Property Name="Event_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Event_Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Event_Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Event_Start" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Event_End" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Capacity" Type="Int32" Nullable="false" />
-          <Property Name="Event_Picture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="Event_Location" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Event_Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Event_Layout" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="eventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eventTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eventDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eventStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="eventEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="capacity" Type="Int32" Nullable="false" />
+          <Property Name="eventPicture" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="eventLocation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eventAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eventLayout" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="showOnHomePage" Type="Boolean" />
+          <Property Name="eventGenre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Booked_Tickets_Details">
           <Key>
@@ -153,8 +155,8 @@
           </Key>
           <Property Name="ticketID" Type="Int32" Nullable="false" />
           <Property Name="placeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="timeStart" Type="Time" Precision="7" />
-          <Property Name="timeEnd" Type="Time" Precision="7" />
+          <Property Name="timeStart" Type="DateTime" Precision="3" />
+          <Property Name="timeEnd" Type="DateTime" Precision="3" />
           <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="fullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -201,29 +203,30 @@
           <EntitySetMapping Name="Ticket_Details">
             <EntityTypeMapping TypeName="CustomerDatabaseModel.Ticket_Details">
               <MappingFragment StoreEntitySet="Ticket_Details">
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
-                <ScalarProperty Name="SeatLetter" ColumnName="SeatLetter" />
-                <ScalarProperty Name="EventEnd" ColumnName="EventEnd" />
-                <ScalarProperty Name="EventStart" ColumnName="EventStart" />
-                <ScalarProperty Name="EventTitle" ColumnName="EventTitle" />
-                <ScalarProperty Name="TicketID" ColumnName="TicketID" />
-              </MappingFragment>
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="seatLocation" ColumnName="seatLocation" />
+                <ScalarProperty Name="eventEnd" ColumnName="eventEnd" />
+                <ScalarProperty Name="eventStart" ColumnName="eventStart" />
+                <ScalarProperty Name="eventTitle" ColumnName="eventTitle" />
+                <ScalarProperty Name="ticketId" ColumnName="ticketId" />
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Event_Details">
             <EntityTypeMapping TypeName="CustomerDatabaseModel.Event_Details">
               <MappingFragment StoreEntitySet="Event_Details">
-                <ScalarProperty Name="Event_Layout" ColumnName="Event_Layout" />
-                <ScalarProperty Name="Event_Address" ColumnName="Event_Address" />
-                <ScalarProperty Name="Event_Location" ColumnName="Event_Location" />
-                <ScalarProperty Name="Event_Picture" ColumnName="Event_Picture" />
-                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-                <ScalarProperty Name="Event_End" ColumnName="Event_End" />
-                <ScalarProperty Name="Event_Start" ColumnName="Event_Start" />
-                <ScalarProperty Name="Event_Description" ColumnName="Event_Description" />
-                <ScalarProperty Name="Event_Title" ColumnName="Event_Title" />
-                <ScalarProperty Name="Event_ID" ColumnName="Event_ID" />
+                <ScalarProperty Name="eventGenre" ColumnName="eventGenre" />
+                <ScalarProperty Name="showOnHomePage" ColumnName="showOnHomePage" />
+                <ScalarProperty Name="eventLayout" ColumnName="eventLayout" />
+                <ScalarProperty Name="eventAddress" ColumnName="eventAddress" />
+                <ScalarProperty Name="eventLocation" ColumnName="eventLocation" />
+                <ScalarProperty Name="eventPicture" ColumnName="eventPicture" />
+                <ScalarProperty Name="capacity" ColumnName="capacity" />
+                <ScalarProperty Name="eventEnd" ColumnName="eventEnd" />
+                <ScalarProperty Name="eventStart" ColumnName="eventStart" />
+                <ScalarProperty Name="eventDescription" ColumnName="eventDescription" />
+                <ScalarProperty Name="eventTitle" ColumnName="eventTitle" />
+                <ScalarProperty Name="eventID" ColumnName="eventID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
@@ -53,34 +56,35 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         {
             get
             {
-                if (CurrentTicket.EventTitle == null)
+                if (CurrentTicket.eventTitle == null)
                 {
-                    return CurrentTicket.EventTitle;
+                    return CurrentTicket.eventTitle;
                 }
 
-                return CurrentTicket.EventTitle;
+                return CurrentTicket.eventTitle;
             }
             set
             {
-                CurrentTicket.EventTitle = value;
+                CurrentTicket.eventTitle = value;
                 OnPropertyChanged($"EventTitle");
             }
         }
 
+        private string _seatLetter;
         public string LevelOneChar
         {
             get
             {
-                if (CurrentTicket.SeatLetter == null)
+                if (_seatLetter == null)
                 {
-                    return CurrentTicket.SeatLetter;
+                    return _seatLetter;
                 }
 
-                return CurrentTicket.SeatLetter;
+                return _seatLetter;
             }
             set
             {
-                CurrentTicket.SeatLetter = value;
+                _seatLetter = value;
                 OnPropertyChanged($"LevelOneChar");
             }
         }
@@ -89,16 +93,16 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         {
             get
             {
-                if (CurrentTicket.Price == 0)
+                if (CurrentTicket.price == 0)
                 {
-                    return CurrentTicket.Price;
+                    return CurrentTicket.price;
                 }
 
-                return CurrentTicket.Price;
+                return CurrentTicket.price;
             }
             set
             {
-                CurrentTicket.Price = value;
+                CurrentTicket.price = value;
                 OnPropertyChanged($"LevelOnePrice");
             }
         }
@@ -106,6 +110,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         private int _levelOneCapacity;
         /// <summary>
         /// Gets the amount of tickets
+        /// that is to be generated
         /// </summary>
         public int LevelOneCapacity
         {
@@ -129,16 +134,16 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         {
             get
             {
-                if (CurrentTicket.EventStart == DateTime.MinValue)
+                if (CurrentTicket.eventStart == DateTime.MinValue)
                 {
-                    return CurrentTicket.EventStart;
+                    return CurrentTicket.eventStart;
                 }
 
-                return CurrentTicket.EventStart;
+                return CurrentTicket.eventStart;
             }
             set
             {
-                CurrentTicket.EventStart = value;
+                CurrentTicket.eventStart = value;
                 OnPropertyChanged($"EventStart");
             }
         }
@@ -146,16 +151,16 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         {
             get
             {
-                if (CurrentTicket.EventEnd == DateTime.MinValue)
+                if (CurrentTicket.eventEnd == DateTime.MinValue)
                 {
-                    return CurrentTicket.EventEnd;
+                    return CurrentTicket.eventEnd;
                 }
 
-                return CurrentTicket.EventEnd;
+                return CurrentTicket.eventEnd;
             }
             set
             {
-                CurrentTicket.EventEnd = value;
+                CurrentTicket.eventEnd = value;
                 OnPropertyChanged($"EventEnd");
             }
         }
@@ -291,9 +296,14 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         #endregion
 
         #region Save changes to database
+        /// <summary>
+        /// A function which returns a boolean
+        /// value if the generation of tickets
+        /// is correct
+        /// </summary>
+        /// <returns>Boolean value</returns>
         private bool SaveChanges()
         {
-
             int numberOfTickets = LevelOneCapacity;
 
             bool output = false;
@@ -301,12 +311,11 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             for (int i = 0; i < numberOfTickets; i++)
             {
                 CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-                CurrentTicket.EventTitle = EventTitle;
-                CurrentTicket.Price = LevelOnePrice;
-                CurrentTicket.SeatLetter = LevelOneChar;
-                CurrentTicket.SeatNumber = i;
-                CurrentTicket.EventStart = EventStartLevelOne;
-                CurrentTicket.EventEnd = EventEndLevelOne;
+                CurrentTicket.eventTitle = EventTitle;
+                CurrentTicket.price = LevelOnePrice;
+                CurrentTicket.seatLocation = LevelOneChar + i.ToString();
+                CurrentTicket.eventStart = EventStartLevelOne;
+                CurrentTicket.eventEnd = EventEndLevelOne;
                 context.Ticket_Details.Add(CurrentTicket);
                 context.SaveChanges();
                 context.Dispose();
@@ -325,12 +334,11 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
                 for (int i = 0; i < LevelTwoCapacity; i++)
                 {
                     CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-                    CurrentTicket.EventTitle = EventTitle;
-                    CurrentTicket.Price = LevelTwoPrice;
-                    CurrentTicket.SeatLetter = LevelTwoChar;
-                    CurrentTicket.SeatNumber = i;
-                    CurrentTicket.EventStart = EventStartLevelOne;
-                    CurrentTicket.EventEnd = EventEndLevelOne;
+                    CurrentTicket.eventTitle = EventTitle;
+                    CurrentTicket.price = LevelTwoPrice;
+                    CurrentTicket.seatLocation = LevelTwoChar + LevelTwoCapacity.ToString();
+                    CurrentTicket.eventStart = EventStartLevelOne;
+                    CurrentTicket.eventEnd = EventEndLevelOne;
                     context.Ticket_Details.Add(CurrentTicket);
                     context.SaveChanges();
                     context.Dispose();
@@ -349,12 +357,11 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
                 for (int i = 0; i < levelThreeCapacity; i++)
                 {
                     CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-                    CurrentTicket.EventTitle = EventTitle;
-                    CurrentTicket.Price = LevelThreePrice;
-                    CurrentTicket.SeatLetter = LevelThreeChar;
-                    CurrentTicket.SeatNumber = i;
-                    CurrentTicket.EventStart = EventStartLevelOne;
-                    CurrentTicket.EventEnd = EventEndLevelOne;
+                    CurrentTicket.eventTitle = EventTitle;
+                    CurrentTicket.price = LevelThreePrice;
+                    CurrentTicket.seatLocation = LevelThreeChar + LevelThreeCapacity.ToString();
+                    CurrentTicket.eventStart = EventStartLevelOne;
+                    CurrentTicket.eventEnd = EventEndLevelOne;
                     context.Ticket_Details.Add(CurrentTicket);
                     context.SaveChanges();
                     context.Dispose();
@@ -378,5 +385,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
 
         #endregion
 
+
     }
+
 }

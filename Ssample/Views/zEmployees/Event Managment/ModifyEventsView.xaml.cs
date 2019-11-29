@@ -32,17 +32,19 @@ namespace Ssample.Views.zEmployees.Event_Managment
         public void dataGrid_RowValidated(object sender, Syncfusion.UI.Xaml.Grid.RowValidatedEventArgs args)
         {
             Event_Details newRecord = args.RowData as Event_Details;
-            Event_Details order = context.Event_Details.First(i => i.Event_ID == newRecord.Event_ID);
+            Event_Details order = context.Event_Details.First(i => i.eventID == newRecord.eventID);
 
-            order.Event_ID = newRecord.Event_ID;
-            order.Event_Address = newRecord.Event_Address;
-            order.Event_Description = newRecord.Event_Description;
-            order.Capacity = newRecord.Capacity;
-            order.Event_Start = newRecord.Event_Start;
-            order.Event_End = newRecord.Event_End;
-            order.Event_Location = newRecord.Event_Location;
-            order.Event_Picture = newRecord.Event_Picture;
-            order.Event_Title = newRecord.Event_Title;
+            order.eventID = newRecord.eventID;
+            order.eventAddress = newRecord.eventAddress;
+            order.eventDescription = newRecord.eventDescription;
+            order.capacity = newRecord.capacity;
+            order.eventStart = newRecord.eventStart;
+            order.eventEnd = newRecord.eventEnd;
+            order.eventLocation = newRecord.eventLocation;
+            order.eventPicture = newRecord.eventPicture;
+            order.eventTitle = newRecord.eventTitle;
+            order.eventGenre = newRecord.eventGenre;
+            order.showOnHomePage = newRecord.showOnHomePage;
             context.Entry(order).State = EntityState.Modified;
             context.SaveChanges();
         }
@@ -56,14 +58,16 @@ namespace Ssample.Views.zEmployees.Event_Managment
         {
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             var item = args.Items[0] as Event_Details;
-            var id = item.Event_ID;
-            var address = item.Event_Address;
-            var description = item.Event_Description;
-            var capacity = item.Capacity;
-            var eventStart = item.Event_Start;
-            var eventEnd = item.Event_End;
-            var eventPic = item.Event_Picture;
-            var eventTitle = item.Event_Title;
+            var id = item.eventID;
+            var address = item.eventAddress;
+            var description = item.eventDescription;
+            var capacity = item.capacity;
+            var eventStart = item.eventStart;
+            var eventEnd = item.eventEnd;
+            var eventPic = item.eventPicture;
+            var eventTitle = item.eventTitle;
+            var eventGenre = item.eventGenre;
+            var showOnHomePage = item.showOnHomePage;
             
             context.Entry(item).State = EntityState.Deleted;
             context.SaveChanges();

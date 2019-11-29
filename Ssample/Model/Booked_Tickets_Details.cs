@@ -22,9 +22,9 @@ public partial class Booked_Tickets_Details
 
     public string placeName { get; set; }
 
-    public DateTime timeStart { get; set; }
+    public Nullable<System.DateTime> timeStart { get; set; }
 
-    public DateTime timeEnd { get; set; }
+    public Nullable<System.DateTime> timeEnd { get; set; }
 
     public Nullable<decimal> price { get; set; }
 

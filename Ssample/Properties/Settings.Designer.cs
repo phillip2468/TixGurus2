@@ -57,5 +57,17 @@ namespace Ssample.Properties {
                 this["SeatLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Nothing")]
+        public string SearchText {
+            get {
+                return ((string)(this["SearchText"]));
+            }
+            set {
+                this["SearchText"] = value;
+            }
+        }
     }
 }

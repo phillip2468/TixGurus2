@@ -56,7 +56,7 @@ namespace Ssample.ViewModel.Buying_tickets
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             Event = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
             
-            var rowData = Event.Find(t => t.Event_Title == "The Opera with Snakes");
+            var rowData = Event.Find(t => t.eventTitle == "The Opera with Snakes");
             
             string seatInput = Properties.Settings.Default.SeatLocation;
             
@@ -69,10 +69,9 @@ namespace Ssample.ViewModel.Buying_tickets
                 CurrentTicket.fullName = FullName;
                 CurrentTicket.address = Address;
                 CurrentTicket.email = Email;
-                CurrentTicket.timeStart = rowData.Event_Start;
-                CurrentTicket.timeEnd = rowData.Event_End;
+                CurrentTicket.timeStart = rowData.eventStart;
+                CurrentTicket.timeEnd = rowData.eventEnd;
                 CurrentTicket.seatPlace = s;
-                CurrentTicket.price =
             }
 
            

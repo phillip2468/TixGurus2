@@ -68,21 +68,15 @@
         </Button>
 
         <!-- Datagrid for viewing current events-->
-        <Syncfusion:SfDataGrid  Name="DataGrid"
+        <DataGrid
                                 Grid.Column="1"
                                 Grid.Row="1"
                                 Grid.ColumnSpan="4"
-                                AllowDeleting="True"
-                                AllowFiltering="True"
-                                AllowEditing="True"
-                                AllowResizingColumns="True"
-                                SelectionMode="Extended"
+                                SelectionMode="Single"
                                 AutoGenerateColumns="True"
-                                ItemsSource="{Binding EventList}">
-            <Syncfusion:SfDataGrid.DataContext>
-                <eventManagement:GenerateTicketsViewModel />
-            </Syncfusion:SfDataGrid.DataContext>
-        </Syncfusion:SfDataGrid>
+                                ItemsSource="{Binding EventList}"
+                                SelectedItem="{Binding TestSelected,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+        </DataGrid>
 
         <!--Grid One-->
         <Grid x:Name="grid1"

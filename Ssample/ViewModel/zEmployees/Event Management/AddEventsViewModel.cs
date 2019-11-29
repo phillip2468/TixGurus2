@@ -37,7 +37,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             }
             else
             {
-                MessageBox.Show("Something wrong");
+                MessageBox.Show("You entered something wrong");
             }
         }
 
@@ -74,17 +74,17 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         {
             get
             {
-                if (CurrentEvent.Event_Title == null)
+                if (CurrentEvent.eventTitle == null)
                 {
-                    return CurrentEvent.Event_Title;
+                    return CurrentEvent.eventTitle;
                 }
 
-                return CurrentEvent.Event_Title;
+                return CurrentEvent.eventTitle;
             }
             set
             {
-                CurrentEvent.Event_Title = value;
-                OnPropertyChanged($"Event_Title");
+                CurrentEvent.eventTitle = value;
+                OnPropertyChanged($"EventTitle");
             }
         }
 
@@ -95,17 +95,17 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         {
             get
             {
-                if (CurrentEvent.Event_Description == null)
+                if (CurrentEvent.eventDescription == null)
                 {
-                    return CurrentEvent.Event_Description;
+                    return CurrentEvent.eventDescription;
                 }
 
-                return CurrentEvent.Event_Description;
+                return CurrentEvent.eventDescription;
             }
             set
             {
-                CurrentEvent.Event_Description = value;
-                OnPropertyChanged($"Event_description");
+                CurrentEvent.eventDescription = value;
+                OnPropertyChanged($"EventDescription");
             }
         }
 
@@ -116,17 +116,17 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         {
             get
             {
-                if (CurrentEvent.Event_Start == DateTime.MinValue)
+                if (CurrentEvent.eventStart == DateTime.MinValue)
                 {
-                    return CurrentEvent.Event_Start;
+                    return CurrentEvent.eventStart;
                 }
 
-                return CurrentEvent.Event_Start;
+                return CurrentEvent.eventStart;
             }
             set
             {
-                CurrentEvent.Event_Start = value;
-                OnPropertyChanged($"Event_Start");
+                CurrentEvent.eventStart = value;
+                OnPropertyChanged($"EventStart");
             }
         }
         /// <summary>
@@ -136,17 +136,17 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         {
             get
             {
-                if (CurrentEvent.Event_End == DateTime.MinValue)
+                if (CurrentEvent.eventEnd == DateTime.MinValue)
                 {
-                    return CurrentEvent.Event_End;
+                    return CurrentEvent.eventEnd;
                 }
 
-                return CurrentEvent.Event_End;
+                return CurrentEvent.eventEnd;
             }
             set
             {
-                CurrentEvent.Event_End = value;
-                OnPropertyChanged($"Event_End");
+                CurrentEvent.eventEnd = value;
+                OnPropertyChanged($"EventEnd");
             }
         }
 
@@ -218,16 +218,16 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         {
             get
             {
-                if (CurrentEvent.Capacity == 0)
+                if (CurrentEvent.capacity == 0)
                 {
-                    return CurrentEvent.Capacity;
+                    return CurrentEvent.capacity;
                 }
 
-                return CurrentEvent.Capacity;
+                return CurrentEvent.capacity;
             }
             set
             {
-                CurrentEvent.Capacity = value;
+                CurrentEvent.capacity = value;
                 OnPropertyChanged($"Capacity");
             }
         }
@@ -236,17 +236,17 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         {
             get
             {
-                if (CurrentEvent.Event_Location == null)
+                if (CurrentEvent.eventLocation == null)
                 {
-                    return CurrentEvent.Event_Location;
+                    return CurrentEvent.eventLocation;
                 }
 
-                return CurrentEvent.Event_Location;
+                return CurrentEvent.eventLocation;
             }
             set
             {
-                CurrentEvent.Event_Location = value;
-                OnPropertyChanged($"Event_Location");
+                CurrentEvent.eventLocation = value;
+                OnPropertyChanged($"EventLocation");
             }
         }
 
@@ -254,33 +254,51 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         {
             get
             {
-                if (CurrentEvent.Event_Address == null)
+                if (CurrentEvent.eventAddress == null)
                 {
-                    return CurrentEvent.Event_Address;
+                    return CurrentEvent.eventAddress;
                 }
 
-                return CurrentEvent.Event_Address;
+                return CurrentEvent.eventAddress;
             }
             set
             {
-                CurrentEvent.Event_Address = value;
-                OnPropertyChanged($"Event_Address");
+                CurrentEvent.eventAddress = value;
+                OnPropertyChanged($"EventAddress");
+            }
+        }
+
+        public string EventGenre
+        {
+            get
+            {
+                if (CurrentEvent.eventGenre == null)
+                {
+                    return CurrentEvent.eventGenre;
+                }
+
+                return CurrentEvent.eventGenre;
+            }
+            set
+            {
+                CurrentEvent.eventGenre = value;
+                OnPropertyChanged($"EventGenre");
             }
         }
 
 
-        private string imagePath2;
+        private string _imageOfLayout;
         /// <summary>
         /// Property for getting the path of the image
         /// of the layout
         /// </summary>
-        public string ImagePath2
+        public string ImageOfLayout
         {
-            get { return imagePath2; }
+            get { return _imageOfLayout; }
             set
             {
-                imagePath2 = value;
-                OnPropertyChanged("ImagePath2");
+                _imageOfLayout = value;
+                OnPropertyChanged($"ImageofLayout");
             }
         }
 
@@ -307,7 +325,19 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             open.Filter = "Pictures (*.jpg;*.gif;*.png)|*.jpg;*.gif;*.png";
 
             if (open.ShowDialog() == true)
-                ImagePath2 = open.FileName;
+                ImageOfLayout = open.FileName;
+        }
+
+        private bool? _showOnHomePage;
+        public bool? ShowOnHomePage
+        {
+            get { return _showOnHomePage; }
+            set
+            {
+                _showOnHomePage = value;
+                _showOnHomePage = (_showOnHomePage != null) ? value : false;
+                OnPropertyChanged($"ShowOnHomePage");
+            }
         }
 
         #endregion
@@ -324,19 +354,21 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             //Assign a context value
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
 
-            if (!isNull)
+            if (!isNull) 
             {
                 byte[] imageBytes = ConvertImageToByteArray(ImagePath);
-                byte[] imageBytes2 = ConvertImageToByteArray(ImagePath2);
-                CurrentEvent.Event_Picture = imageBytes;
-                CurrentEvent.Event_Layout = imageBytes2;
-                CurrentEvent.Event_Title = EventTitle.Trim();
-                CurrentEvent.Event_Description = EventDescription.Trim();
-                CurrentEvent.Event_Start = EventStart;
-                CurrentEvent.Event_End = EventEnd;
-                CurrentEvent.Capacity = Capacity;
-                CurrentEvent.Event_Location = EventLocation.Trim();
-                CurrentEvent.Event_Address = EventAddress.Trim();
+                byte[] imageBytes2 = ConvertImageToByteArray(ImageOfLayout);
+                CurrentEvent.eventPicture = imageBytes;
+                CurrentEvent.eventLayout = imageBytes2;
+                CurrentEvent.eventGenre = EventGenre.Trim();
+                CurrentEvent.eventTitle = EventTitle.Trim();
+                CurrentEvent.showOnHomePage = ShowOnHomePage.Value;
+                CurrentEvent.eventDescription = EventDescription.Trim();
+                CurrentEvent.eventStart = EventStart;
+                CurrentEvent.eventEnd = EventEnd;
+                CurrentEvent.capacity = Capacity;
+                CurrentEvent.eventLocation = EventLocation.Trim();
+                CurrentEvent.eventAddress = EventAddress.Trim();
                 context.Event_Details.Add(CurrentEvent);
 
                 context.SaveChanges();

@@ -39,5 +39,6 @@ namespace Ssample.Views.Buying_tickets
 
             DataContext = new ViewEventsViewModel();
         }
+
     }
 }

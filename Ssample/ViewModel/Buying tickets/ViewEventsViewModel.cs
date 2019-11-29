@@ -11,6 +11,8 @@ using System.Windows.Media.Imaging;
 using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
 using Ssample.Model;
+using Ssample.Views.Buying_tickets;
+using Syncfusion.UI.Xaml.Grid;
 
 namespace Ssample.ViewModel.Buying_tickets
 {
@@ -25,9 +27,11 @@ namespace Ssample.ViewModel.Buying_tickets
             buyingTicketsViewModel = new PurchaseTicketsViewModel();
 
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
             NavCommand2 = new RelayCommand<NavigationViewModelBase>(Nav2);
             Tickets = (from data in context.Ticket_Details select data).ToList();
+
         }
         
         private void Nav(NavigationViewModelBase viewModel)
@@ -38,8 +42,14 @@ namespace Ssample.ViewModel.Buying_tickets
 
         private void Nav2(NavigationViewModelBase viewModel)
         {
-            SaveSeats();
-            Navigate(viewModel);
+            if (SaveSeatSelection() != true)
+            {
+                MessageBox.Show("Not correct seats");
+            }
+            else
+            {
+                Navigate(viewModel);
+            }
         }
 
         public List<Ticket_Details> Tickets { get; set; }
@@ -89,13 +99,12 @@ namespace Ssample.ViewModel.Buying_tickets
         {
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             Event = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
-            var selectedEvent = Event.Find(x => x.Event_Title == "The Opera with Snakes");
-            byte[] selectedImage = selectedEvent.Event_Layout;
+            var selectedEvent = Event.Find(x => x.eventTitle == "The Opera with Snakes");
+            byte[] selectedImage = selectedEvent.eventPicture;
             return selectedImage;
         }
 
         private string _seatPlace;
-
         public string SeatPlace
         {
             get
@@ -109,14 +118,35 @@ namespace Ssample.ViewModel.Buying_tickets
             set
             {
                 _seatPlace = value;
-                OnPropertyChanged($"SeatLetter");
+                OnPropertyChanged($"Seat");
             }
         }
 
-        public Booked_Tickets_Details CurrentTicket;
-        private void SaveSeats()
+        private List<Ticket_Details> tickets = new List<Ticket_Details>();
+        private bool SaveSeatSelection()
         {
-            Properties.Settings.Default.SeatLocation = SeatPlace.Trim();
+            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+            Tickets = (from data in context.Ticket_Details select data).ToList();
+            var selectedEvent = tickets.Find(x => x.eventTitle == "The Opera with Snakes");
+
+            if (SeatPlace == null) 
+            {
+                return false;
+            }
+
+            else
+            {
+                Properties.Settings.Default.SeatLocation = SeatPlace.Trim();
+                return true;
+            }
+            
+        }
+
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get { return _isSelected; }
+            set { OnPropertyChanged(ref _isSelected, value); }
         }
 
     }

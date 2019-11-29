@@ -31,7 +31,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
-
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Label Content="TixGurus"
@@ -48,7 +48,7 @@
                HorizontalAlignment="Center" />
 
         <Button Grid.Column="0"
-                Grid.Row="4"
+                Grid.Row="5"
                 Content="Go back"
                 Margin="10 10 10 10"
                 Command="{Binding NavCommand}">
@@ -59,12 +59,12 @@
 
 
         <Button Grid.Column="5"
-                Grid.Row="4"
+                Grid.Row="5"
                 Content="Save Event"
                 Margin="10 10 10 10"
                 Command="{Binding Nav2Command}">
             <Button.CommandParameter>
-                <viewModel:EmployeeDashboardViewModel/>
+                <viewModel:EmployeeDashboardViewModel />
             </Button.CommandParameter>
         </Button>
 
@@ -72,8 +72,7 @@
               Grid.Column="0"
               Grid.Row="1"
               Grid.ColumnSpan="6"
-              Grid.RowSpan="3"
-              >
+              Grid.RowSpan="4">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -91,7 +90,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
-
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <Label Content="Event Title:"
@@ -102,12 +101,11 @@
                    VerticalAlignment="Center" />
             <TextBox x:Name="EventTitleTextBox"
                      Grid.Column="1"
-                     Margin="10 10 10 10"
                      Grid.Row="0"
                      Height="20"
                      Grid.ColumnSpan="2"
-                     Text="{Binding EventTitle, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-            />
+                     TextWrapping="NoWrap"
+                     Text="{Binding EventTitle, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
             <Label Content="Event Description:"
                    Grid.Column="0"
                    HorizontalAlignment="Right"
@@ -118,24 +116,20 @@
             <TextBox x:Name="EventDescriptionTextBox"
                      Grid.Column="1"
                      Grid.Row="1"
-                     Margin="10 10 10 10"
                      Grid.ColumnSpan="2"
                      Grid.RowSpan="2"
                      TextWrapping="Wrap"
-                     Text="{Binding EventDescription, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-            />
+                     Text="{Binding EventDescription, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
 
             <Label Content="Event Start time"
                    Grid.Row="3"
                    Grid.Column="0"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" />
-            <xctk:DateTimePicker Grid.Row="3"
+            <xctk:DateTimeUpDown Grid.Row="3"
                                  Grid.Column="1"
-                                 Margin="10 0 10 0"
                                  Grid.ColumnSpan="2"
                                  VerticalAlignment="Center"
-                                 TimePickerAllowSpin="True"
                                  AllowSpin="True"
                                  UpdateValueOnEnterKey="True"
                                  Text="{Binding EventStart, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
@@ -145,15 +139,26 @@
                    Grid.Column="0"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" />
-            <xctk:DateTimePicker Grid.Row="4"
+            <xctk:DateTimeUpDown Grid.Row="4"
                                  Grid.Column="1"
-                                 Margin="10 0 10 0"
                                  Grid.ColumnSpan="2"
                                  VerticalAlignment="Center"
-                                 TimePickerAllowSpin="True"
                                  AllowSpin="True"
                                  UpdateValueOnEnterKey="True"
                                  Text="{Binding EventEnd, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+
+            <Label Content="Event Genre:"
+                   Grid.Column="0"
+                   HorizontalAlignment="Right"
+                   Margin="3"
+                   Grid.Row="5"
+                   VerticalAlignment="Center" />
+            <TextBox x:Name="EventGenreTextBox"
+                     Grid.Column="1"
+                     Grid.Row="5"
+                     Height="20"
+                     Grid.ColumnSpan="2"
+                     Text="{Binding EventGenre, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
 
 
             <TextBlock Name="ImagePath"
@@ -172,7 +177,6 @@
                    Grid.Row="0"
                    Grid.Column="5"
                    Grid.ColumnSpan="2"
-                   Margin="10 10 10 10"
                    Source="{Binding ImagePath}">
             </Image>
 
@@ -192,8 +196,7 @@
                    Grid.Row="1"
                    Grid.Column="5"
                    Grid.ColumnSpan="2"
-                   Margin="10 10 10 10"
-                   Source="{Binding ImagePath2}">
+                   Source="{Binding ImageOfLayout}">
             </Image>
 
 
@@ -240,6 +243,15 @@
                      Margin="10 10 10 10"
                      VerticalAlignment="Center"
                      Text="{Binding EventAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+
+
+            <CheckBox Grid.Column="4"
+                      Grid.Row="5"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
+                      IsChecked="{Binding ShowOnHomePage}"
+                      Content="Show on home page?" Grid.ColumnSpan="2"/>
+
 
         </Grid>
     </Grid>

@@ -16,5 +16,8 @@
     <Setting Name="SeatLocation" Type="System.String" Scope="User">
       <Value Profile="(Default)">Not a value</Value>
     </Setting>
+    <Setting Name="SearchText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Nothing</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
