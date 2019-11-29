@@ -1,33 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
 using Ssample.Model;
 
-namespace Ssample.ViewModel
+namespace Ssample.ViewModel.Signing_In
 {
     /// <summary>
-    /// Sign in view model
+    /// A view model responsible for signing in
     /// </summary>
     public class SignInViewModel : NavigationViewModelBase
     {
         #region Fields
-
-        private NavigationViewModelBase defaultViewModel;
+        //Successful sign in view model for customers
         private NavigationViewModelBase succesfulSignInViewModel;
+
+        //Navigate to employee login view model
         private NavigationViewModelBase employeeLoginViewModel;
 
         #endregion
 
         #region Commands
+        /// <summary>
+        /// Command for going to the employee login
+        /// in view model
+        /// </summary>
         public ICommand GoToEmployeeViewCommand { get; set; }
-        //Go back command
+
+        /// <summary>
+        /// Command to go back to the previous view model
+        /// </summary>
         public ICommand NavCommand { get; set; }
+
+        /// <summary>
+        /// Command which navigates to the successful view model
+        /// </summary>
         public ICommand GoToSuccessfulSignInViewCommand { get; set; }
 
         #endregion
@@ -36,18 +44,22 @@ namespace Ssample.ViewModel
 
         public SignInViewModel()
         {
+            //Initialization of employee view model / sign in
             employeeLoginViewModel = new EmployeeLoginViewModel();
-
-            //Assigns the successful sign in
             succesfulSignInViewModel = new SuccessfulSignInViewModel();
+
+            #region Command Parameters
 
             //Command to go to the successful sign in page
             GoToSuccessfulSignInViewCommand = new RelayCommand(GoToSuccessfulSignIn);
 
+            //Command to go to employee view model
             GoToEmployeeViewCommand = new RelayCommand(GoToEmployeeLogin);
 
             //Command for going back
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
+
+            #endregion
         }
 
         #endregion
@@ -70,6 +82,7 @@ namespace Ssample.ViewModel
                 MessageBox.Show("You have entered the wrong sign in values");
             }
         }
+
         /// <summary>
         /// Functionality to go back
         /// </summary>
@@ -79,22 +92,26 @@ namespace Ssample.ViewModel
             Navigate(viewModel);
         }
 
+        /// <summary>
+        /// Helper function which navigates to the
+        /// employee login view model
+        /// </summary>
         private void GoToEmployeeLogin()
         {
             Navigate(employeeLoginViewModel);
         }
         #endregion
 
-        #region Login fields
+        #region Login property
 
         public Customer_Details CurrentCustomer { get; set; } = new Customer_Details(); //Current customer you need to edit
 
         #endregion
 
-        #region Fields for sign in
+        #region Property for sign in
 
         /// <summary>
-        /// Field for email
+        /// Property for email
         /// </summary>
         public string Email
         {
@@ -107,7 +124,7 @@ namespace Ssample.ViewModel
         }
 
         /// <summary>
-        /// Field for password
+        /// Property for password
         /// </summary>
         public string Password
         {

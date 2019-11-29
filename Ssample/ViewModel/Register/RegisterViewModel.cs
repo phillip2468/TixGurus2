@@ -1,17 +1,18 @@
-﻿using SimpleWPF.Input;
-using SimpleWPF.ViewModels;
-using Ssample.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
+using SimpleWPF.Input;
+using SimpleWPF.ViewModels;
+using Ssample.Model;
 
-namespace Ssample.ViewModel
+namespace Ssample.ViewModel.Register
 {
     /// <summary>
-    /// Register view model
+    /// A class responsible for registering
+    /// users to TixGurus
     /// </summary>
     public class RegisterViewModel : NavigationViewModelBase
     {
@@ -25,9 +26,14 @@ namespace Ssample.ViewModel
 
         #region Navigation Commands
 
-        //Go to the successful screen
+        /// <summary>
+        /// Command which go to the successful register screen
+        /// </summary>
         public ICommand GoToSuccessfulViewCommand { get; set; }
 
+        /// <summary>
+        /// Command which navigates to the respective view model
+        /// </summary>
         public ICommand NavCommand { get; set; }
 
         #endregion

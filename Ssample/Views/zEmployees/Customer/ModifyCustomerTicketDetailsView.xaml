@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ssample.Views"
              xmlns:viewModel="clr-namespace:Ssample.ViewModel"
+             xmlns:customer="clr-namespace:Ssample.ViewModel.zEmployees.Customer"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="LightSlateGray">
@@ -27,7 +28,7 @@
 
         <Button Content="Go back" Grid.Column="0" Grid.Row="4" Margin="10 10 10 10" Command="{Binding NavCommand}">
             <Button.CommandParameter>
-                <viewModel:ModifyCustomerDetailsViewModel/>
+                <customer:ModifyCustomerDetailsViewModel/>
             </Button.CommandParameter>
         </Button>
     </Grid>

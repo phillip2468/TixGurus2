@@ -18,10 +18,6 @@ namespace Ssample.ViewModel.Dashboard
     /// </summary>
     public class ChangeMyDetailsViewModel : NavigationViewModelBase
     {
-        #region Fields
-        private NavigationViewModelBase myAccountViewModelBase;
-        #endregion
-
         #region Commands
         public ICommand GoBackCommand { get; set; }
 
@@ -29,7 +25,9 @@ namespace Ssample.ViewModel.Dashboard
         #endregion
 
         #region Constructor
-
+        /// <summary>
+        /// Constructor for changning my details
+        /// </summary>
         public ChangeMyDetailsViewModel()
         {
             //Navigation command that goes to the default screen
@@ -41,7 +39,7 @@ namespace Ssample.ViewModel.Dashboard
         }
         #endregion
 
-        #region MyRegion
+        #region Helper functions
         /// <summary>
         /// Function to go backwards
         /// using the navigate back

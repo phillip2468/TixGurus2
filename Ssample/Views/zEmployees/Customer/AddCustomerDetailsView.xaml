@@ -7,6 +7,7 @@
              xmlns:viewModel="clr-namespace:Ssample.ViewModel"
              xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:zEmployees="clr-namespace:Ssample.ViewModel.zEmployees"
+             xmlns:customer="clr-namespace:Ssample.ViewModel.zEmployees.Customer"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="LightSalmon">
@@ -44,7 +45,7 @@
                 Margin="10 10 10 10"
                 Command="{Binding NavCommand}">
             <Button.CommandParameter>
-                <viewModel:ModifyCustomerDetailsViewModel />
+                <customer:ModifyCustomerDetailsViewModel />
             </Button.CommandParameter>
         </Button>
 
@@ -60,7 +61,7 @@
                                NewItemPlaceholderPosition="AtEnd"
                                SelectionUnit="Row">
             <Syncfusion:SfDataGrid.DataContext>
-                <zEmployees:AddCustomerDetailsViewModel />
+                <customer:AddCustomerDetailsViewModel />
             </Syncfusion:SfDataGrid.DataContext>
             <Syncfusion:SfDataGrid.Columns>
                 <Syncfusion:GridCheckBoxSelectorColumn MappingName="SelectorColumn"

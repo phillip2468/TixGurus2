@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:vm="clr-namespace:Ssample.ViewModel"
-             xmlns:helpers="clr-namespace:Ssample.Helpers"
+             xmlns:helpers="clr-namespace:Ssample.Helpers" 
+             xmlns:signingIn="clr-namespace:Ssample.ViewModel.Signing_In"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
@@ -41,7 +42,7 @@
                 Command="{Binding NavCommand}"
                 Content="Go back">
             <Button.CommandParameter>
-                <vm:SignInViewModel />
+                <signingIn:SignInViewModel />
             </Button.CommandParameter>
         </Button>
 

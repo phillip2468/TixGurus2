@@ -2,6 +2,7 @@
 using SimpleWPF.ViewModels;
 using Ssample.ViewModel.zEmployees.Event_Management;
 using System.Windows.Input;
+using Ssample.ViewModel.zEmployees.Customer;
 
 namespace Ssample.ViewModel
 {

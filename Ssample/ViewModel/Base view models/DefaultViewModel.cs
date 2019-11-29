@@ -6,6 +6,8 @@ using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
 using Ssample.Model;
 using Ssample.ViewModel.Buying_tickets;
+using Ssample.ViewModel.Register;
+using Ssample.ViewModel.Signing_In;
 
 namespace Ssample.ViewModel.Base_view_models
 {

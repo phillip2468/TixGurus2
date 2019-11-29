@@ -1,8 +1,5 @@
 ﻿using Ssample.Model;
-using Ssample.Properties;
-using Ssample.ViewModel;
 using Ssample.ViewModel.Dashboard;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,7 +10,7 @@ namespace Ssample.Views.Dashboard
     /// </summary>
     public partial class ChangeMyDetailsView : UserControl
     {
-        //Initilization of the data entities
+        //Initialization of the data entities
         CustomerDatabaseEntities dataEntities = new CustomerDatabaseEntities();
         public ChangeMyDetailsView()
         {

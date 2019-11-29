@@ -1,8 +1,8 @@
-﻿using SimpleWPF.Input;
+﻿using System.Windows.Input;
+using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
-using System.Windows.Input;
 
-namespace Ssample.ViewModel
+namespace Ssample.ViewModel.Signing_In
 {
     /// <summary>
     /// View model when successfully signed into account

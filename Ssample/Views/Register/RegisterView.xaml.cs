@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using SimpleWPF.ViewModels;
 using Ssample.ViewModel;
+using Ssample.ViewModel.Register;
 
 namespace Ssample.Views
 {
