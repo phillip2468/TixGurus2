@@ -28,13 +28,13 @@ namespace Ssample.Views
         public void dataGrid_RowValidated(object sender, Syncfusion.UI.Xaml.Grid.RowValidatedEventArgs args)
         {
             Employee_Details newRecord = args.RowData as Employee_Details;
-            Employee_Details order = context.Employee_Details.First(i => i.Employee_ID == newRecord.Employee_ID);
+            Employee_Details order = context.Employee_Details.First(i => i.employeeID == newRecord.employeeID);
 
-            order.Employee_ID = newRecord.Employee_ID;
-            order.Email = newRecord.Email;
-            order.Password = newRecord.Password;
-            order.First_Name = newRecord.First_Name;
-            order.Last_Name = newRecord.Last_Name;
+            order.employeeID = newRecord.employeeID;
+            order.email = newRecord.email;
+            order.password = newRecord.password;
+            order.firstName = newRecord.firstName;
+            order.lastName = newRecord.lastName;
             context.Entry(order).State = EntityState.Modified;
             context.SaveChanges();
         }
@@ -48,11 +48,11 @@ namespace Ssample.Views
         {
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             var item = args.Items[0] as Employee_Details;
-            var id = item.Employee_ID;
-            var email = item.Email;
-            var password = item.Password;
-            var firstName = item.First_Name;
-            var lastName = item.Last_Name;
+            var id = item.employeeID;
+            var email = item.email;
+            var password = item.password;
+            var firstName = item.firstName;
+            var lastName = item.lastName;
 
             context.Entry(item).State = EntityState.Deleted;
             context.SaveChanges();

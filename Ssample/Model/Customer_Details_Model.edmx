@@ -40,13 +40,13 @@
         </EntityType>
         <EntityType Name="Employee_Details">
           <Key>
-            <PropertyRef Name="Employee_ID" />
+            <PropertyRef Name="employeeID" />
           </Key>
-          <Property Name="Employee_ID" Type="int" Nullable="false" />
-          <Property Name="First_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="employeeID" Type="int" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Event_Details">
           <Key>
@@ -113,13 +113,13 @@
         </EntityContainer>
         <EntityType Name="Employee_Details">
           <Key>
-            <PropertyRef Name="Employee_ID" />
+            <PropertyRef Name="employeeID" />
           </Key>
-          <Property Name="Employee_ID" Type="Int32" Nullable="false" />
-          <Property Name="First_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="employeeID" Type="Int32" Nullable="false" />
+          <Property Name="firstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Ticket_Details">
           <Key>
@@ -192,11 +192,11 @@
           <EntitySetMapping Name="Employee_Details">
             <EntityTypeMapping TypeName="CustomerDatabaseModel.Employee_Details">
               <MappingFragment StoreEntitySet="Employee_Details">
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
-                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
-                <ScalarProperty Name="Employee_ID" ColumnName="Employee_ID" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

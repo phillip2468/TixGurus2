@@ -18,15 +18,15 @@ using System;
 public partial class Employee_Details
 {
 
-    public int Employee_ID { get; set; }
+    public int employeeID { get; set; }
 
-    public string First_Name { get; set; }
+    public string firstName { get; set; }
 
-    public string Last_Name { get; set; }
+    public string lastName { get; set; }
 
-    public string Email { get; set; }
+    public string email { get; set; }
 
-    public string Password { get; set; }
+    public string password { get; set; }
 
 }
 

@@ -35,11 +35,11 @@ namespace Ssample.Views.zEmployees.Employee
 
             if (newRecord != null)
             {
-                currentEmployee.Employee_ID = newRecord.Employee_ID;
-                currentEmployee.Email = newRecord.Email;
-                currentEmployee.Password = newRecord.Password;
-                currentEmployee.First_Name = newRecord.First_Name;
-                currentEmployee.Last_Name = newRecord.Last_Name;
+                currentEmployee.employeeID = newRecord.employeeID;
+                currentEmployee.email = newRecord.email;
+                currentEmployee.password = newRecord.password;
+                currentEmployee.firstName = newRecord.firstName;
+                currentEmployee.lastName = newRecord.lastName;
             }
 
 
