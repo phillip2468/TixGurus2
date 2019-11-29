@@ -11,6 +11,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="LightYellow">
 
+        <!--#region Grid column + row definitions-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -29,7 +30,12 @@
 
         </Grid.RowDefinitions>
 
+        <!--#endregion-->
+
+        <!--Label for page-->
         <Label Content="Tickets view" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Grid.ColumnSpan="2"/>
+
+        <!--#region Data grid-->
 
         <Syncfusion:SfDataGrid  Name="DataGrid"
                                 AllowDeleting="True"
@@ -47,14 +53,18 @@
             </Syncfusion:SfDataGrid.DataContext>
         </Syncfusion:SfDataGrid>
 
+        <!--#endregion-->
+
+        <!--Button for navigating to employee dashboard-->
         <Button Grid.Column="0"
                 Grid.Row="4"
-                Content="Go back"
+                Content="Go to employee page"
                 Margin="10 10 10 10"
                 Command="{Binding NavCommand}">
             <Button.CommandParameter>
                 <viewModel:EmployeeDashboardViewModel />
             </Button.CommandParameter>
         </Button>
+
     </Grid>
 </UserControl>

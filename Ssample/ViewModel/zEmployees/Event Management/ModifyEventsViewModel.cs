@@ -7,9 +7,16 @@ using System.Windows.Input;
 
 namespace Ssample.ViewModel.zEmployees.Event_Management
 {
+    /// <summary>
+    /// A view model responsible for modifying details
+    /// about the data grid
+    /// </summary>
     public class ModifyEventsViewModel : NavigationViewModelBase
     {
         #region Fields
+        /// <summary>
+        /// A command to navigate to the desired page
+        /// </summary>
         public ICommand NavCommand { get; set; }
 
         #endregion
@@ -17,12 +24,17 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         #region Constructor
 
         /// <summary>
-        /// Default constructor
+        /// Constructor for the page
         /// </summary>
         public ModifyEventsViewModel()
         {
+            //Set the data base context
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+
+            //Navigate to the respective page
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
+
+            //Generate a list of events from context
             EventList = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
         }
 
@@ -30,14 +42,13 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
 
         #region Helper function
         /// <summary>
-        /// A helper function that navigates
+        /// A helper function that navigates to the employee dashboard
         /// </summary>
-        /// <param name="viewModel"></param>
+        /// <param name="viewModel">The view model</param>
         private void Nav(NavigationViewModelBase viewModel)
         {
             Navigate(viewModel);
         }
-
 
         #endregion
 

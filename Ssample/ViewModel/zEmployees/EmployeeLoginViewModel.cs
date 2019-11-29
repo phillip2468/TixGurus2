@@ -1,33 +1,66 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using SimpleWPF.Input;
+﻿using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
 using Ssample.Model;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Ssample.ViewModel
 {
+    /// <summary>
+    /// A view model responsible for signing in
+    /// employees/administrators 
+    /// </summary>
     public class EmployeeLoginViewModel : NavigationViewModelBase
     {
+        #region 
+        /// <summary>
+        /// Field for employee dashboard
+        /// </summary>
         private NavigationViewModelBase employeeDashboard;
+        #endregion
 
+        #region Commands
+
+        /// <summary>
+        /// Command for employee navigating to the employee dashboard
+        /// </summary>
         public ICommand GoToEmployeeDashboardCommand { get; set; }
+
+        /// <summary>
+        /// Command to navigate to the respective view model
+        /// </summary>
         public ICommand NavCommand { get; set; }
+
+        #endregion
+
+        #region Constructor
         public EmployeeLoginViewModel()
         {
+            //Initialization
             employeeDashboard = new EmployeeDashboardViewModel();
+
+            //Command parameters
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
             GoToEmployeeDashboardCommand = new RelayCommand(GoToSuccessfulSignIn);
         }
+
+        #endregion
+
+        #region Helper functions
+        /// <summary>
+        /// Navigating to respective view model
+        /// </summary>
+        /// <param name="viewModel">View model</param>
         private void Nav(NavigationViewModelBase viewModel)
         {
             Navigate(viewModel);
         }
 
+        /// <summary>
+        /// Functions for responsible to ensure correct
+        /// login
+        /// </summary>
         private void GoToSuccessfulSignIn()
         {
             if (CanSignIn(Email, Password))
@@ -40,12 +73,17 @@ namespace Ssample.ViewModel
             }
         }
 
+        /// <summary>
+        /// Current employee list
+        /// </summary>
         public Employee_Details CurrentEmployee { get; set; } = new Employee_Details();
 
-        #region Fields for sign in
+        #endregion
+
+        #region Properties for sign in
 
         /// <summary>
-        /// Field for email
+        /// Property for email
         /// </summary>
         public string Email
         {
@@ -58,7 +96,7 @@ namespace Ssample.ViewModel
         }
 
         /// <summary>
-        /// Field for password
+        /// Property for password
         /// </summary>
         public string Password
         {
