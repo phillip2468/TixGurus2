@@ -1,96 +1,113 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data.Entity.Infrastructure.Design;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Input;
 using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
-using System.Windows.Input;
-using System.Windows.Media.Imaging;
 using Ssample.Model;
-using Ssample.ViewModel.Base_view_models;
 using Ssample.ViewModel.Buying_tickets;
-using Syncfusion.Windows.Shared;
 
-namespace Ssample.ViewModel
+namespace Ssample.ViewModel.Base_view_models
 {
     /// <summary>
-    /// The default view model
+    /// The default view model; the start up page
     /// </summary>
     public class DefaultViewModel : NavigationViewModelBase
     {
         #region Fields
+        /// <summary>
+        /// Field for register view model
+        /// </summary>
         private NavigationViewModelBase registerViewModel;
 
+        /// <summary>
+        /// Field for sign in view model
+        /// </summary>
         private NavigationViewModelBase signInViewModel;
 
+        /// <summary>
+        /// Field for view ticket details view model
+        /// </summary>
         private NavigationViewModelBase viewEventsViewModel;
 
+        /// <summary>
+        /// Field for searching events view model
+        /// </summary>
         private NavigationViewModelBase searchEventViewModel;
         #endregion
 
         #region Commands
         /// <summary>
-        /// Icommand interface for switching between
-        /// user controls
+        /// Command for navigating between pages
+        /// (user controls)
         /// </summary>
         public ICommand NavCommand { get; set; }
 
-        public ICommand Nav2Command { get; set; }
+        /// <summary>
+        /// Command for navigating to the
+        /// search events page
+        /// </summary>
+        public ICommand NavigateSearchCommand { get; set; }
 
-        public ICommand Nav3Command { get; set; }
+        /// <summary>
+        /// Command for navigating to the respective
+        /// ticket details page
+        /// </summary>
+        public ICommand NavigateTicketDetailsCommand { get; set; }
         #endregion
 
         #region Constructor
         /// <summary>
-        /// Default constructor
+        /// Constructor for the class containing initialization, declaration
+        /// and commands for the class
         /// </summary>
         public DefaultViewModel()
         {
-            //Initialization
+            #region Initialization of user controls
+
             registerViewModel = new RegisterViewModel();
             viewEventsViewModel = new ViewEventsViewModel();
             signInViewModel = new SignInViewModel();
             searchEventViewModel = new SearchEventViewModel();
 
+            #endregion
+
+            #region Declaration of the events list for the tile views
+            
+            //Using db context
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+
+            //Create a list of events
             Events = (from data in context.Event_Details select data).ToList();
 
+            #endregion
+
+            #region Commands arguments
+
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
-            Nav2Command = new RelayCommand<NavigationViewModelBase>(Nav2);
-            Nav3Command = new RelayCommand<NavigationViewModelBase>(Nav3);
+            NavigateSearchCommand = new RelayCommand<NavigationViewModelBase>(Nav2);
+            NavigateTicketDetailsCommand = new RelayCommand<NavigationViewModelBase>(Nav3);
 
-        }
+            #endregion
 
-        private Event_Details _selectedItem;
-
-        public Event_Details SelectedItem
-        {
-            get { return _selectedItem; }
-            set
-            {
-                _selectedItem = value;
-                Properties.Settings.Default.EventTitle = _selectedItem.eventTitle;
-                OnPropertyChanged($"SelectedItem");
-            }
         }
 
         #endregion
 
         #region Helper Functions
 
+        public List<Event_Details> Events { get; set; }
+
         //Navigates to the register view
         private void Nav(NavigationViewModelBase viewModel)
         {
             Navigate(viewModel);
         }
-
+        /// <summary>
+        /// Helper function for navigating
+        /// to the search events page
+        /// </summary>
+        /// <param name="viewModel"></param>
         private void Nav2(NavigationViewModelBase viewModel)
         {
             Properties.Settings.Default.SearchText = SearchText.Trim();
@@ -104,8 +121,7 @@ namespace Ssample.ViewModel
         }
         #endregion
 
-
-        #region MyRegion
+        #region Properties
         /// <summary>
         /// Search text
         /// </summary>
@@ -125,10 +141,22 @@ namespace Ssample.ViewModel
                 OnPropertyChanged($"SearchText");
             }
         }
+
+        private Event_Details _selectedItem;
         /// <summary>
-        /// Property of Events
+        /// Property for getting the selected item
         /// </summary>
-        public List<Event_Details> Events { get; set; }
+        public Event_Details SelectedItem
+        {
+            get { return _selectedItem; }
+            set
+            {
+                _selectedItem = value;
+                //Set the property to the selected item
+                Properties.Settings.Default.EventTitle = _selectedItem.eventTitle;
+                OnPropertyChanged($"SelectedItem");
+            }
+        }
 
         #endregion
 

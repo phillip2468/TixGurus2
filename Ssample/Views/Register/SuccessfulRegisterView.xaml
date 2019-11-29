@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ssample.Views" 
              xmlns:viewModel="clr-namespace:Ssample.ViewModel"
+             xmlns:baseViewModels="clr-namespace:Ssample.ViewModel.Base_view_models"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="Green">
@@ -37,7 +38,7 @@
                     Command="{Binding NavCommand}"
                     Margin="10 10 10 10" Content="Go to home page">
                 <Button.CommandParameter>
-                    <viewModel:DefaultViewModel/>
+                    <baseViewModels:DefaultViewModel/>
                 </Button.CommandParameter>
             </Button>
         </Grid>

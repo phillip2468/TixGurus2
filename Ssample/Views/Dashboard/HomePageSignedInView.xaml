@@ -7,6 +7,7 @@
              xmlns:properties="clr-namespace:Ssample.Properties" 
              xmlns:viewModel="clr-namespace:Ssample.ViewModel"
              xmlns:dashboard="clr-namespace:Ssample.ViewModel.Dashboard"
+             xmlns:baseViewModels="clr-namespace:Ssample.ViewModel.Base_view_models"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
@@ -62,7 +63,7 @@
                 Margin="10 10 10 10"
                 Command="{Binding NavLogoutCommand}">
             <Button.CommandParameter>
-                <viewModel:DefaultViewModel/>
+                <baseViewModels:DefaultViewModel/>
             </Button.CommandParameter>
         </Button>
 

@@ -5,6 +5,7 @@
              xmlns:Ssample="clr-namespace:Ssample"
              xmlns:local="clr-namespace:Ssample.Helpers" 
              xmlns:viewModel="clr-namespace:Ssample.ViewModel"
+             xmlns:baseViewModels="clr-namespace:Ssample.ViewModel.Base_view_models"
              x:Class="Ssample.Views.RegisterView"
              mc:Ignorable="d"
              d:DesignHeight="500"
@@ -57,7 +58,7 @@
                 Content="Go back"
                 Margin="10 10 10 10">
             <Button.CommandParameter>
-                <viewModel:DefaultViewModel/>
+                <baseViewModels:DefaultViewModel/>
             </Button.CommandParameter>
         </Button>
 

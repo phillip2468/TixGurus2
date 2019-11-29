@@ -6,6 +6,7 @@
              xmlns:Ssample="clr-namespace:Ssample" 
              xmlns:viewModel="clr-namespace:Ssample.ViewModel" 
              xmlns:properties="clr-namespace:Ssample.Properties"
+             xmlns:baseViewModels="clr-namespace:Ssample.ViewModel.Base_view_models"
              x:Class="Ssample.Views.SignInView"
              mc:Ignorable="d"
              d:DesignHeight="450"
@@ -46,7 +47,7 @@
                 Content="Go Back"
                 Margin="10 10 10 10">
             <Button.CommandParameter>
-                <viewModel:DefaultViewModel/>
+                <baseViewModels:DefaultViewModel/>
             </Button.CommandParameter>
         </Button>
         <Button Grid.Row="4"

@@ -5,6 +5,7 @@
              xmlns:viewModel="clr-namespace:Ssample.ViewModel"
              xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
              xmlns:buyingTickets="clr-namespace:Ssample.ViewModel.Buying_tickets"
+             xmlns:baseViewModels="clr-namespace:Ssample.ViewModel.Base_view_models"
              x:Class="Ssample.Views.Buying_tickets.ViewEventsView"
              mc:Ignorable="d"
              d:DesignHeight="450"
@@ -38,7 +39,7 @@
                 Margin="10 10 10 10"
                 Content="Go back">
             <Button.CommandParameter>
-                <viewModel:DefaultViewModel />
+                <baseViewModels:DefaultViewModel />
             </Button.CommandParameter>
         </Button>
 

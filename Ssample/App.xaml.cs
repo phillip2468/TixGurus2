@@ -1,6 +1,7 @@
 ﻿using SimpleWPF.Core;
 using Ssample.ViewModel;
 using System.Windows;
+using Ssample.ViewModel.Base_view_models;
 
 namespace Ssample
 {
