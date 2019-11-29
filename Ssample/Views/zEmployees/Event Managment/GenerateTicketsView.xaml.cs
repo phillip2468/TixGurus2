@@ -26,27 +26,7 @@ namespace Ssample.Views.zEmployees.Event_Managment
         {
             InitializeComponent();
             DataContext = new GenerateTicketsViewModel();
-            //this.DataGrid.AutoGeneratingColumn += datagrid_AutoGeneratingColumn;
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            // Do not load your data at design time.
-            // if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
-            // {
-            // 	//Load your data here and assign the result to the CollectionViewSource.
-            // 	System.Windows.Data.CollectionViewSource myCollectionViewSource = (System.Windows.Data.CollectionViewSource)this.Resources["Resource Key for CollectionViewSource"];
-            // 	myCollectionViewSource.Source = your data
-            // }
-        }
-        public void datagrid_AutoGeneratingColumn(object sender, AutoGeneratingColumnArgs e)
-        {
-            if (e.Column.MappingName == "Event_Start" || e.Column.MappingName == "Event_End")
-            {
-                // Setting default date and time format for Event Start and Event End column
-                ((e.Column) as GridDateTimeColumn).Pattern = Syncfusion.Windows.Shared.DateTimePattern.FullDateTime;
-            }
-        }
     }
 }

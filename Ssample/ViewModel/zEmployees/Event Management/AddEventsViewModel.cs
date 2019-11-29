@@ -13,22 +13,57 @@ using Ssample.Model;
 
 namespace Ssample.ViewModel.zEmployees.Event_Management
 {
+    /// <summary>
+    /// A class which adds events to the database
+    /// with their respective details
+    /// </summary>
     public class AddEventsViewModel : NavigationViewModelBase
     {
-        private NavigationViewModelBase GenerateTicketsViewModel;
-        public ICommand NavCommand { get; set; }
+        #region Commands
+        /// <summary>
+        /// Command for navigating backwards
+        /// </summary>
+        public ICommand NavigateBackCommand { get; set; }
 
-        public ICommand Nav2Command { get; set; }
+        /// <summary>
+        /// Command for generating and events
+        /// </summary>
+        public ICommand NavigateToSuccessfulCommand { get; set; }
 
+        /// <summary>
+        /// Command for loading image of the event picture
+        /// </summary>
+        // ReSharper disable once InconsistentNaming
+        public ICommand _LoadImageCommand;
+
+        /// <summary>
+        /// Command for loading image of the event layour
+        /// </summary>
+        public ICommand _LoadImageOfLayourCommand;
+
+        #endregion
+
+        #region Constructor
+        /// <summary>
+        /// Constructor for the class
+        /// </summary>
         public AddEventsViewModel()
         {
-            NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
-            Nav2Command = new RelayCommand<NavigationViewModelBase>(Nav2);
+            #region Commands arguments
+            NavigateBackCommand = new RelayCommand<NavigationViewModelBase>(NavigateBack);
+            NavigateToSuccessfulCommand = new RelayCommand<NavigationViewModelBase>(NavigateToGenerate);
+            #endregion
         }
 
-        #region Hepler functions
+        #endregion
 
-        private void Nav2(NavigationViewModelBase viewModel)
+        #region Hepler functions
+        /// <summary>
+        /// Function which generates tickets if successful,
+        /// otherwise shows a message box indicating something went wrong
+        /// </summary>
+        /// <param name="viewModel">The view model</param>
+        private void NavigateToGenerate(NavigationViewModelBase viewModel)
         {
             if (GoToSuccessful())
             {
@@ -40,8 +75,12 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
                 MessageBox.Show("You entered something wrong");
             }
         }
-
-        private void Nav(NavigationViewModelBase viewModel)
+        /// <summary>
+        /// Function which navigates back to the previous page
+        /// according to which viewmodel 
+        /// </summary>
+        /// <param name="viewModel">The view model</param>
+        private void NavigateBack(NavigationViewModelBase viewModel)
         {
             Navigate(viewModel);
         }
@@ -61,19 +100,46 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             return true;
         }
 
+        /// <summary>
+        /// Converts string path into a byte array
+        /// </summary>
+        /// <param name="imagePath"></param>
+        /// <returns></returns>
+        public byte[] ConvertImageToByteArray(string imagePath)
+        {
+            byte[] imageByteArray = null;
+            FileStream fileStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
+            using (BinaryReader reader = new BinaryReader(fileStream))
+            {
+                imageByteArray = new byte[reader.BaseStream.Length];
+                for (int i = 0; i < reader.BaseStream.Length; i++)
+                {
+                    imageByteArray[i] = reader.ReadByte();
+                }
+
+                return imageByteArray;
+            }
+        }
+
         #endregion
 
+        #region Current Event list
         /// <summary>
-        /// Edit the current event
+        /// Edits the current event
         /// </summary>
         public Event_Details CurrentEvent { get; set; } = new Event_Details();
 
-        #region Properties
+        #endregion
 
+        #region Properties
+        /// <summary>
+        /// Property for event title
+        /// </summary>
         public string EventTitle
         {
             get
             {
+                //If null
                 if (CurrentEvent.eventTitle == null)
                 {
                     return CurrentEvent.eventTitle;
@@ -150,70 +216,9 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             }
         }
 
-        private string imagePath;
         /// <summary>
-        /// Property for getting the path of the image
+        /// Property for capacity
         /// </summary>
-        public string ImagePath
-        {
-            get { return imagePath; }
-            set
-            {
-                imagePath = value;
-                OnPropertyChanged("ImagePath");
-            }
-        }
-
-        ICommand _loadImageCommand;
-        /// <summary>
-        /// Command to open the file dialog
-        /// </summary>
-        public ICommand LoadImageCommand
-        {
-            get
-            {
-                if (_loadImageCommand == null)
-                {
-                    _loadImageCommand = new RelayCommand<NavigationViewModelBase>(param => LoadImage());
-                }
-                return _loadImageCommand;
-            }
-        }
-        /// <summary>
-        /// Helper function which opens the file
-        /// dialog function
-        /// </summary>
-        private void LoadImage()
-        {
-            OpenFileDialog open = new OpenFileDialog();
-            open.DefaultExt = (".png");
-            open.Filter = "Pictures (*.jpg;*.gif;*.png)|*.jpg;*.gif;*.png";
-
-            if (open.ShowDialog() == true)
-                ImagePath = open.FileName;
-        }
-
-        /// <summary>
-        /// Converts string path into a byte array
-        /// </summary>
-        /// <param name="imagePath"></param>
-        /// <returns></returns>
-        public byte[] ConvertImageToByteArray(string imagePath)
-        {
-            byte[] imageByteArray = null;
-            FileStream fileStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
-            using (BinaryReader reader = new BinaryReader(fileStream))
-            {
-                imageByteArray = new byte[reader.BaseStream.Length];
-                for (int i = 0; i < reader.BaseStream.Length; i++)
-                {
-                    imageByteArray[i] = reader.ReadByte();
-                }
-
-                return imageByteArray;
-            }
-        }
-
         public int Capacity
         {
             get
@@ -232,6 +237,9 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             }
         }
 
+        /// <summary>
+        /// Property for event location
+        /// </summary>
         public string EventLocation
         {
             get
@@ -250,6 +258,9 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             }
         }
 
+        /// <summary>
+        /// Property for event address
+        /// </summary>
         public string EventAddress
         {
             get
@@ -268,6 +279,9 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             }
         }
 
+        /// <summary>
+        /// Property for event genre
+        /// </summary>
         public string EventGenre
         {
             get
@@ -286,49 +300,11 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             }
         }
 
-
-        private string _imageOfLayout;
-        /// <summary>
-        /// Property for getting the path of the image
-        /// of the layout
-        /// </summary>
-        public string ImageOfLayout
-        {
-            get { return _imageOfLayout; }
-            set
-            {
-                _imageOfLayout = value;
-                OnPropertyChanged($"ImageofLayout");
-            }
-        }
-
-        ICommand _loadImageCommand2;
-        /// <summary>
-        /// Command to open the file dialog
-        /// </summary>
-        public ICommand LoadImageCommand2
-        {
-            get
-            {
-                if (_loadImageCommand2 == null)
-                {
-                    _loadImageCommand2 = new RelayCommand<NavigationViewModelBase>(param => LoadImage2());
-                }
-                return _loadImageCommand2;
-            }
-        }
-
-        private void LoadImage2()
-        {
-            OpenFileDialog open = new OpenFileDialog();
-            open.DefaultExt = (".png");
-            open.Filter = "Pictures (*.jpg;*.gif;*.png)|*.jpg;*.gif;*.png";
-
-            if (open.ShowDialog() == true)
-                ImageOfLayout = open.FileName;
-        }
-
         private bool? _showOnHomePage;
+
+        /// <summary>
+        /// Property to determine whether the event shows on the home page
+        /// </summary>
         public bool? ShowOnHomePage
         {
             get { return _showOnHomePage; }
@@ -340,12 +316,108 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             }
         }
 
+        #region Images properties
+        /// <summary>
+        /// Command to open the file dialog, which is used
+        /// to open the event image
+        /// </summary>
+        public ICommand LoadEventImageCommand
+        {
+            get
+            {
+                if (_LoadImageCommand == null)
+                {
+                    _LoadImageCommand = new RelayCommand<NavigationViewModelBase>(param => LoadImageOfEvent());
+                }
+                return _LoadImageCommand;
+            }
+        }
+
+        /// <summary>
+        /// Command to open the file dialog, which is used
+        /// to open the event layour
+        /// </summary>
+        public ICommand LoadImageOfLayoutCommand
+        {
+            get
+            {
+                if (_LoadImageOfLayourCommand == null)
+                {
+                    _LoadImageOfLayourCommand = new RelayCommand<NavigationViewModelBase>(param => LoadImageOfEventLayout());
+                }
+                return _LoadImageOfLayourCommand;
+            }
+        }
+
+        private string _imagePathOfEventImage;
+        /// <summary>
+        /// Property for getting the path of the image
+        /// </summary>
+        public string ImagePathOfEventImage
+        {
+            get { return _imagePathOfEventImage; }
+            set
+            {
+                _imagePathOfEventImage = value;
+                OnPropertyChanged("ImagePath");
+            }
+        }
+
+        private string _imagePathOfEventLayout;
+        /// <summary>
+        /// Property for getting the path of the image
+        /// of the layout
+        /// </summary>
+        public string ImagePathOfEventLayout
+        {
+            get { return _imagePathOfEventLayout; }
+            set
+            {
+                _imagePathOfEventLayout = value;
+                OnPropertyChanged($"ImageofLayout");
+            }
+        }
+
+        #region File dialog functions
+
+        /// <summary>
+        /// Helper function which opens the file
+        /// dialog function
+        /// </summary>
+        private void LoadImageOfEvent()
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.DefaultExt = (".png");
+            open.Filter = "Pictures (*.jpg;*.gif;*.png)|*.jpg;*.gif;*.png";
+
+            if (open.ShowDialog() == true)
+                ImagePathOfEventImage = open.FileName;
+        }
+
+        private void LoadImageOfEventLayout()
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.DefaultExt = (".png");
+            open.Filter = "Pictures (*.jpg;*.gif;*.png)|*.jpg;*.gif;*.png";
+
+            if (open.ShowDialog() == true)
+                ImagePathOfEventLayout = open.FileName;
+        }
+        #endregion
+
+        #endregion
+
         #endregion
 
         #region Save to database
+
+        /// <summary>
+        /// A function which attempts to save values to the database
+        /// </summary>
+        /// <returns>Boolean values</returns>
         private bool SaveCustomerChanges()
         {
-            //Initialisation of bool
+            //Initialization of bool
             bool output = false;
 
             //Assigns the value of the helper class to the class
@@ -354,10 +426,15 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             //Assign a context value
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
 
+            //If the check for not null is not true
             if (!isNull) 
             {
-                byte[] imageBytes = ConvertImageToByteArray(ImagePath);
-                byte[] imageBytes2 = ConvertImageToByteArray(ImageOfLayout);
+                //Using the helper function which converts the image to bytes
+                byte[] imageBytes = ConvertImageToByteArray(ImagePathOfEventImage);
+                byte[] imageBytes2 = ConvertImageToByteArray(ImagePathOfEventLayout);
+
+                #region Saving to the database
+
                 CurrentEvent.eventPicture = imageBytes;
                 CurrentEvent.eventLayout = imageBytes2;
                 CurrentEvent.eventGenre = EventGenre.Trim();
@@ -371,10 +448,18 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
                 CurrentEvent.eventAddress = EventAddress.Trim();
                 context.Event_Details.Add(CurrentEvent);
 
+                //Save changes to the database
                 context.SaveChanges();
+                context.Dispose();
+
+                #endregion
+
+                //Return true if this function succeeds
                 output = true;
                 return output;
             }
+
+            //Otherwise return false
             return output;
         }
         #endregion

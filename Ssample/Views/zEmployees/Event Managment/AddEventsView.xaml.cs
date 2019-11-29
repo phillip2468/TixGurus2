@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ssample.ViewModel.zEmployees.Event_Management;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Ssample.ViewModel.zEmployees.Event_Management;
 
 namespace Ssample.Views.zEmployees.Event_Managment
 {
@@ -26,16 +14,14 @@ namespace Ssample.Views.zEmployees.Event_Managment
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Setting the data context
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddEventsView_OnLoaded(object sender, RoutedEventArgs e)
         {
             DataContext = new AddEventsViewModel();
-            // Do not load your data at design time.
-            // if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
-            // {
-            // 	//Load your data here and assign the result to the CollectionViewSource.
-            // 	System.Windows.Data.CollectionViewSource myCollectionViewSource = (System.Windows.Data.CollectionViewSource)this.Resources["Resource Key for CollectionViewSource"];
-            // 	myCollectionViewSource.Source = your data
-            // }
         }
     }
 }
