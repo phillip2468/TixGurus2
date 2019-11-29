@@ -65,30 +65,18 @@ namespace Ssample.ViewModel
 
         }
 
+        private Event_Details _selectedItem;
 
-
-        /*
-
-        private string SetEventName()
+        public Event_Details SelectedItem
         {
-            List<string> eventNameList = new List<string>();
-            foreach (var events in Events)
+            get { return _selectedItem; }
+            set
             {
-                eventNameList.Add(events);
+                _selectedItem = value;
+                OnPropertyChanged($"SelectedItem");
             }
+        }
 
-            var number = eventNameList.Count;
-            for (int i = 0; i <= number; i++)
-            {
-                if (i == 0)
-                {
-                    return eventNameList.FirstOrDefault();
-                }
-
-            }
-
-            return "something went wrong";
-        }*/
 
         #endregion
 

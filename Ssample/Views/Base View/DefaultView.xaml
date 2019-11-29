@@ -84,14 +84,13 @@
             </Button.CommandParameter>
         </Button>
 
-        <syncfusion:CardView Grid.Column="1"
+        <syncfusion:TileViewControl Grid.Column="0"
                              Grid.Row="2"
-                             Grid.ColumnSpan="4"
+                             Grid.ColumnSpan="6"
                              Grid.RowSpan="4"
                              ItemsSource="{Binding Events}"
-                             Orientation="Horizontal">    
-            <syncfusion:CardView.ItemTemplate>
-
+                            SelectedItem="{Binding SelectedItem}">    
+            <syncfusion:TileViewControl.ItemTemplate>
                 <DataTemplate>
                     <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListBoxItem>
@@ -108,18 +107,30 @@
                                            Margin="5,0,0,0" />
                             </StackPanel>
                         </ListBoxItem>
-
+                        <ListBoxItem>
+                            <ListBoxItem.DataContext>
+                                <viewModel:DefaultViewModel />
+                            </ListBoxItem.DataContext>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Go to page:" />
+                                <Button Command="{Binding NavCommand}" Content="Go to book">
+                                    <Button.CommandParameter>
+                                        <viewModel:SignInViewModel/>
+                                    </Button.CommandParameter>
+                                </Button>
+                            </StackPanel>
+                        </ListBoxItem>
                     </ListBox>
                 </DataTemplate>
 
-            </syncfusion:CardView.ItemTemplate>
+            </syncfusion:TileViewControl.ItemTemplate>
 
-            <syncfusion:CardView.HeaderTemplate>
+            <syncfusion:TileViewControl.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding eventTitle}" />
                 </DataTemplate>
-            </syncfusion:CardView.HeaderTemplate>
-        </syncfusion:CardView>
+            </syncfusion:TileViewControl.HeaderTemplate>
+        </syncfusion:TileViewControl>
 
 
     </Grid>
