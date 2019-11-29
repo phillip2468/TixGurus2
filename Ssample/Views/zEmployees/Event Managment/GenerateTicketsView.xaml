@@ -5,6 +5,7 @@
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:Ssample="clr-namespace:Ssample"
              xmlns:viewModel="clr-namespace:Ssample.ViewModel"
+             xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
              x:Class="Ssample.Views.zEmployees.Event_Managment.GenerateTicketsView"
              mc:Ignorable="d"
              d:DesignHeight="450"
@@ -68,14 +69,14 @@
         </Button>
 
         <!-- Data grid for viewing current events that have been generated-->
-        <DataGrid Name="DataGrid1" Grid.Column="1"
+        <Syncfusion:SfDataGrid Name="DataGrid" Grid.Column="1"
                   Grid.Row="1"
                   Grid.ColumnSpan="4"
                   SelectionMode="Single"
-                  AutoGeneratingColumn="DataGrid1_OnAutoGeneratingColumn"
+                  AutoGenerateColumns="True"
                   ItemsSource="{Binding EventList}"
                   SelectedItem="{Binding TestSelected,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-        </DataGrid>
+        </Syncfusion:SfDataGrid>
 
         <!--Grid for generating tickets-->
         <Grid x:Name="grid1"

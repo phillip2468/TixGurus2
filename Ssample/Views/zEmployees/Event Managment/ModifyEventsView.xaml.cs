@@ -74,6 +74,11 @@ namespace Ssample.Views.zEmployees.Event_Managment
             context.Dispose();
         }
 
+        /// <summary>
+        /// Show the full time pattern for the column
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void datagrid_AutoGeneratingColumn(object sender, AutoGeneratingColumnArgs e)
         {
             if (e.Column.MappingName == "Event_Start" || e.Column.MappingName == "Event_End")
