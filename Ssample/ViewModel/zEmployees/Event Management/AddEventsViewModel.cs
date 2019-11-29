@@ -359,7 +359,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             set
             {
                 _imagePathOfEventImage = value;
-                OnPropertyChanged("ImagePath");
+                OnPropertyChanged($"ImagePathOfEventImage");
             }
         }
 
@@ -374,7 +374,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             set
             {
                 _imagePathOfEventLayout = value;
-                OnPropertyChanged($"ImageofLayout");
+                OnPropertyChanged($"ImagePathOfEventLayout");
             }
         }
 

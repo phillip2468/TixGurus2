@@ -100,7 +100,7 @@ namespace Ssample.ViewModel.Buying_tickets
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             Event = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
             var selectedEvent = Event.Find(x => x.eventTitle == Properties.Settings.Default.EventTitle);
-            byte[] selectedImage = selectedEvent.eventPicture;
+            byte[] selectedImage = selectedEvent.eventLayout;
             return selectedImage;
         }
 
