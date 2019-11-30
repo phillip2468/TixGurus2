@@ -9,7 +9,7 @@
              xmlns:model="clr-namespace:Ssample.Model"
              x:Class="Ssample.Views.zEmployees.Event_Managment.GenerateTicketsView"
              mc:Ignorable="d"
-             d:DesignHeight="450"
+             d:DesignHeight="650"
              d:DesignWidth="800">
     <Grid Background="LightCoral">
 
@@ -70,10 +70,13 @@
                   Grid.Row="1"
                   Grid.ColumnSpan="4"
                   SelectionMode="Single"
+                  AllowFiltering="True"
+                  AllowSorting="True"
+                  Background="White"
                   AutoGenerateColumns="True"
+                  AllowResizingColumns="True"
                   ItemsSource="{Binding EventList}"
-                  SelectedItem="{Binding TestSelected,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
-        </Syncfusion:SfDataGrid>
+                  />
 
         <!--Grid for generating tickets-->
         <Grid x:Name="grid1"
@@ -99,37 +102,47 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <Label Content="Times for event"
                    FontSize="22"
                    Grid.Column="5"
-                   Grid.Row="0"
+                   Grid.Row="1"
                    Grid.ColumnSpan="2"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center" />
 
-            <TextBlock Text="Search event by title:"
-                       Grid.Column="0"
+            <TextBlock Text="Type the event name: "
+                       Grid.Column="4"
                        HorizontalAlignment="Left"
                        Margin="3"
                        Grid.Row="0"
                        VerticalAlignment="Center"
                        TextWrapping="Wrap" />
             <TextBox x:Name="EventTitleTextBox"
-                     Grid.Column="1"
-                     HorizontalAlignment="Left"
-                     Height="23"
-                     Margin="3"
+                     Grid.Column="5"
+                     Margin="0 10 10 10"
                      Grid.Row="0"
-                     Text="{Binding EventTitle, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                     Grid.ColumnSpan="3"
+                     TextWrapping="Wrap"
                      VerticalAlignment="Center"
-                     Width="120" />
+                     Text="{Binding EventTitle, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                     />
 
             <!--#region Level one ticket details-->
 
-            <!--Level One Ticket Price-->
-            <TextBlock Text="Price:"
+            <!--Level One Number of seats-->
+            <TextBlock Text="Number of seats:"
+                       Grid.Column="3"
+                       HorizontalAlignment="Center"
+                       Margin="3"
+                       Grid.Row="0"
+                       VerticalAlignment="Center"
+                       TextWrapping="Wrap" />
+
+            <!--Price assigned label-->
+            <TextBlock Text="Price"
                        Grid.Column="2"
                        HorizontalAlignment="Center"
                        Margin="3"
@@ -137,9 +150,9 @@
                        VerticalAlignment="Center"
                        TextWrapping="Wrap" />
 
-            <!--Level One Number of seats-->
-            <TextBlock Text="Number of seats:"
-                       Grid.Column="3"
+            <!--Letter assigned label-->
+            <TextBlock Text="Letter"
+                       Grid.Column="1"
                        HorizontalAlignment="Center"
                        Margin="3"
                        Grid.Row="0"
@@ -151,23 +164,21 @@
                        Grid.Column="4"
                        HorizontalAlignment="Center"
                        Margin="3"
-                       Grid.Row="1"
-                       Grid.ColumnSpan="2"
+                       Grid.Row="2"
                        VerticalAlignment="Center"
                        TextWrapping="Wrap" />
 
             <!--Text block for the end time-->
             <TextBlock Text="End time"
-                       Grid.Column="6"
+                       Grid.Column="4"
+                       VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Margin="3"
-                       Grid.Row="1"
-                       Grid.ColumnSpan="2"
-                       VerticalAlignment="Center"
+                       Grid.Row="3"
                        TextWrapping="Wrap" />
 
             <!--Text block for the assigning a letter-->
-            <TextBlock Text="Enter a letter for level 1 tickets"
+            <TextBlock Text="Enter a letter and then a price - Level 1"
                        Grid.Column="0"
                        HorizontalAlignment="Left"
                        Margin="3"
@@ -201,19 +212,19 @@
 
             <!--Date time pickers for start and end of events-->
             <xctk:DateTimePicker Grid.Row="2"
-                                 Grid.Column="4"
-                                 Margin="10 0 10 0"
-                                 Grid.ColumnSpan="2"
-                                 VerticalAlignment="Center"
+                                 Grid.Column="5"
+                                 Margin="10 10 10 10"
+                                 Grid.ColumnSpan="3"
                                  TimePickerAllowSpin="True"
+                                 VerticalAlignment="Center"
                                  AllowSpin="True"
                                  UpdateValueOnEnterKey="True"
                                  Text="{Binding EventStartLevelOne, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
 
-            <xctk:DateTimePicker Grid.Row="2"
-                                 Grid.Column="6"
-                                 Margin="10 0 10 0"
-                                 Grid.ColumnSpan="2"
+            <xctk:DateTimePicker Grid.Row="3"
+                                 Grid.Column="5"
+                                 Margin="10 10 10 10"
+                                 Grid.ColumnSpan="3"
                                  VerticalAlignment="Center"
                                  TimePickerAllowSpin="True"
                                  AllowSpin="True"
@@ -225,7 +236,7 @@
             <!--#region Level two ticket details-->
 
             <!--Level Two Ticket Details-->
-            <TextBlock Text="Enter a letter for level 2 tickets"
+            <TextBlock Text="Enter a letter then a price - Level 2"
                        Grid.Column="0"
                        HorizontalAlignment="Left"
                        Margin="3"
@@ -259,7 +270,7 @@
             <!--Level Three Ticket Details-->
 
             <!--Text block for level three tickets-->
-            <TextBlock Text="Enter a letter for level 3 tickets"
+            <TextBlock Text="Enter a letter then a price - Level 3"
                        Grid.Column="0"
                        HorizontalAlignment="Left"
                        Margin="3"

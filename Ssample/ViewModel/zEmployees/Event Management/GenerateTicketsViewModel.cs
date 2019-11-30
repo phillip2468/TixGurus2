@@ -393,7 +393,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             bool output = false;
 
             //Loop for generating tickets
-            for (int i = 0; i < numberOfTickets; i++)
+            for (int i = 1; i < numberOfTickets+1; i++)
             {
                 //Based on the context
                 CustomerDatabaseEntities context = new CustomerDatabaseEntities();
@@ -401,7 +401,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
                 #region Adding tickets to database
                 CurrentTicket.eventTitle = EventTitle;
                 CurrentTicket.price = LevelOnePrice;
-                CurrentTicket.seatLocation = LevelOneChar + i.ToString();
+                CurrentTicket.seatLocation = LevelOneChar + i;
                 CurrentTicket.eventStart = EventStartLevelOne;
                 CurrentTicket.eventEnd = EventEndLevelOne;
                 context.Ticket_Details.Add(CurrentTicket);
@@ -425,7 +425,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             if (levelTwoCapacity > 0)
             {
                 //Loop for generating level 2 tickets
-                for (int i = 0; i < LevelTwoCapacity; i++)
+                for (int i = 1; i < LevelTwoCapacity+1; i++)
                 {
                     //Based on the database context
                     CustomerDatabaseEntities context = new CustomerDatabaseEntities();
@@ -455,10 +455,10 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             }
 
             //If the level three capacity is above zero (ie there are tickets to generate)
-            if (levelTwoCapacity > 0)
+            if (levelThreeCapacity > 0)
             {
                 //Loop for generating tickets
-                for (int i = 0; i < levelThreeCapacity; i++)
+                for (int i = 1; i < levelThreeCapacity+1; i++)
                 {
                     //Assign the database context
                     CustomerDatabaseEntities context = new CustomerDatabaseEntities();
@@ -498,7 +498,6 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         }
 
         #endregion
-
 
     }
 
