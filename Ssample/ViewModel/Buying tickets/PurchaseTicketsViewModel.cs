@@ -11,16 +11,31 @@ using Ssample.Properties;
 
 namespace Ssample.ViewModel.Buying_tickets
 {
+    /// <summary>
+    /// A class responsible for buying tickets
+    /// </summary>
     public class PurchaseTicketsViewModel : NavigationViewModelBase
     {
+
+        #region Fields
+
         private NavigationViewModelBase successfulPurchaseViewModel;
+
+        #endregion
+
+        #region Commands
 
         /// <summary>
         /// Command for navigating backwards
         /// </summary>
         public ICommand NavCommand { get; set; }
 
+        /// <summary>
+        /// Command for navigating to the successful ticket purchase
+        /// </summary>
         public ICommand Nav2Command { get; set; }
+
+        #endregion
 
         #region Constructor
 
@@ -72,6 +87,10 @@ namespace Ssample.ViewModel.Buying_tickets
 
         #endregion
 
+        #region Properties for lists
+        /// <summary>
+        /// Gets a list of matching tickets according to the event name
+        /// </summary>
         public List<Ticket_Details> ListOfMatchingTickets { get; set; } = new List<Ticket_Details>();
 
         public List<Ticket_Details> Tickets { get; set; }
@@ -83,6 +102,8 @@ namespace Ssample.ViewModel.Buying_tickets
         private Guest_Ticket_Details CurrentGuestTicket { get; set; } = new Guest_Ticket_Details();
 
         private Guest_Transaction CurrentTransaction { get; set; } = new Guest_Transaction();
+
+        #endregion
 
         #region Properties
 
@@ -276,24 +297,34 @@ namespace Ssample.ViewModel.Buying_tickets
 
         #endregion
 
+        #region Save changes to database
 
+        /// <summary>
+        /// A function responsible for saving changes to database
+        /// </summary>
+        /// <returns>Boolean</returns>
         private bool SaveChanges()
         {
+            //Sets the inital output to false
             bool output = false;
 
+            //Assign context
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
 
             Events = (from data in context.Event_Details select data).ToList();
 
+            //Match event title from properties to the events list and add them to the listofmatchingevents list
             foreach (var eventsEvent in Events)
             {
-                var item = Events.FindAll(i => i.eventTitle == Properties.Settings.Default.EventTitle);
+                var item = Events.FindAll(i => i.eventTitle == Settings.Default.EventTitle);
                 foreach (var matchingEvent in item) ListOfMatchingEvents.Add(matchingEvent);
             }
 
+            //Check if for null
             bool isTransactionNull = ArePropertiesNull(CurrentTransaction);
             bool isGuestNull = ArePropertiesNull(CurrentGuestTicket);
 
+            //If not
             if (!isGuestNull)
             {
                 foreach (var ticket in ListOfMatchingTickets)
@@ -317,16 +348,20 @@ namespace Ssample.ViewModel.Buying_tickets
                 CurrentTransaction.email = Email.Trim();
                 CurrentTransaction.address = Address.Trim();
                 CurrentTransaction.eventAddress = EventAddress.Trim();
-                CurrentTransaction.eventName = Properties.Settings.Default.EventTitle;
+                CurrentTransaction.eventName = Settings.Default.EventTitle;
                 CurrentTransaction.totalPrice = TotalPrice;
+                CurrentTransaction.fullName = FirstName.Trim() + " " + LastName.Trim();
                 context.Guest_Transaction.Add(CurrentTransaction);
                 context.SaveChanges();
+                Properties.Settings.Default.guestEmail = Email.Trim();
                 output = true;
                 return output;
             }
 
             return output;
         }
+
+        #endregion
 
         #region Checking for null
         /// <summary>

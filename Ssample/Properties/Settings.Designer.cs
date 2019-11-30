@@ -81,5 +81,17 @@ namespace Ssample.Properties {
                 this["EventTitle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("nothing@gmail.com")]
+        public string guestEmail {
+            get {
+                return ((string)(this["guestEmail"]));
+            }
+            set {
+                this["guestEmail"] = value;
+            }
+        }
     }
 }

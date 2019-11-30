@@ -22,5 +22,8 @@
     <Setting Name="EventTitle" Type="System.String" Scope="User">
       <Value Profile="(Default)">Nothing</Value>
     </Setting>
+    <Setting Name="guestEmail" Type="System.String" Scope="User">
+      <Value Profile="(Default)">nothing@gmail.com</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

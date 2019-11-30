@@ -100,6 +100,7 @@
           <Property Name="totalPrice" Type="money" Nullable="false" />
           <Property Name="eventName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="eventAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fullName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Ticket_Details">
           <Key>
@@ -216,6 +217,7 @@
           <Property Name="totalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="eventName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="eventAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Customer_Ticket_Details">
           <Key>
@@ -327,6 +329,7 @@
           <EntitySetMapping Name="Guest_Transaction">
             <EntityTypeMapping TypeName="CustomerDatabaseModel.Guest_Transaction">
               <MappingFragment StoreEntitySet="Guest_Transaction">
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
                 <ScalarProperty Name="eventAddress" ColumnName="eventAddress" />
                 <ScalarProperty Name="eventName" ColumnName="eventName" />
                 <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />

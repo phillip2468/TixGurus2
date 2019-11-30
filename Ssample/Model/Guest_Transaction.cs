@@ -30,6 +30,8 @@ public partial class Guest_Transaction
 
     public string eventAddress { get; set; }
 
+    public string fullName { get; set; }
+
 }
 
 }
