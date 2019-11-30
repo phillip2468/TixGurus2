@@ -145,6 +145,7 @@
     <Compile Include="Model\Ticket_Details.cs">
       <DependentUpon>Customer_Details_Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="ViewModel\Base view models\AppViewModel.cs" />
     <Compile Include="ViewModel\Base view models\DefaultViewModel.cs" />
     <Compile Include="ViewModel\Base view models\SearchEventViewModel.cs" />
