@@ -11,8 +11,11 @@
              mc:Ignorable="d"
              d:DesignHeight="650"
              d:DesignWidth="800">
-    <!-- Provides definitions for grid layout-->
 
+    <UserControl.Resources>
+        <baseViewModels:ByteToImageConverter x:Key="ByteToImageConverter"/>
+    </UserControl.Resources>
+    <!-- Provides definitions for grid layout-->
     <Grid Background="LightBlue">
 
         <!--#region Column/row definitions-->

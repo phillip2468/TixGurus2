@@ -1,7 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
 using Ssample.Model;
@@ -162,6 +167,31 @@ namespace Ssample.ViewModel.Base_view_models
 
         #endregion
 
+    }
+    /// <summary>
+    /// A class responsible for converting bytes to images
+    /// </summary>
+    public class ByteToImageConverter : IValueConverter
+    {
+
+        public BitmapImage ConvertByteArrayToBitMapImage(byte[] imageByteArray)
+        {
+            BitmapImage img = new BitmapImage();
+            img.StreamSource = new MemoryStream(imageByteArray);
+            return img;
+        }
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var imageByteArray = value as byte[];
+            if (imageByteArray == null) return null;
+            return ConvertByteArrayToBitMapImage(imageByteArray);
+        }
+ 
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return null;
+        }
     }
 }
 
