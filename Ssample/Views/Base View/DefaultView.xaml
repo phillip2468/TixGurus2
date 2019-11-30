@@ -135,6 +135,13 @@
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Event Genre:" />
+                                <TextBlock Text="{Binding eventDescription }"
+                                           Margin="5,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
                             <ListBoxItem.DataContext>
                                 <baseViewModels:DefaultViewModel />
                             </ListBoxItem.DataContext>

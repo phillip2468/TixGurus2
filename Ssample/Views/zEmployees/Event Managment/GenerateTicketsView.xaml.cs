@@ -19,7 +19,7 @@ namespace Ssample.Views.zEmployees.Event_Managment
 
         private void datagrid_AutoGeneratingColumn(object sender, AutoGeneratingColumnArgs e)
         {
-            if (e.Column.MappingName == "Event_Start" || e.Column.MappingName == "Event_End")
+            if (e.Column.MappingName == "eventStart" || e.Column.MappingName == "eventEnd")
             {
                 // Setting default date and time format for Event Start and Event End column
                 ((e.Column) as GridDateTimeColumn).Pattern = Syncfusion.Windows.Shared.DateTimePattern.FullDateTime;
