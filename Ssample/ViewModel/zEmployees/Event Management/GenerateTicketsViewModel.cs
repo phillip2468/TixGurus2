@@ -449,7 +449,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             decimal levelThreePrice = LevelThreePrice;
 
             //Checks if any of these values are zero. If not continue however return true (since level two tickets succeeded )
-            if (levelThreeChar == null || levelThreePrice == 0 || levelTwoCapacity == 0)
+            if (levelThreeChar == null || levelThreePrice == 0 || levelThreeCapacity == 0)
             {
                 return true;
             }
