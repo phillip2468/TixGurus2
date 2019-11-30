@@ -433,7 +433,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
                     #region Adding tickets and saving to database
                     CurrentTicket.eventTitle = EventTitle;
                     CurrentTicket.price = LevelTwoPrice;
-                    CurrentTicket.seatLocation = LevelTwoChar + LevelTwoCapacity;
+                    CurrentTicket.seatLocation = LevelTwoChar + i;
                     CurrentTicket.eventStart = EventStartLevelOne;
                     CurrentTicket.eventEnd = EventEndLevelOne;
                     context.Ticket_Details.Add(CurrentTicket);
@@ -465,7 +465,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
                     #region Saving to database
                     CurrentTicket.eventTitle = EventTitle;
                     CurrentTicket.price = LevelThreePrice;
-                    CurrentTicket.seatLocation = LevelThreeChar + LevelThreeCapacity;
+                    CurrentTicket.seatLocation = LevelThreeChar + i;
                     CurrentTicket.eventStart = EventStartLevelOne;
                     CurrentTicket.eventEnd = EventEndLevelOne;
                     context.Ticket_Details.Add(CurrentTicket);
