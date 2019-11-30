@@ -36,6 +36,8 @@ public partial class Guest_Ticket_Details
 
     public decimal price { get; set; }
 
+    public string seatLocation { get; set; }
+
 }
 
 }

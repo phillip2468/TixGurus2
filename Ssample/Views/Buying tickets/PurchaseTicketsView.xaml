@@ -111,9 +111,6 @@
             <Grid x:Name="GridForGuests"
                   HorizontalAlignment="Stretch"
                   VerticalAlignment="Stretch">
-                <Grid.DataContext>
-                    <buyingTickets:PurchaseTicketsViewModel />
-                </Grid.DataContext>
 
                 <!--#region Grid row + column definitions-->
 
@@ -200,7 +197,7 @@
                          Grid.Column="1"
                          Grid.Row="3"
                          Margin="10 10 10 10"
-                         Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                         Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                          VerticalAlignment="Center" />
 
                 <!--Label for address-->

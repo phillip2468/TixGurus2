@@ -26,7 +26,7 @@
           <Key>
             <PropertyRef Name="ticketId" />
           </Key>
-          <Property Name="ticketId" Type="int" Nullable="false" />
+          <Property Name="ticketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fullName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="eventName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -35,12 +35,13 @@
           <Property Name="timeStart" Type="datetime" Nullable="false" />
           <Property Name="timeEnd" Type="datetime" Nullable="false" />
           <Property Name="price" Type="money" Nullable="false" />
+          <Property Name="seatLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Customer_Transaction">
           <Key>
             <PropertyRef Name="transactionId" />
           </Key>
-          <Property Name="transactionId" Type="int" Nullable="false" />
+          <Property Name="transactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="address" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="totalPrice" Type="money" Nullable="false" />
@@ -78,7 +79,7 @@
           <Key>
             <PropertyRef Name="ticketId" />
           </Key>
-          <Property Name="ticketId" Type="int" Nullable="false" />
+          <Property Name="ticketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="fullName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="eventName" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -87,12 +88,13 @@
           <Property Name="timeStart" Type="datetime" Nullable="false" />
           <Property Name="timeEnd" Type="datetime" Nullable="false" />
           <Property Name="price" Type="money" Nullable="false" />
+          <Property Name="seatLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Guest_Transaction">
           <Key>
             <PropertyRef Name="transactionId" />
           </Key>
-          <Property Name="transactionId" Type="int" Nullable="false" />
+          <Property Name="transactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="address" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="totalPrice" Type="money" Nullable="false" />
@@ -202,6 +204,7 @@
           <Property Name="timeStart" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="timeEnd" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="seatLocation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Guest_Transaction">
           <Key>
@@ -227,6 +230,7 @@
           <Property Name="timeStart" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="timeEnd" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="seatLocation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Customer_Transaction">
           <Key>
@@ -307,6 +311,7 @@
           <EntitySetMapping Name="Guest_Ticket_Details">
             <EntityTypeMapping TypeName="CustomerDatabaseModel.Guest_Ticket_Details">
               <MappingFragment StoreEntitySet="Guest_Ticket_Details">
+                <ScalarProperty Name="seatLocation" ColumnName="seatLocation" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="timeEnd" ColumnName="timeEnd" />
                 <ScalarProperty Name="timeStart" ColumnName="timeStart" />
@@ -334,6 +339,7 @@
           <EntitySetMapping Name="Customer_Ticket_Details">
             <EntityTypeMapping TypeName="CustomerDatabaseModel.Customer_Ticket_Details">
               <MappingFragment StoreEntitySet="Customer_Ticket_Details">
+                <ScalarProperty Name="seatLocation" ColumnName="seatLocation" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="timeEnd" ColumnName="timeEnd" />
                 <ScalarProperty Name="timeStart" ColumnName="timeStart" />
