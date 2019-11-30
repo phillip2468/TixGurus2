@@ -5,22 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="CustomerDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Booked_Tickets_Details">
-          <Key>
-            <PropertyRef Name="ticketID" />
-          </Key>
-          <Property Name="ticketID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="placeName" Type="nvarchar" MaxLength="50" />
-          <Property Name="timeStart" Type="datetime" />
-          <Property Name="timeEnd" Type="datetime" />
-          <Property Name="price" Type="money" />
-          <Property Name="fullName" Type="nvarchar" MaxLength="50" />
-          <Property Name="address" Type="nvarchar" MaxLength="50" />
-          <Property Name="eventName" Type="nvarchar" MaxLength="50" />
-          <Property Name="seatPlace" Type="nvarchar" MaxLength="50" />
-          <Property Name="isBooked" Type="int" />
-          <Property Name="email" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="Customer_Details">
           <Key>
             <PropertyRef Name="customerID" />
@@ -37,6 +21,31 @@
           <Property Name="postcode" Type="int" Nullable="false" />
           <Property Name="dateOfBirth" Type="date" Nullable="false" />
           <Property Name="dateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer_Ticket_Details">
+          <Key>
+            <PropertyRef Name="ticketId" />
+          </Key>
+          <Property Name="ticketId" Type="int" Nullable="false" />
+          <Property Name="fullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eventName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="placeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eventAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="timeStart" Type="datetime" Nullable="false" />
+          <Property Name="timeEnd" Type="datetime" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer_Transaction">
+          <Key>
+            <PropertyRef Name="transactionId" />
+          </Key>
+          <Property Name="transactionId" Type="int" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="totalPrice" Type="money" Nullable="false" />
+          <Property Name="eventName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eventAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee_Details">
           <Key>
@@ -65,6 +74,31 @@
           <Property Name="showOnHomePage" Type="bit" />
           <Property Name="eventGenre" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Guest_Ticket_Details">
+          <Key>
+            <PropertyRef Name="ticketId" />
+          </Key>
+          <Property Name="ticketId" Type="int" Nullable="false" />
+          <Property Name="fullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eventName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eventAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="placeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="timeStart" Type="datetime" Nullable="false" />
+          <Property Name="timeEnd" Type="datetime" Nullable="false" />
+          <Property Name="price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guest_Transaction">
+          <Key>
+            <PropertyRef Name="transactionId" />
+          </Key>
+          <Property Name="transactionId" Type="int" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="totalPrice" Type="money" Nullable="false" />
+          <Property Name="eventName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="eventAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Ticket_Details">
           <Key>
             <PropertyRef Name="ticketId" />
@@ -77,10 +111,13 @@
           <Property Name="price" Type="money" Nullable="false" />
         </EntityType>
         <EntityContainer Name="CustomerDatabaseModelStoreContainer">
-          <EntitySet Name="Booked_Tickets_Details" EntityType="Self.Booked_Tickets_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer_Details" EntityType="Self.Customer_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer_Ticket_Details" EntityType="Self.Customer_Ticket_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer_Transaction" EntityType="Self.Customer_Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee_Details" EntityType="Self.Employee_Details" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event_Details" EntityType="Self.Event_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guest_Ticket_Details" EntityType="Self.Guest_Ticket_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guest_Transaction" EntityType="Self.Guest_Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ticket_Details" EntityType="Self.Ticket_Details" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -109,7 +146,10 @@
           <EntitySet Name="Employee_Details" EntityType="CustomerDatabaseModel.Employee_Details" />
           <EntitySet Name="Ticket_Details" EntityType="CustomerDatabaseModel.Ticket_Details" />
           <EntitySet Name="Event_Details" EntityType="CustomerDatabaseModel.Event_Details" />
-          <EntitySet Name="Booked_Tickets_Details" EntityType="CustomerDatabaseModel.Booked_Tickets_Details" />
+          <EntitySet Name="Guest_Ticket_Details" EntityType="CustomerDatabaseModel.Guest_Ticket_Details" />
+          <EntitySet Name="Guest_Transaction" EntityType="CustomerDatabaseModel.Guest_Transaction" />
+          <EntitySet Name="Customer_Ticket_Details" EntityType="CustomerDatabaseModel.Customer_Ticket_Details" />
+          <EntitySet Name="Customer_Transaction" EntityType="CustomerDatabaseModel.Customer_Transaction" />
         </EntityContainer>
         <EntityType Name="Employee_Details">
           <Key>
@@ -149,21 +189,55 @@
           <Property Name="showOnHomePage" Type="Boolean" />
           <Property Name="eventGenre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Booked_Tickets_Details">
+        <EntityType Name="Guest_Ticket_Details">
           <Key>
-            <PropertyRef Name="ticketID" />
+            <PropertyRef Name="ticketId" />
           </Key>
-          <Property Name="ticketID" Type="Int32" Nullable="false" />
-          <Property Name="placeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="timeStart" Type="DateTime" Precision="3" />
-          <Property Name="timeEnd" Type="DateTime" Precision="3" />
-          <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="fullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="eventName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="seatPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="isBooked" Type="Int32" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ticketId" Type="Int32" Nullable="false" />
+          <Property Name="fullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eventName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eventAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="placeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="timeStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="timeEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Guest_Transaction">
+          <Key>
+            <PropertyRef Name="transactionId" />
+          </Key>
+          <Property Name="transactionId" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="totalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="eventName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eventAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Customer_Ticket_Details">
+          <Key>
+            <PropertyRef Name="ticketId" />
+          </Key>
+          <Property Name="ticketId" Type="Int32" Nullable="false" />
+          <Property Name="fullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eventName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="placeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eventAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="timeStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="timeEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="Customer_Transaction">
+          <Key>
+            <PropertyRef Name="transactionId" />
+          </Key>
+          <Property Name="transactionId" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="totalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="eventName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eventAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -230,20 +304,57 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Booked_Tickets_Details">
-            <EntityTypeMapping TypeName="CustomerDatabaseModel.Booked_Tickets_Details">
-              <MappingFragment StoreEntitySet="Booked_Tickets_Details">
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="isBooked" ColumnName="isBooked" />
-                <ScalarProperty Name="seatPlace" ColumnName="seatPlace" />
-                <ScalarProperty Name="eventName" ColumnName="eventName" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <EntitySetMapping Name="Guest_Ticket_Details">
+            <EntityTypeMapping TypeName="CustomerDatabaseModel.Guest_Ticket_Details">
+              <MappingFragment StoreEntitySet="Guest_Ticket_Details">
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="timeEnd" ColumnName="timeEnd" />
                 <ScalarProperty Name="timeStart" ColumnName="timeStart" />
                 <ScalarProperty Name="placeName" ColumnName="placeName" />
-                <ScalarProperty Name="ticketID" ColumnName="ticketID" />
+                <ScalarProperty Name="eventAddress" ColumnName="eventAddress" />
+                <ScalarProperty Name="eventName" ColumnName="eventName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="ticketId" ColumnName="ticketId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guest_Transaction">
+            <EntityTypeMapping TypeName="CustomerDatabaseModel.Guest_Transaction">
+              <MappingFragment StoreEntitySet="Guest_Transaction">
+                <ScalarProperty Name="eventAddress" ColumnName="eventAddress" />
+                <ScalarProperty Name="eventName" ColumnName="eventName" />
+                <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="transactionId" ColumnName="transactionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_Ticket_Details">
+            <EntityTypeMapping TypeName="CustomerDatabaseModel.Customer_Ticket_Details">
+              <MappingFragment StoreEntitySet="Customer_Ticket_Details">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="timeEnd" ColumnName="timeEnd" />
+                <ScalarProperty Name="timeStart" ColumnName="timeStart" />
+                <ScalarProperty Name="eventAddress" ColumnName="eventAddress" />
+                <ScalarProperty Name="placeName" ColumnName="placeName" />
+                <ScalarProperty Name="eventName" ColumnName="eventName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="ticketId" ColumnName="ticketId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_Transaction">
+            <EntityTypeMapping TypeName="CustomerDatabaseModel.Customer_Transaction">
+              <MappingFragment StoreEntitySet="Customer_Transaction">
+                <ScalarProperty Name="eventAddress" ColumnName="eventAddress" />
+                <ScalarProperty Name="eventName" ColumnName="eventName" />
+                <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="transactionId" ColumnName="transactionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

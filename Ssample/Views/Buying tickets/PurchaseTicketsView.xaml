@@ -51,9 +51,12 @@
         <!--Button used for saving changes-->
         <Button Grid.Row="6"
                 Grid.Column="5"
-                Command="{Binding NavCommand}"
+                Command="{Binding Nav2Command}"
                 Margin="10 10 10 10"
                 Content="Save changes">
+            <Button.CommandParameter>
+                <buyingTickets:SuccessfulPurchaseViewModel/>
+            </Button.CommandParameter>
         </Button>
 
         <!--#endregion-->

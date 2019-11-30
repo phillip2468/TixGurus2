@@ -15,30 +15,26 @@ namespace Ssample.Model
 using System;
     using System.Collections.Generic;
     
-public partial class Booked_Tickets_Details
+public partial class Guest_Ticket_Details
 {
 
-    public int ticketID { get; set; }
-
-    public string placeName { get; set; }
-
-    public Nullable<System.DateTime> timeStart { get; set; }
-
-    public Nullable<System.DateTime> timeEnd { get; set; }
-
-    public Nullable<decimal> price { get; set; }
+    public int ticketId { get; set; }
 
     public string fullName { get; set; }
 
-    public string address { get; set; }
+    public string email { get; set; }
 
     public string eventName { get; set; }
 
-    public string seatPlace { get; set; }
+    public string eventAddress { get; set; }
 
-    public Nullable<int> isBooked { get; set; }
+    public string placeName { get; set; }
 
-    public string email { get; set; }
+    public System.DateTime timeStart { get; set; }
+
+    public System.DateTime timeEnd { get; set; }
+
+    public decimal price { get; set; }
 
 }
 

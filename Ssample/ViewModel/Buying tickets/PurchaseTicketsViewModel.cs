@@ -3,6 +3,7 @@ using Ssample.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using SimpleWPF.Input;
 using Ssample.Properties;
@@ -11,10 +12,14 @@ namespace Ssample.ViewModel.Buying_tickets
 {
     public class PurchaseTicketsViewModel : NavigationViewModelBase
     {
+        private NavigationViewModelBase successfulPurchaseViewModel;
+
         /// <summary>
         /// Command for navigating backwards
         /// </summary>
         public ICommand NavCommand { get; set; }
+
+        public ICommand Nav2Command { get; set; }
 
         #region Constructor
 
@@ -23,7 +28,9 @@ namespace Ssample.ViewModel.Buying_tickets
         /// </summary>
         public PurchaseTicketsViewModel()
         {
+            successfulPurchaseViewModel = new SuccessfulPurchaseViewModel();
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
+            Nav2Command = new RelayCommand<NavigationViewModelBase>(Nav2);
 
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             Tickets = (from data in context.Ticket_Details select data).ToList();
@@ -40,23 +47,6 @@ namespace Ssample.ViewModel.Buying_tickets
 
         }
 
-        private decimal SetTotalPrice()
-        {
-            string seatLocations = Settings.Default.SeatLocation;
-            String[] separator = { "," };
-            String[] strList = seatLocations.Split(separator, StringSplitOptions.RemoveEmptyEntries);
-
-            decimal total = 0;
-
-            foreach (var seatLocation in strList)
-            {
-                var item = Tickets.FindAll(i => i.seatLocation == seatLocation && i.eventTitle == Settings.Default.EventTitle);
-                foreach (var ticketDetails in item) total += ticketDetails.price;
-            }
-
-            return total;
-        }
-
         #endregion
 
         private void Nav(NavigationViewModelBase viewModel)
@@ -64,13 +54,28 @@ namespace Ssample.ViewModel.Buying_tickets
             Navigate(viewModel);
         }
 
+        private void Nav2(NavigationViewModelBase viewModel)
+        {
+            if (SaveChanges())
+            {
+                MessageBox.Show("Successful");
+            }
+            else
+            {
+                Navigate(viewModel);
+            }
+        }
+
         public List<Ticket_Details> ListOfMatchingTickets { get; set; } = new List<Ticket_Details>();
 
         public List<Ticket_Details> Tickets { get; set; }
 
-        private Booked_Tickets_Details CurrentTicket { get; set; }
+        private Guest_Ticket_Details CurrentGuestTicket { get; set; } = new Guest_Ticket_Details();
 
-        private List<Event_Details> Event;
+        private Guest_Transaction CurrentTransaction { get; set; } = new Guest_Transaction();
+
+        #region Properties
+
 
         private decimal _totalPrice;
 
@@ -80,15 +85,13 @@ namespace Ssample.ViewModel.Buying_tickets
             {
                 if (_totalPrice == 0)
                 {
-                    _totalPrice = SetTotalPrice() * (decimal) 1.15;
+                    _totalPrice = SetTotalPrice() * (decimal)1.15;
                 }
 
                 return _totalPrice;
             }
             set => _totalPrice = value;
         }
-
-        #region Properties
 
         private string _email;
         /// <summary>
@@ -134,31 +137,40 @@ namespace Ssample.ViewModel.Buying_tickets
 
         #endregion
 
+        #region Helper funtcion
 
-        private void SaveChanges()
+        private decimal SetTotalPrice()
         {
-            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-            Event = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
-            
-            var rowData = Event.Find(t => t.eventTitle == "The Opera with Snakes");
-            
-            string seatInput = Properties.Settings.Default.SeatLocation;
-            
-            string[] separator = { "," };
+            string seatLocations = Settings.Default.SeatLocation;
+            String[] separator = { "," };
+            String[] strList = seatLocations.Split(separator, StringSplitOptions.RemoveEmptyEntries);
 
-            string[] stringList = seatInput.Split(separator, 5, StringSplitOptions.RemoveEmptyEntries);
+            decimal total = 0;
 
-            foreach (string s in stringList)
+            foreach (var seatLocation in strList)
             {
-                CurrentTicket.fullName = FullName;
-                CurrentTicket.address = Address;
-                CurrentTicket.email = Email;
-                CurrentTicket.timeStart = rowData.eventStart;
-                CurrentTicket.timeEnd = rowData.eventEnd;
-                CurrentTicket.seatPlace = s;
+                var item = Tickets.FindAll(i => i.seatLocation == seatLocation && i.eventTitle == Settings.Default.EventTitle);
+                foreach (var ticketDetails in item) total += ticketDetails.price;
             }
 
-           
+            return total;
+        }
+
+        #endregion
+
+
+        private bool SaveChanges()
+        {
+            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+
+            foreach (var ticket in ListOfMatchingTickets)
+            {
+                CurrentGuestTicket.fullName = FullName;
+                CurrentGuestTicket.email = Email;
+                CurrentGuestTicket.eventAddress = Address;
+            }
+
+            return false;
         }
 
     }
