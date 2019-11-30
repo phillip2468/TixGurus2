@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ssample.ViewModel.Buying_tickets;
+using Syncfusion.UI.Xaml.Grid;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Ssample.ViewModel.Buying_tickets;
-using Syncfusion.UI.Xaml.Grid;
 
 namespace Ssample.Views.Buying_tickets
 {
@@ -35,9 +23,10 @@ namespace Ssample.Views.Buying_tickets
 
         private void SfDataGrid_OnAutoGeneratingColumn(object sender, AutoGeneratingColumnArgs e)
         {
-            if (e.Column.MappingName == "ticketID")
+            if (e.Column.MappingName == "eventStart" || e.Column.MappingName == "eventEnd")
+                ((e.Column) as GridDateTimeColumn).Pattern = Syncfusion.Windows.Shared.DateTimePattern.FullDateTime;
+            if (e.Column.MappingName == "ticketId")
                 e.Cancel = true;
-
         }
     }
 }

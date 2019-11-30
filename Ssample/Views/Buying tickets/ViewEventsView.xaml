@@ -39,6 +39,9 @@
 
         <!--#endregion-->
 
+        <!--Label for the page-->
+        <Label Grid.Column="2" Grid.Row="0" Content="Book your ticket" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="22" Grid.ColumnSpan="2"/>
+
         <!--#region Button for navigating back-->
 
         <!--Button to navigate back-->
@@ -61,9 +64,11 @@
                                Grid.ColumnSpan="4"
                                Grid.RowSpan="5"
                                ItemsSource="{Binding Tickets}"
+                               Background="White"
                                SelectionMode="Extended"
                                IsReadOnly="True"
                                SnapsToDevicePixels="True"
+                               AllowResizingColumns="True"
                                AutoGeneratingColumn="SfDataGrid_OnAutoGeneratingColumn"
                                Margin="-4,0,4,0">
         </Syncfusion:SfDataGrid>
@@ -73,9 +78,10 @@
         <!--#region Label + image of the event layout-->
 
         <!--Label of event layout-->
-        <Label Grid.Column="4"
+        <TextBlock Grid.Column="4"
                Grid.Row="1"
-               Content="Layout"
+               Text="Layout of place: Note hover over image to get full sized image"
+               TextWrapping="Wrap"
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
                Grid.ColumnSpan="2"
@@ -89,6 +95,17 @@
                Grid.RowSpan="2"
                Margin="10 10 10 10"
                Source="{Binding Image}">
+            <Image.ToolTip>
+                <ToolTip DataContext="{Binding PlacementTarget, 
+            RelativeSource={RelativeSource Self}}">
+                    <Border BorderBrush="Black"
+                            BorderThickness="1"
+                            Margin="5,7,5,5">
+                        <Image Source="{Binding Source}"
+                               Stretch="None" />
+                    </Border>
+                </ToolTip>
+            </Image.ToolTip>
         </Image>
 
         <!--#endregion-->
