@@ -81,10 +81,18 @@
                 Grid.RowSpan="3"
                 BorderBrush="Black"
                 BorderThickness="4">
-            <Syncfusion:SfDataGrid x:Name="DataGridTickets"
+            <Syncfusion:SfDataGrid x:Name="DataGridGuestTickets"
                                    Background="White"
                                    ItemsSource="{Binding GuestTicketDetails}" />
         </Border>
+
+        <!--Button for transaction view-->
+        <Button Grid.Column="1"
+                Grid.Row="5"
+                Content="Print to pdf"
+                Name="ButtonPrintGuestTickets"
+                Click="ButtonPrintGuestTickets_OnClick"
+                Margin="10 10 10 10" />
 
         <!--#endregion-->
 
@@ -107,12 +115,31 @@
                 Grid.RowSpan="3"
                 BorderBrush="Black"
                 BorderThickness="4">
-            <Syncfusion:SfDataGrid x:Name="DataGridTransactions"
+            <Syncfusion:SfDataGrid x:Name="DataGridCustomer"
                                    Background="White"
                                    ItemsSource="{Binding CustomerTicketDetails}" />
         </Border>
 
+        <!--Button for transaction view-->
+        <Button Grid.Column="4"
+                Grid.Row="5"
+                Content="Print to pdf"
+                Name="ButtonPrintCustomerTicket"
+                Click="ButtonPrintCustomerTicket_OnClick"
+                Margin="10 10 10 10" />
+
         <!--#endregion-->
 
+        <!--Button for navigating home-->
+        <Button Grid.Column="5"
+                Grid.Row="6"
+                Margin="10 10 10 10"
+                Command="{Binding NavCommand}">
+            <TextBlock Text="Next"
+                       TextWrapping="Wrap" />
+            <Button.CommandParameter>
+                <customer:ModifyCustomerTicketDetailsViewModel />
+            </Button.CommandParameter>
+        </Button>
     </Grid>
 </UserControl>

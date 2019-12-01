@@ -65,6 +65,9 @@
     <Reference Include="Syncfusion.PdfViewer.WPF, Version=17.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.PdfViewer.WPF.17.3.0.29\lib\net46\Syncfusion.PdfViewer.WPF.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.SfChart.WPF, Version=17.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.SfChart.WPF.17.3.0.29\lib\net4.6\Syncfusion.SfChart.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.SfGrid.WPF, Version=17.3460.0.29, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.SfGrid.WPF.17.3.0.29\lib\net46\Syncfusion.SfGrid.WPF.dll</HintPath>
     </Reference>
@@ -199,6 +202,7 @@
     <Compile Include="ViewModel\Signing In\SignInViewModel.cs" />
     <Compile Include="ViewModel\Register\SuccessfulRegisterViewModel.cs" />
     <Compile Include="ViewModel\Signing In\SuccessfulSignInViewModel.cs" />
+    <Compile Include="ViewModel\zEmployees\zData about event\MoreDataViewModel.cs" />
     <Compile Include="Views\Base View\DefaultView.xaml.cs">
       <DependentUpon>DefaultView.xaml</DependentUpon>
     </Compile>
@@ -282,6 +286,9 @@
     </Compile>
     <Compile Include="Views\Sign In\SuccessfulSignInView.xaml.cs">
       <DependentUpon>SuccessfulSignInView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\zEmployees\zData about event\MoreDataView.xaml.cs">
+      <DependentUpon>MoreDataView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -404,6 +411,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Sign In\SuccessfulSignInView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\zEmployees\zData about event\MoreDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
