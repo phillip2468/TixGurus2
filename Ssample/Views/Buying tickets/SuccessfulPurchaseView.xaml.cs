@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using Ssample.ViewModel.Buying_tickets;
 using System.Windows.Controls;
@@ -18,6 +19,14 @@ namespace Ssample.Views.Buying_tickets
             DataContext = new SuccessfulPurchaseViewModel();
         }
 
+
+        #region Buttons for printing to pdf
+
+        /// <summary>
+        /// Prints to pdf the transaction
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonPrintTransaction_OnClick(object sender, RoutedEventArgs e)
         {
             var document = DataGridTransactions.ExportToPdf();
@@ -40,11 +49,16 @@ namespace Ssample.Views.Buying_tickets
                 {
 
                     //Launching the Pdf file using the default Application.
-                    System.Diagnostics.Process.Start(sfd.FileName);
+                    Process.Start(sfd.FileName);
                 }
             }
         }
 
+        /// <summary>
+        /// Prints pdf for tickets
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Buttonforprintingtickets_OnClick(object sender, RoutedEventArgs e)
         {
             var document = DataGridTickets.ExportToPdf();
@@ -67,9 +81,11 @@ namespace Ssample.Views.Buying_tickets
                 {
 
                     //Launching the Pdf file using the default Application.
-                    System.Diagnostics.Process.Start(sfd.FileName);
+                    Process.Start(sfd.FileName);
                 }
             }
         }
+
+        #endregion
     }
 }

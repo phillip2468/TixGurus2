@@ -8,7 +8,7 @@ using Ssample.Model;
 namespace Ssample.ViewModel.Signing_In
 {
     /// <summary>
-    /// A view model responsible for signing in
+    /// A view model responsible for signing in for customers
     /// </summary>
     public class SignInViewModel : NavigationViewModelBase
     {

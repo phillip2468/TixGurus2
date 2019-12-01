@@ -21,7 +21,7 @@ namespace Ssample.ViewModel.Buying_tickets
         #region Fields
 
         private NavigationViewModelBase successfulPurchaseViewModel;
-
+        private NavigationViewModelBase customerPurchaseTicketViewModel;
         #endregion
 
         #region Commands
@@ -36,6 +36,8 @@ namespace Ssample.ViewModel.Buying_tickets
         /// </summary>
         public ICommand Nav2Command { get; set; }
 
+        public ICommand NavToCustomerPurchase { get; set; }
+
         #endregion
 
         #region Constructor
@@ -45,9 +47,31 @@ namespace Ssample.ViewModel.Buying_tickets
         /// </summary>
         public PurchaseTicketsViewModel()
         {
+            #region Initilization of view models
+
+            // ReSharper disable once InvalidXmlDocComment
+            ///Initialization of view models
+            customerPurchaseTicketViewModel = new CustomerPurchaseTicketViewModel();
             successfulPurchaseViewModel = new SuccessfulPurchaseViewModel();
+
+            #endregion
+
+            #region Command parameter
+
+            //Command to navigate
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
+
+            //Command to save changes
             Nav2Command = new RelayCommand<NavigationViewModelBase>(Nav2);
+
+            // ReSharper disable once InvalidXmlDocComment
+            ///Command to navigate to customer purchases
+            NavToCustomerPurchase = new RelayCommand<NavigationViewModelBase>(Nav3);
+
+            #endregion
+
+
+            #region Generate list of tickets
 
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
             Tickets = (from data in context.Ticket_Details select data).ToList();
@@ -62,17 +86,27 @@ namespace Ssample.ViewModel.Buying_tickets
                 foreach (var ticketDetails in item) ListOfMatchingTickets.Add(ticketDetails);
             }
 
+            #endregion
+
         }
 
         #endregion
 
         #region Helper functions
 
+        /// <summary>
+        /// Function to navigate backwards
+        /// </summary>
+        /// <param name="viewModel">ViewModel</param>
         private void Nav(NavigationViewModelBase viewModel)
         {
             Navigate(viewModel);
         }
 
+        /// <summary>
+        /// Function for saving guest tickets
+        /// </summary>
+        /// <param name="viewModel"></param>
         private void Nav2(NavigationViewModelBase viewModel)
         {
             if (SaveChanges())
@@ -83,6 +117,23 @@ namespace Ssample.ViewModel.Buying_tickets
             else
             {
                 MessageBox.Show("Something went wrong");
+            }
+        }
+
+        /// <summary>
+        /// Function to navigate to purchase customer ticket model
+        /// </summary>
+        /// <param name="viewModel"></param>
+        private void Nav3(NavigationViewModelBase viewModel)
+        {
+            if (CanSignIn(LoginEmail,LoginPassword))
+            {
+                MessageBox.Show("Successful sign in");
+                Navigate(viewModel);
+            }
+            else
+            {
+                MessageBox.Show("Wrong sign in details");
             }
         }
 
@@ -279,6 +330,41 @@ namespace Ssample.ViewModel.Buying_tickets
 
         #endregion
 
+        #region Login property lists
+
+        public Customer_Details CurrentCustomer { get; set; } = new Customer_Details(); //Current customer you need to edit
+
+        #endregion
+
+        #region Properties for sign in
+
+        /// <summary>
+        /// Property for email
+        /// </summary>
+        public string LoginEmail
+        {
+            get => CurrentCustomer.email;
+            set
+            {
+                CurrentCustomer.email = value;
+                OnPropertyChanged($"LoginEmail");
+            }
+        }
+
+        /// <summary>
+        /// Property for password
+        /// </summary>
+        public string LoginPassword
+        {
+            get => CurrentCustomer.password;
+            set
+            {
+                CurrentCustomer.password = value;
+                OnPropertyChanged($"LoginPassword");
+            }
+        }
+        #endregion
+
         #region Helper funtcion
 
         private decimal SetTotalPrice()
@@ -368,6 +454,41 @@ namespace Ssample.ViewModel.Buying_tickets
                 return output;
             }
 
+            return output;
+        }
+
+        #endregion
+
+        #region Function for signing in
+        /// <summary>
+        /// Function which checks if values entered are in the database
+        /// </summary>
+        /// <param name="email">The email property</param>
+        /// <param name="password">The password property</param>
+        /// <returns></returns>
+        public bool CanSignIn(string email, string password)
+        {
+            //Declares a data context
+            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+
+            bool output = false;
+
+            //Checks for null values
+            var user = context.Customer_Details.FirstOrDefault(u => u.email == LoginEmail);
+
+            //Checks if the entered in values are longer than 0
+            if (email?.Length > 0 && password?.Length > 0 && user != null)
+            {
+                //If an entry equals a values in the database return true
+                if (user.password == LoginPassword)
+                {
+                    Properties.Settings.Default.Email = CurrentCustomer.email;
+                    Properties.Settings.Default.Save();
+                    return true;
+                }
+            }
+            //Returns false if sign in failed
+            context.Dispose();
             return output;
         }
 

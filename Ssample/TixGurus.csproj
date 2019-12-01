@@ -173,6 +173,7 @@
     <Compile Include="ViewModel\Base view models\AppViewModel.cs" />
     <Compile Include="ViewModel\Base view models\DefaultViewModel.cs" />
     <Compile Include="ViewModel\Base view models\SearchEventViewModel.cs" />
+    <Compile Include="ViewModel\Buying tickets\CustomerPurchaseTicketViewModel.cs" />
     <Compile Include="ViewModel\Buying tickets\PurchaseTicketsViewModel.cs" />
     <Compile Include="ViewModel\Buying tickets\SuccessfulPurchaseViewModel.cs" />
     <Compile Include="ViewModel\Buying tickets\ViewEventsViewModel.cs" />
@@ -200,6 +201,9 @@
     </Compile>
     <Compile Include="Views\Base View\SearchEventView.xaml.cs">
       <DependentUpon>SearchEventView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Buying tickets\CustomerPurchaseTicketView.xaml.cs">
+      <DependentUpon>CustomerPurchaseTicketView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Buying tickets\PurchaseTicketsView.xaml.cs">
       <DependentUpon>PurchaseTicketsView.xaml</DependentUpon>
@@ -284,6 +288,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Base View\SearchEventView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Buying tickets\CustomerPurchaseTicketView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
