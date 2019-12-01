@@ -183,6 +183,7 @@
     <Compile Include="ViewModel\Dashboard\MyAccountViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\ViewPastTicketsViewModel.cs" />
     <Compile Include="ViewModel\zEmployees\Customer\AddCustomerDetailsViewModel.cs" />
+    <Compile Include="ViewModel\zEmployees\Customer\ModifyGuestTicketsViewModel.cs" />
     <Compile Include="ViewModel\zEmployees\Employee\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\zEmployees\Event Management\AddEventsViewModel.cs" />
     <Compile Include="ViewModel\zEmployees\Event Management\GenerateTicketsViewModel.cs" />

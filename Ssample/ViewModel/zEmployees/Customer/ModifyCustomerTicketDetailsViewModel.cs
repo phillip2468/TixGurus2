@@ -1,6 +1,9 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Input;
 using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
+using Ssample.Model;
 using Syncfusion.UI.Xaml.Grid;
 
 namespace Ssample.ViewModel.zEmployees.Customer
@@ -23,8 +26,12 @@ namespace Ssample.ViewModel.zEmployees.Customer
 
         public ModifyCustomerTicketDetailsViewModel()
         {
-            AddNewRowPosition = AddNewRowPosition.Top;
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
+
+            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+
+            CustomerTicketDetails = (from data in context.Customer_Ticket_Details select data).ToList();
+            CustomerTransactions = (from data in context.Customer_Transaction select data).ToList();
         }
 
         #endregion
@@ -39,8 +46,8 @@ namespace Ssample.ViewModel.zEmployees.Customer
         {
             Navigate(viewModel);
         }
-
-        public AddNewRowPosition AddNewRowPosition { get; set; }
+        public List<Customer_Ticket_Details> CustomerTicketDetails { get; set; } = new List<Customer_Ticket_Details>();
+        public List<Customer_Transaction> CustomerTransactions { get; set; } = new List<Customer_Transaction>();
 
         #endregion
     }
