@@ -5,9 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ssample.Views.Sign_In"
              xmlns:viewModel="clr-namespace:Ssample.ViewModel"
+             xmlns:customer="clr-namespace:Ssample.ViewModel.zEmployees.Customer"
+             xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="LightCoral">
+        <!--Column definitions-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -17,7 +20,10 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <!--Row definitions-->
         <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -25,20 +31,88 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Label Content="TixGurus"
-               FontSize="23"
-               Grid.Column="0"
-               Grid.Row="0" />
+        <!--#endregion-->
 
+        <!--Label-->
+        <Label Grid.Column="0"
+               Grid.Row="0"
+               Content="TixGurus"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               FontSize="18" />
+
+        <!--Button for navigating home-->
         <Button Grid.Column="0"
-                Grid.Row="4"
-                Content="Go back"
+                Grid.Row="6"
                 Margin="10 10 10 10"
                 Command="{Binding NavCommand}">
+            <TextBlock Text="Go back "
+                       TextWrapping="Wrap" />
             <Button.CommandParameter>
-                <viewModel:EmployeeDashboardViewModel />
+                <customer:ModifyCustomerTicketDetailsViewModel />
             </Button.CommandParameter>
         </Button>
+
+        <!--#region Tickets view-->
+
+        <!--Label for tickets view-->
+        <Label Content="Guest ticket view"
+               Grid.Column="0"
+               Grid.ColumnSpan="3"
+               Grid.Row="1"
+               FontSize="22"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center" />
+
+
+        <!--Label for tickets view-->
+        <Label Content="Guests view"
+               Grid.Column="2"
+               Grid.Row="0"
+               Grid.ColumnSpan="2"
+               FontSize="24"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center" />
+
+        <!--Data grid for tickets view-->
+        <Border Grid.Column="0"
+                Grid.Row="2"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="3"
+                BorderBrush="Black"
+                BorderThickness="4">
+            <Syncfusion:SfDataGrid x:Name="DataGridTickets"
+                                   Background="White"
+                                   ItemsSource="{Binding GuestTicketDetails}" />
+        </Border>
+
+        <!--#endregion-->
+
+        <!--#region Transaction view-->
+
+        <!--Label for transaction view-->
+        <Label Content="Customer ticket view"
+               Grid.Column="3"
+               Grid.Row="1"
+               Grid.ColumnSpan="3"
+               FontSize="22"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center" />
+
+
+        <!--Data grid for transaction view-->
+        <Border Grid.Column="3"
+                Grid.Row="2"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="3"
+                BorderBrush="Black"
+                BorderThickness="4">
+            <Syncfusion:SfDataGrid x:Name="DataGridTransactions"
+                                   Background="White"
+                                   ItemsSource="{Binding CustomerTicketDetails}" />
+        </Border>
+
+        <!--#endregion-->
 
     </Grid>
 </UserControl>
