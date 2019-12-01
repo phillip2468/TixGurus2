@@ -76,7 +76,6 @@
         </Button>
 
 
-
         <!--#region Tile view-->
         <syncfusion:TileViewControl Grid.Column="0"
                                     Grid.Row="1"

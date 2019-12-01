@@ -8,7 +8,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using Ssample.ViewModel.Base_view_models;
 
 namespace Ssample.ViewModel.Buying_tickets
 {
@@ -22,9 +21,6 @@ namespace Ssample.ViewModel.Buying_tickets
         /// Buying tickets view model declaration
         /// </summary>
         private NavigationViewModelBase buyingTicketsViewModel;
-
-        private NavigationViewModelBase homePageSignedInViewModel;
-        private NavigationViewModelBase defaultViewModel;
 
         #endregion
 
@@ -49,14 +45,12 @@ namespace Ssample.ViewModel.Buying_tickets
         {
             //Initialization of the next view model
             buyingTicketsViewModel = new PurchaseTicketsViewModel();
-            defaultViewModel = new DefaultViewModel();
-            homePageSignedInViewModel = new HomePageSignedInViewModel();
 
             //Setting the data context
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
 
             //Setting the navigation command parameters
-            NavCommand = new RelayCommand(Nav);
+            NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
             NavCommand2 = new RelayCommand<NavigationViewModelBase>(Nav2);
 
             //Provide an item source for the data grid
@@ -66,22 +60,16 @@ namespace Ssample.ViewModel.Buying_tickets
 
         #endregion
 
-        #region Helper navigation functions
+        #region Helper functions
 
         /// <summary>
         /// Navigates back to the previous page (the default view model)
         /// </summary>
-        private void Nav()
+        /// <param name="viewModel">The view model</param>
+        private void Nav(NavigationViewModelBase viewModel)
         {
             Settings.Default.SeatLocation = "";
-            if(Properties.Settings.Default.Email == "")
-            {
-                Navigate(defaultViewModel);
-            }
-            else
-            {
-                Navigate(homePageSignedInViewModel);
-            }
+            Navigate(viewModel);
         }
 
         /// <summary>

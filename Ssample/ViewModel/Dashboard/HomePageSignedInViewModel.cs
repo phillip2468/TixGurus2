@@ -40,17 +40,7 @@ namespace Ssample.ViewModel
 
             //Create a list of events
             Events = (from data in context.Event_Details select data).ToList();
-
-            #endregion
         }
-
-        #endregion
-
-        #region List properties
-        /// <summary>
-        /// List property
-        /// </summary>
-        public List<Event_Details> Events { get; set; }
 
         #endregion
 
@@ -74,6 +64,16 @@ namespace Ssample.ViewModel
             Navigate(viewModel);
         }
         #endregion
+
+
+        #region List properties
+        /// <summary>
+        /// List property
+        /// </summary>
+        public List<Event_Details> Events { get; set; }
+
+        #endregion
+
 
     }
 }

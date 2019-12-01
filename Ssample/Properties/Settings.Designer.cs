@@ -25,7 +25,7 @@ namespace Ssample.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("guestuser@email.com")]
         public string Email {
             get {
                 return ((string)(this["Email"]));
@@ -48,7 +48,7 @@ namespace Ssample.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Not a value")]
         public string SeatLocation {
             get {
                 return ((string)(this["SeatLocation"]));
@@ -60,7 +60,7 @@ namespace Ssample.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Nothing")]
         public string SearchText {
             get {
                 return ((string)(this["SearchText"]));
@@ -72,7 +72,7 @@ namespace Ssample.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Nothing")]
         public string EventTitle {
             get {
                 return ((string)(this["EventTitle"]));
@@ -84,7 +84,7 @@ namespace Ssample.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("nothing@gmail.com")]
         public string guestEmail {
             get {
                 return ((string)(this["guestEmail"]));

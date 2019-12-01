@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Email" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">guestuser@email.com</Value>
     </Setting>
     <Setting Name="CustomerDatabaseConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -14,16 +14,16 @@
       <Value Profile="(Default)">Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CustomerDatabase;Integrated Security=True</Value>
     </Setting>
     <Setting Name="SeatLocation" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Not a value</Value>
     </Setting>
     <Setting Name="SearchText" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Nothing</Value>
     </Setting>
     <Setting Name="EventTitle" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Nothing</Value>
     </Setting>
     <Setting Name="guestEmail" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">nothing@gmail.com</Value>
     </Setting>
     <Setting Name="guestTransactionId" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
