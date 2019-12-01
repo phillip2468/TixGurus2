@@ -2,6 +2,7 @@
 using Ssample.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -94,6 +95,8 @@ namespace Ssample.ViewModel.Buying_tickets
         public List<Ticket_Details> ListOfMatchingTickets { get; set; } = new List<Ticket_Details>();
 
         public List<Ticket_Details> Tickets { get; set; }
+
+        public List<Ticket_Details> RemoveTickets { get; set; }
 
         public List<Event_Details> Events { get; set; } = new List<Event_Details>();
 
@@ -339,7 +342,13 @@ namespace Ssample.ViewModel.Buying_tickets
                     CurrentGuestTicket.eventAddress = EventAddress.Trim();
                     CurrentGuestTicket.placeName = PlaceName.Trim();
                     context.Guest_Ticket_Details.Add(CurrentGuestTicket);
+                    foreach (var detail in ListOfMatchingTickets)
+                    {
+                        var num1 = detail;
+                        context.Entry(num1).State = EntityState.Deleted;
+                    }
                     context.SaveChanges();
+                    Properties.Settings.Default.guestTicketId += CurrentGuestTicket.ticketId + ",";
                 }
             }
 
@@ -354,6 +363,7 @@ namespace Ssample.ViewModel.Buying_tickets
                 context.Guest_Transaction.Add(CurrentTransaction);
                 context.SaveChanges();
                 Properties.Settings.Default.guestEmail = Email.Trim();
+                Properties.Settings.Default.guestTransactionId += CurrentTransaction.transactionId.ToString();
                 output = true;
                 return output;
             }

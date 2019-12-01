@@ -76,8 +76,9 @@
         <Button Grid.Column="4"
                 Grid.Row="5"
                 Content="Print to pdf"
-                Name="ButtonPrintTransaction" 
-                Click="ButtonPrintTransaction_OnClick"/>
+                Name="ButtonPrintTransaction"
+                Click="ButtonPrintTransaction_OnClick"
+                Margin="10 10 10 10" />
 
         <Label Content="Transaction view"
                Grid.Column="4"
@@ -99,7 +100,7 @@
 
         </Border>
 
-        <Button Grid.Column="1" Grid.Row="5" Content="Print to pdf" Name="Buttonforprintingtickets" Click="Buttonforprintingtickets_OnClick"/>
+        <Button Grid.Column="1" Grid.Row="5" Content="Print to pdf" Name="Buttonforprintingtickets" Click="Buttonforprintingtickets_OnClick" Margin="10 10 10 10"/>
 
     </Grid>
 </UserControl>  

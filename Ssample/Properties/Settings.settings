@@ -25,5 +25,11 @@
     <Setting Name="guestEmail" Type="System.String" Scope="User">
       <Value Profile="(Default)">nothing@gmail.com</Value>
     </Setting>
+    <Setting Name="guestTransactionId" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="guestTicketId" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

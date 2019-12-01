@@ -93,5 +93,29 @@ namespace Ssample.Properties {
                 this["guestEmail"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string guestTransactionId {
+            get {
+                return ((string)(this["guestTransactionId"]));
+            }
+            set {
+                this["guestTransactionId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string guestTicketId {
+            get {
+                return ((string)(this["guestTicketId"]));
+            }
+            set {
+                this["guestTicketId"] = value;
+            }
+        }
     }
 }

@@ -17,19 +17,20 @@ namespace Ssample.ViewModel.Buying_tickets
         {
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
 
-            string seatLocations = Settings.Default.SeatLocation;
+            string guestTicketId = Settings.Default.guestTicketId;
             String[] separator = { "," };
-            String[] strList = seatLocations.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+            string[] guestTicketList = guestTicketId.Split(separator, StringSplitOptions.RemoveEmptyEntries);
 
-            foreach (var seatLocation in strList)
+            foreach (var ticketId in guestTicketList)
             {
-                var rowData = (from data in context.Guest_Ticket_Details where data.seatLocation.Contains(seatLocation) select data).ToList();
+                var rowData = (from data in context.Guest_Ticket_Details where data.ticketId.ToString().Contains(ticketId) select data).ToList();
                 foreach (var guestTicketDetails in rowData) GuestTicketDetails.Add(guestTicketDetails);
             }
 
+
             GuestTransactionsDetails = (from data in context.Guest_Transaction
-                                        where data.email.Contains(Properties.Settings.Default.guestEmail)
-                                        select data).ToList();
+                where data.transactionId.ToString().Contains(Properties.Settings.Default.guestTransactionId)
+                select data).ToList();
 
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
         }
