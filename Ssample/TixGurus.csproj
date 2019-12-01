@@ -181,6 +181,7 @@
     <Compile Include="ViewModel\Dashboard\ChangeMyDetailsViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\HomePageSignedInViewModel.cs" />
     <Compile Include="ViewModel\Dashboard\MyAccountViewModel.cs" />
+    <Compile Include="ViewModel\Dashboard\ViewPastTicketsViewModel.cs" />
     <Compile Include="ViewModel\zEmployees\Customer\AddCustomerDetailsViewModel.cs" />
     <Compile Include="ViewModel\zEmployees\Employee\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\zEmployees\Event Management\AddEventsViewModel.cs" />
@@ -226,6 +227,9 @@
     </Compile>
     <Compile Include="Views\Dashboard\MyAccountView.xaml.cs">
       <DependentUpon>MyAccountView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard\ViewPastTicketsView.xaml.cs">
+      <DependentUpon>ViewPastTicketsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\zEmployees\Customer\ModifyCustomerTicketDetailsView.xaml.cs">
       <DependentUpon>ModifyCustomerTicketDetailsView.xaml</DependentUpon>
@@ -324,6 +328,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dashboard\MyAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dashboard\ViewPastTicketsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

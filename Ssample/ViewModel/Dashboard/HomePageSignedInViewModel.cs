@@ -26,6 +26,7 @@ namespace Ssample.ViewModel
         #endregion
 
         #region Constructor
+
         public HomePageSignedInViewModel()
         {
             _myAccountView = new MyAccountViewModel();
@@ -40,6 +41,8 @@ namespace Ssample.ViewModel
 
             //Create a list of events
             Events = (from data in context.Event_Details select data).ToList();
+
+            #endregion
         }
 
         #endregion
