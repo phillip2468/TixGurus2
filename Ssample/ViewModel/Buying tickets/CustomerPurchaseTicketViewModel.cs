@@ -11,20 +11,47 @@ using SimpleWPF.Input;
 
 namespace Ssample.ViewModel.Buying_tickets
 {
+    /// <summary>
+    /// A class responsible for purchasing tickets as a customer
+    /// </summary>
     public class CustomerPurchaseTicketViewModel : NavigationViewModelBase
     {
 
+        #region Commands
+        /// <summary>
+        /// Navigates to the default view model
+        /// </summary>
         public ICommand NavDefaultCommand { get; set; }
+        /// <summary>
+        /// Navigates to the successful view model if purchase
+        /// succeeds
+        /// </summary>
         public ICommand NavSuccessCommand { get; set; }
 
+        #endregion
+
+        #region Constructor
+        /// <summary>
+        /// Constructor for view model
+        /// </summary>
         public CustomerPurchaseTicketViewModel()
         {
+            #region Command parameter
+            //Default command
             NavDefaultCommand = new RelayCommand<NavigationViewModelBase>(Nav);
+
+            //Successful command
             NavSuccessCommand = new RelayCommand<NavigationViewModelBase>(Nav2);
 
+            #endregion
+            
+            //Set the database context
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+
+            //Tickets list
             Tickets = (from data in context.Ticket_Details select data).ToList();
 
+            //Create a ticket list with the selected seats
             string seatLocations = Settings.Default.SeatLocation;
             String[] separator = { "," };
             String[] strList = seatLocations.Split(separator, StringSplitOptions.RemoveEmptyEntries);
@@ -36,15 +63,52 @@ namespace Ssample.ViewModel.Buying_tickets
             }
         }
 
+        #endregion
+
+        #region List properties
+
         public List<Ticket_Details> ListOfMatchingTickets { get; set; } = new List<Ticket_Details>();
 
         public List<Ticket_Details> Tickets { get; set; }
 
+        /// <summary>
+        /// Gets a list of matching customers from the properties
+        /// </summary>
+        public List<Customer_Details> ListOfMatchingCustomers { get; set; } = new List<Customer_Details>();
+
+        /// <summary>
+        /// Atttempts to match current customer
+        /// </summary>
+        public List<Customer_Details> MatchCurrentCustomer { get; set; } = new List<Customer_Details>();
+
+        /// <summary>
+        /// Change current ticket
+        /// </summary>
+        private Customer_Ticket_Details CurrentTicketCustomer { get; set; } = new Customer_Ticket_Details();
+
+        /// <summary>
+        /// Sets the current transaction
+        /// </summary>
+        public Customer_Transaction CurrentCustomerTransactions { get; set; } = new Customer_Transaction();
+
+        /// <summary>
+        /// Events list
+        /// </summary>
+        public List<Event_Details> Events { get; set; } = new List<Event_Details>();
+
+        /// <summary>
+        /// Matching events from properties
+        /// </summary>
+        public List<Event_Details> ListOfMatchingEvents { get; set; } = new List<Event_Details>();
+
+        #endregion
+
+        #region Navigation functions
 
         private void Nav(NavigationViewModelBase viewModel)
         {
-            Properties.Settings.Default.SeatLocation = "";
-            Properties.Settings.Default.Email = "";
+            Settings.Default.SeatLocation = "";
+            Settings.Default.Email = "";
             Navigate(viewModel);
         }
         private void Nav2(NavigationViewModelBase viewModel)
@@ -60,6 +124,7 @@ namespace Ssample.ViewModel.Buying_tickets
             }
         }
 
+        #endregion
 
         #region Properties
 
@@ -127,7 +192,6 @@ namespace Ssample.ViewModel.Buying_tickets
 
         #endregion
 
-
         #region Setting the price property
 
         private decimal SetTotalPrice()
@@ -149,13 +213,12 @@ namespace Ssample.ViewModel.Buying_tickets
 
         #endregion
 
-        public List<Customer_Details> ListOfMatchingCustomers { get; set; } = new List<Customer_Details>();
-        public List<Customer_Details> MatchCurrentCustomer { get; set; } = new List<Customer_Details>();
-        private Customer_Ticket_Details CurrentTicketCustomer { get; set; } = new Customer_Ticket_Details();
-        public Customer_Transaction CurrentCustomerTransactions { get; set; } = new Customer_Transaction();
-        public List<Event_Details> Events { get; set; } = new List<Event_Details>();
-        public List<Event_Details> ListOfMatchingEvents { get; set; } = new List<Event_Details>();
+        #region Saving details to database
 
+        /// <summary>
+        /// Save changes to database
+        /// </summary>
+        /// <returns></returns>
         private bool SaveChanges()
         {
             //Sets the inital output to false
@@ -176,12 +239,12 @@ namespace Ssample.ViewModel.Buying_tickets
             //Get a list of all customers
             MatchCurrentCustomer = (from data in context.Customer_Details select data).ToList();
 
-            var customerDet = Properties.Settings.Default.Email;
+            var customerDet = Settings.Default.Email;
 
             //Find the customer that equals to the email
             foreach (var cust in MatchCurrentCustomer)
             {
-                if (cust.email == Properties.Settings.Default.Email)
+                if (cust.email == Settings.Default.Email)
                 {
                     ListOfMatchingCustomers.Add(cust);
                 }
@@ -209,7 +272,7 @@ namespace Ssample.ViewModel.Buying_tickets
                         CurrentTicketCustomer.eventAddress = EventAddress.Trim();
                         context.Customer_Ticket_Details.Add(CurrentTicketCustomer);
                         context.SaveChanges();
-                        Properties.Settings.Default.customerTicketId += CurrentTicketCustomer.ticketId + ",";
+                        Settings.Default.customerTicketId += CurrentTicketCustomer.ticketId + ",";
                     }
                 }
                 foreach (var detail in ListOfMatchingTickets)
@@ -234,7 +297,7 @@ namespace Ssample.ViewModel.Buying_tickets
                 }
                
                 context.SaveChanges();
-                Properties.Settings.Default.customerTransactionId += CurrentCustomerTransactions.transactionId.ToString();
+                Settings.Default.customerTransactionId += CurrentCustomerTransactions.transactionId.ToString();
                 output = true;
                 return output;
             }
@@ -242,6 +305,7 @@ namespace Ssample.ViewModel.Buying_tickets
             return output;
         }
 
+        #endregion
 
         #region Checking for null
         /// <summary>
