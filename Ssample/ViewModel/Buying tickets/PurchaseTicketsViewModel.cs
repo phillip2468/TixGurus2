@@ -70,7 +70,6 @@ namespace Ssample.ViewModel.Buying_tickets
 
             #endregion
 
-
             #region Generate list of tickets
 
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
@@ -146,8 +145,6 @@ namespace Ssample.ViewModel.Buying_tickets
         public List<Ticket_Details> ListOfMatchingTickets { get; set; } = new List<Ticket_Details>();
 
         public List<Ticket_Details> Tickets { get; set; }
-
-        public List<Ticket_Details> RemoveTickets { get; set; }
 
         public List<Event_Details> Events { get; set; } = new List<Event_Details>();
 
@@ -365,7 +362,7 @@ namespace Ssample.ViewModel.Buying_tickets
         }
         #endregion
 
-        #region Helper funtcion
+        #region Helper funtcion for setting price
 
         private decimal SetTotalPrice()
         {
@@ -386,7 +383,7 @@ namespace Ssample.ViewModel.Buying_tickets
 
         #endregion
 
-        #region Save changes to database
+        #region Saving guest transaction to database
 
         /// <summary>
         /// A function responsible for saving changes to database

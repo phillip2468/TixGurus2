@@ -117,5 +117,41 @@ namespace Ssample.Properties {
                 this["guestTicketId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string customerId {
+            get {
+                return ((string)(this["customerId"]));
+            }
+            set {
+                this["customerId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string customerTicketId {
+            get {
+                return ((string)(this["customerTicketId"]));
+            }
+            set {
+                this["customerTicketId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string customerTransactionId {
+            get {
+                return ((string)(this["customerTransactionId"]));
+            }
+            set {
+                this["customerTransactionId"] = value;
+            }
+        }
     }
 }

@@ -4,6 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ssample.Views.Buying_tickets"
+             xmlns:baseViewModels="clr-namespace:Ssample.ViewModel.Base_view_models"
+             xmlns:properties="clr-namespace:Ssample.Properties"
+             xmlns:buyingTickets="clr-namespace:Ssample.ViewModel.Buying_tickets"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1200">
     <Grid Background="LightCoral">
@@ -74,9 +77,20 @@
                 Name="PaypalButton"
                 Click="PaypalButton_OnClick"/>
 
+        <!--Text block to show which user has signed in -->
+        <TextBlock Grid.Column="4"
+                   Grid.Row="1"
+                   TextWrapping="Wrap"
+                   FontSize="20"
+                   Grid.ColumnSpan="2"
+                   VerticalAlignment="Center">
+            <Run Text="Successfully signed in as" />
+            <Run Text="{Binding Source={x:Static properties:Settings.Default},Path=Email}" />
+        </TextBlock>
+
         <!--Listbox containing all seats selected-->
         <ListBox Grid.Row="3"
-                 Grid.Column="3"
+                 Grid.Column="2"
                  Grid.ColumnSpan="2"
                  Grid.RowSpan="3"
                  ItemsSource="{Binding ListOfMatchingTickets}">
@@ -93,6 +107,61 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
+        <!--Label for total price-->
+        <Label Content="Finish transaction"
+               Grid.Column="2"
+               Grid.Row="2"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               FontSize="22" 
+               Grid.ColumnSpan="2"/>
 
+        <!--Button for paypal-->
+        <Button Grid.Column="0"
+                Grid.Row="6"
+                Margin="10 10 10 10"
+                Content="Log out and return to main menu"
+                Command="{Binding NavDefaultCommand}">
+            <Button.CommandParameter>
+                <baseViewModels:DefaultViewModel/>
+            </Button.CommandParameter>
+        </Button>
+
+
+        <!--Label for extra pricing-->
+        <TextBlock Grid.Row="3"
+                   Grid.Column="4"
+                   Text="Total cost is calculated after GST + fees (total + 0.05% of total)"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="18"
+                   Grid.ColumnSpan="2"
+                   TextWrapping="Wrap" />
+
+        <!--Label for extra pricing-->
+        <Label Grid.Row="4"
+               Grid.Column="4"
+               Content="Total costs"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center"
+               FontSize="18" />
+
+        <TextBox Grid.Row="4"
+                 Grid.Column="5"
+                 Margin="10 10 10 10"
+                 Text="{Binding TotalPrice,Mode=TwoWay}"
+                 IsReadOnly="True" 
+                 VerticalAlignment="Center"/>
+
+        <!--Button for paypal-->
+        <Button Grid.Column="5"
+                Grid.Row="6"
+                Margin="10 10 10 10"
+                Content="Finish transaction"
+                Command="{Binding NavSuccessCommand}">
+            <Button.CommandParameter>
+                <buyingTickets:SuccessfulCustomerTicketPurchaseViewModel/>
+            </Button.CommandParameter>
+        </Button>
     </Grid>
 </UserControl>

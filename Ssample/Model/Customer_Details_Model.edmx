@@ -47,6 +47,7 @@
           <Property Name="totalPrice" Type="money" Nullable="false" />
           <Property Name="eventName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="eventAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fullname" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee_Details">
           <Key>
@@ -244,6 +245,7 @@
           <Property Name="totalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="eventName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="eventAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fullname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -358,6 +360,7 @@
           <EntitySetMapping Name="Customer_Transaction">
             <EntityTypeMapping TypeName="CustomerDatabaseModel.Customer_Transaction">
               <MappingFragment StoreEntitySet="Customer_Transaction">
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
                 <ScalarProperty Name="eventAddress" ColumnName="eventAddress" />
                 <ScalarProperty Name="eventName" ColumnName="eventName" />
                 <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />

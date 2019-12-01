@@ -30,6 +30,8 @@ public partial class Customer_Transaction
 
     public string eventAddress { get; set; }
 
+    public string fullname { get; set; }
+
 }
 
 }
