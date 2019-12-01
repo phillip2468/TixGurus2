@@ -1,4 +1,5 @@
-﻿using SimpleWPF.ViewModels;
+﻿using SimpleWPF.Input;
+using SimpleWPF.ViewModels;
 using Ssample.Model;
 using Ssample.Properties;
 using System;
@@ -7,7 +8,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using SimpleWPF.Input;
 
 namespace Ssample.ViewModel.Buying_tickets
 {
@@ -44,7 +44,7 @@ namespace Ssample.ViewModel.Buying_tickets
             NavSuccessCommand = new RelayCommand<NavigationViewModelBase>(Nav2);
 
             #endregion
-            
+
             //Set the database context
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
 
@@ -295,7 +295,7 @@ namespace Ssample.ViewModel.Buying_tickets
                     CurrentCustomerTransactions.fullname = customer.firstName.Trim() + " " + customer.lastName.Trim();
                     context.Customer_Transaction.Add(CurrentCustomerTransactions);
                 }
-               
+
                 context.SaveChanges();
                 Settings.Default.customerTransactionId += CurrentCustomerTransactions.transactionId.ToString();
                 output = true;

@@ -1,10 +1,8 @@
 ﻿using Ssample.Model;
+using Syncfusion.UI.Xaml.Grid;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Controls;
-using Syncfusion.UI.Xaml.Grid;
-using Syncfusion.UI.Xaml.Grid.Helpers;
-using Syncfusion.UI.Xaml.ScrollAxis;
 
 namespace Ssample.Views
 {
@@ -50,7 +48,7 @@ namespace Ssample.Views
                 order.dateOfBirth = newRecord.dateOfBirth;
                 order.dateCreated = newRecord.dateCreated;
             }
-            
+
             context.Entry(order).State = EntityState.Modified;
             context.SaveChanges();
             context.Dispose();

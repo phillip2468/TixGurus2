@@ -1,9 +1,9 @@
-﻿using System.Data.Entity;
-using System.Linq;
-using System.Windows.Controls;
-using Ssample.Model;
+﻿using Ssample.Model;
 using Ssample.ViewModel.zEmployees.Event_Management;
 using Syncfusion.UI.Xaml.Grid;
+using System.Data.Entity;
+using System.Linq;
+using System.Windows.Controls;
 
 namespace Ssample.Views.zEmployees.Event_Managment
 {

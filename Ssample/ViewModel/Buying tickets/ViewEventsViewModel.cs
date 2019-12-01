@@ -195,7 +195,7 @@ namespace Ssample.ViewModel.Buying_tickets
             Tickets = (from data in context.Ticket_Details select data).ToList();
             var selectedEvent = tickets.Find(x => x.eventTitle == Settings.Default.EventTitle);
 
-            if (SeatPlace == null) 
+            if (SeatPlace == null)
             {
                 return false;
             }
@@ -205,7 +205,7 @@ namespace Ssample.ViewModel.Buying_tickets
                 Settings.Default.SeatLocation = SeatPlace.Trim();
                 return true;
             }
-            
+
         }
 
         #endregion
@@ -221,5 +221,5 @@ namespace Ssample.ViewModel.Buying_tickets
 
     }
 
-    
+
 }

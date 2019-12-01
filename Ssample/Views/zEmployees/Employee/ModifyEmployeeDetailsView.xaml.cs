@@ -1,8 +1,8 @@
 ﻿using Ssample.Model;
+using Syncfusion.UI.Xaml.Grid;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Controls;
-using Syncfusion.UI.Xaml.Grid;
 
 namespace Ssample.Views
 {

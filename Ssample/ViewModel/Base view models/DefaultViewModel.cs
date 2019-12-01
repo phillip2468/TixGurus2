@@ -1,4 +1,10 @@
-﻿using System;
+﻿using SimpleWPF.Input;
+using SimpleWPF.ViewModels;
+using Ssample.Model;
+using Ssample.ViewModel.Buying_tickets;
+using Ssample.ViewModel.Register;
+using Ssample.ViewModel.Signing_In;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -7,12 +13,6 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using SimpleWPF.Input;
-using SimpleWPF.ViewModels;
-using Ssample.Model;
-using Ssample.ViewModel.Buying_tickets;
-using Ssample.ViewModel.Register;
-using Ssample.ViewModel.Signing_In;
 
 namespace Ssample.ViewModel.Base_view_models
 {
@@ -80,7 +80,7 @@ namespace Ssample.ViewModel.Base_view_models
             #endregion
 
             #region Declaration of the events list for the tile views
-            
+
             //Using db context
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
 
@@ -187,7 +187,7 @@ namespace Ssample.ViewModel.Base_view_models
             if (imageByteArray == null) return null;
             return ConvertByteArrayToBitMapImage(imageByteArray);
         }
- 
+
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return null;

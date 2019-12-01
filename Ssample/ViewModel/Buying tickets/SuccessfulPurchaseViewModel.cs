@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Input;
-using SimpleWPF.Input;
+﻿using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
 using Ssample.Model;
 using Ssample.Properties;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Input;
 
 namespace Ssample.ViewModel.Buying_tickets
 {
@@ -47,8 +47,8 @@ namespace Ssample.ViewModel.Buying_tickets
 
             //Display guest transaction according to the guest transaction id
             GuestTransactionsDetails = (from data in context.Guest_Transaction
-                where data.transactionId.ToString().Contains(Settings.Default.guestTransactionId)
-                select data).ToList();
+                                        where data.transactionId.ToString().Contains(Settings.Default.guestTransactionId)
+                                        select data).ToList();
 
             //Command parameter
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);

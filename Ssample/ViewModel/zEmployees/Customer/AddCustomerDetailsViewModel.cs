@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Input;
-using SimpleWPF.Input;
+﻿using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
 using Ssample.Model;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Input;
 
 namespace Ssample.ViewModel.zEmployees.Customer
 {

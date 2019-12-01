@@ -1,12 +1,12 @@
-﻿using System;
+﻿using SimpleWPF.Input;
+using SimpleWPF.ViewModels;
+using Ssample.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
-using SimpleWPF.Input;
-using SimpleWPF.ViewModels;
-using Ssample.Model;
 
 namespace Ssample.ViewModel.Register
 {
@@ -131,7 +131,7 @@ namespace Ssample.ViewModel.Register
                     return null;
                 }
                 return CurrentCustomer.password;
-            } 
+            }
             set
             {
                 CurrentCustomer.password = value;

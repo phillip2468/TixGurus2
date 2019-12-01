@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SimpleWPF.Navigation;
+﻿using SimpleWPF.Navigation;
 using SimpleWPF.Navigation.Arguments;
 using SimpleWPF.ViewModels;
+using System;
 
 namespace Ssample.ViewModel
 {
     /// <summary>
     /// Handles the navigation of the view models
     /// </summary>
-    public class AppViewModel:NavigationViewModelBase,INavigationProvider
+    public class AppViewModel : NavigationViewModelBase, INavigationProvider
     {
         private NavigationViewModelBase current;
 

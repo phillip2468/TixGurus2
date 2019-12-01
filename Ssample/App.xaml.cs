@@ -1,7 +1,7 @@
 ﻿using SimpleWPF.Core;
 using Ssample.ViewModel;
-using System.Windows;
 using Ssample.ViewModel.Base_view_models;
+using System.Windows;
 
 namespace Ssample
 {
@@ -15,7 +15,7 @@ namespace Ssample
             base.OnStartup(e);
             //Entry point for simple wpf
             var core = new SimpleCore();
-            core.Startup(new AppViewModel(),new DefaultViewModel(),true);
+            core.Startup(new AppViewModel(), new DefaultViewModel(), true);
 
             //Multiple ways to load templates
             var templateManager = new DataTemplateManager();

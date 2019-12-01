@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using SimpleWPF.Input;
+﻿using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
-using Ssample.ViewModel.Dashboard;
-using System.Windows.Input;
 using Ssample.Model;
+using Ssample.ViewModel.Dashboard;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Input;
 
 namespace Ssample.ViewModel
 {

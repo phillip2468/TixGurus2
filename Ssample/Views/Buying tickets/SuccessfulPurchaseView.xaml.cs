@@ -1,10 +1,10 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Win32;
+using Ssample.ViewModel.Buying_tickets;
+using Syncfusion.UI.Xaml.Grid.Converter;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
-using Ssample.ViewModel.Buying_tickets;
 using System.Windows.Controls;
-using Microsoft.Win32;
-using Syncfusion.UI.Xaml.Grid.Converter;
 
 namespace Ssample.Views.Buying_tickets
 {

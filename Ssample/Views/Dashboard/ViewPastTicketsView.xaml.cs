@@ -1,10 +1,10 @@
 ﻿using Microsoft.Win32;
+using Ssample.ViewModel.Dashboard;
 using Syncfusion.UI.Xaml.Grid.Converter;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using Ssample.ViewModel.Dashboard;
 
 namespace Ssample.Views.Dashboard
 {

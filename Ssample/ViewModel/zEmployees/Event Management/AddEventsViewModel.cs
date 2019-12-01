@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
 using Ssample.Model;
+using System;
+using System.IO;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Ssample.ViewModel.zEmployees.Event_Management
 {
@@ -427,7 +424,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
 
             //If the check for not null is not true
-            if (!isNull) 
+            if (!isNull)
             {
                 //Using the helper function which converts the image to bytes
                 byte[] imageBytes = ConvertImageToByteArray(ImagePathOfEventImage);

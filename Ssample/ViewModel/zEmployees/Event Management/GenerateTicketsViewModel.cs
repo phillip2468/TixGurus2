@@ -393,7 +393,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             bool output = false;
 
             //Loop for generating tickets
-            for (int i = 1; i < numberOfTickets+1; i++)
+            for (int i = 1; i < numberOfTickets + 1; i++)
             {
                 //Based on the context
                 CustomerDatabaseEntities context = new CustomerDatabaseEntities();
@@ -425,7 +425,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             if (levelTwoCapacity > 0)
             {
                 //Loop for generating level 2 tickets
-                for (int i = 1; i < LevelTwoCapacity+1; i++)
+                for (int i = 1; i < LevelTwoCapacity + 1; i++)
                 {
                     //Based on the database context
                     CustomerDatabaseEntities context = new CustomerDatabaseEntities();
@@ -458,7 +458,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             if (levelThreeCapacity > 0)
             {
                 //Loop for generating tickets
-                for (int i = 1; i < levelThreeCapacity+1; i++)
+                for (int i = 1; i < levelThreeCapacity + 1; i++)
                 {
                     //Assign the database context
                     CustomerDatabaseEntities context = new CustomerDatabaseEntities();

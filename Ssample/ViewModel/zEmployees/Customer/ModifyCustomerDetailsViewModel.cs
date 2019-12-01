@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Input;
-using SimpleWPF.Input;
+﻿using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
 using Ssample.Model;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Input;
 
 namespace Ssample.ViewModel.zEmployees.Customer
 {
@@ -29,7 +29,7 @@ namespace Ssample.ViewModel.zEmployees.Customer
 
             //List generation
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-            CustomerDetails = (List<Customer_Details>) (from data in context.Customer_Details select data).ToList();
+            CustomerDetails = (List<Customer_Details>)(from data in context.Customer_Details select data).ToList();
         }
 
         #endregion

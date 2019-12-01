@@ -1,5 +1,7 @@
-﻿using SimpleWPF.ViewModels;
+﻿using SimpleWPF.Input;
+using SimpleWPF.ViewModels;
 using Ssample.Model;
+using Ssample.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,8 +9,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
-using SimpleWPF.Input;
-using Ssample.Properties;
 
 namespace Ssample.ViewModel.Buying_tickets
 {
@@ -125,7 +125,7 @@ namespace Ssample.ViewModel.Buying_tickets
         /// <param name="viewModel"></param>
         private void Nav3(NavigationViewModelBase viewModel)
         {
-            if (CanSignIn(LoginEmail,LoginPassword))
+            if (CanSignIn(LoginEmail, LoginPassword))
             {
                 MessageBox.Show("Successful sign in");
                 Navigate(viewModel);
@@ -259,10 +259,11 @@ namespace Ssample.ViewModel.Buying_tickets
         /// </summary>
         public string Address
         {
-            get {
+            get
+            {
                 if (CurrentTransaction.address == null)
                 {
-                    return CurrentTransaction.address; 
+                    return CurrentTransaction.address;
                 }
                 Regex regex = new Regex(@"^[A-Za-z0-9]+(?:\s[A-Za-z0-9'_-]+)+$");
                 Match match = regex.Match(CurrentTransaction.address);

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ssample.Helpers.Authorisation
+﻿namespace Ssample.Helpers.Authorisation
 {
     /// <summary>
     /// A class which represents a user without authorization

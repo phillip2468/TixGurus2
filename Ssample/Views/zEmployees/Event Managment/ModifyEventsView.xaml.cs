@@ -1,9 +1,9 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using Ssample.Model;
 using Ssample.ViewModel.zEmployees.Event_Management;
-using System.Windows.Controls;
-using Ssample.Model;
 using Syncfusion.UI.Xaml.Grid;
+using System.Data.Entity;
+using System.Linq;
+using System.Windows.Controls;
 
 namespace Ssample.Views.zEmployees.Event_Managment
 {
@@ -68,7 +68,7 @@ namespace Ssample.Views.zEmployees.Event_Managment
             var eventTitle = item.eventTitle;
             var eventGenre = item.eventGenre;
             var showOnHomePage = item.showOnHomePage;
-            
+
             context.Entry(item).State = EntityState.Deleted;
             context.SaveChanges();
             context.Dispose();
