@@ -23,7 +23,7 @@ namespace Ssample.ViewModel.Buying_tickets
 
             foreach (var ticketId in guestTicketList)
             {
-                var rowData = (from data in context.Guest_Ticket_Details where data.ticketId.ToString().Contains(ticketId) select data).ToList();
+                var rowData = (from data in context.Guest_Ticket_Details where data.ticketId.ToString().Contains(ticketId) && data.email.Contains(Settings.Default.guestEmail) select data).ToList();
                 foreach (var guestTicketDetails in rowData) GuestTicketDetails.Add(guestTicketDetails);
             }
 

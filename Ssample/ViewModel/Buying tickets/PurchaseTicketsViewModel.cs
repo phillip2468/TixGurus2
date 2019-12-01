@@ -342,14 +342,14 @@ namespace Ssample.ViewModel.Buying_tickets
                     CurrentGuestTicket.eventAddress = EventAddress.Trim();
                     CurrentGuestTicket.placeName = PlaceName.Trim();
                     context.Guest_Ticket_Details.Add(CurrentGuestTicket);
-                    foreach (var detail in ListOfMatchingTickets)
-                    {
-                        var num1 = detail;
-                        context.Entry(num1).State = EntityState.Deleted;
-                    }
-                    context.SaveChanges();
                     Properties.Settings.Default.guestTicketId += CurrentGuestTicket.ticketId + ",";
                 }
+                foreach (var detail in ListOfMatchingTickets)
+                {
+                    var num1 = detail;
+                    context.Entry(num1).State = EntityState.Deleted;
+                }
+                context.SaveChanges();
             }
 
             if (!isTransactionNull)
