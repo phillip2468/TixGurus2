@@ -7,6 +7,7 @@
              xmlns:viewModel="clr-namespace:Ssample.ViewModel"
              xmlns:customer="clr-namespace:Ssample.ViewModel.zEmployees.Customer"
              xmlns:Syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:zDataAboutEvent="clr-namespace:Ssample.ViewModel.zEmployees.zData_about_event"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="LightCoral">
@@ -49,7 +50,7 @@
             <TextBlock Text="Go back "
                        TextWrapping="Wrap" />
             <Button.CommandParameter>
-                <customer:ModifyCustomerTicketDetailsViewModel />
+                <viewModel:EmployeeDashboardViewModel />
             </Button.CommandParameter>
         </Button>
 
@@ -138,7 +139,7 @@
             <TextBlock Text="Next"
                        TextWrapping="Wrap" />
             <Button.CommandParameter>
-                <customer:ModifyCustomerTicketDetailsViewModel />
+                <zDataAboutEvent:MoreDataViewModel />
             </Button.CommandParameter>
         </Button>
     </Grid>
