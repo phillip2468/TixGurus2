@@ -34,6 +34,7 @@
         </Grid.RowDefinitions>
 
         <!--#endregion-->
+
         <!--Label-->
         <Label Grid.Column="0"
                Grid.Row="0"
@@ -83,9 +84,8 @@
                 BorderThickness="4">
             <Syncfusion:SfDataGrid x:Name="DataGridTickets"
                                    Background="White"
-                                   ItemsSource="{Binding CustomerTicketDetails}" />
+                                   ItemsSource="{Binding GuestTicketDetails}" />
         </Border>
-
 
         <!--#endregion-->
 
@@ -109,7 +109,7 @@
                 BorderThickness="4">
             <Syncfusion:SfDataGrid x:Name="DataGridTransactions"
                                    Background="White"
-                                   ItemsSource="{Binding CustomerTransactionsDetails}" />
+                                   ItemsSource="{Binding GuestTransactionsDetails}" />
         </Border>
 
         <!--#endregion-->

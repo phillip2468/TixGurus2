@@ -53,7 +53,7 @@
         <!--Text block for editing tables-->
         <TextBlock Grid.Column="1"
                    Grid.Row="4"
-                   Text="Any edits in this table will be reflected in the database"
+                   Text="Any edits in this table will be reflected in the database. Note that you cannot change the customer Id"
                    FontSize="16"
                    Grid.ColumnSpan="3"
                    VerticalAlignment="Center"
@@ -113,9 +113,6 @@
                                NewItemPlaceholderPosition="AtEnd"
                                SelectionUnit="Row"
                                LiveDataUpdateMode="AllowDataShaping">
-            <Syncfusion:SfDataGrid.DataContext>
-                <customer:ModifyCustomerDetailsViewModel />
-            </Syncfusion:SfDataGrid.DataContext>
         </Syncfusion:SfDataGrid>
 
         <!--#endregion-->
