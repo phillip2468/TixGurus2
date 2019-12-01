@@ -1,7 +1,10 @@
-﻿using SimpleWPF.Input;
+﻿using System.Collections.Generic;
+using System.Linq;
+using SimpleWPF.Input;
 using SimpleWPF.ViewModels;
 using Ssample.ViewModel.Dashboard;
 using System.Windows.Input;
+using Ssample.Model;
 
 namespace Ssample.ViewModel
 {
@@ -29,7 +32,25 @@ namespace Ssample.ViewModel
 
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav2);
             NavLogoutCommand = new RelayCommand<NavigationViewModelBase>(Nav);
+
+            #region Declaration of the events list for the tile views
+
+            //Using db context
+            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+
+            //Create a list of events
+            Events = (from data in context.Event_Details select data).ToList();
+
+            #endregion
         }
+
+        #endregion
+
+        #region List properties
+        /// <summary>
+        /// List property
+        /// </summary>
+        public List<Event_Details> Events { get; set; }
 
         #endregion
 

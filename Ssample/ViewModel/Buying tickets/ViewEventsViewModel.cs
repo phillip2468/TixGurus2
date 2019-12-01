@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using Ssample.ViewModel.Base_view_models;
 
 namespace Ssample.ViewModel.Buying_tickets
 {
@@ -21,6 +22,9 @@ namespace Ssample.ViewModel.Buying_tickets
         /// Buying tickets view model declaration
         /// </summary>
         private NavigationViewModelBase buyingTicketsViewModel;
+
+        private NavigationViewModelBase homePageSignedInViewModel;
+        private NavigationViewModelBase defaultViewModel;
 
         #endregion
 
@@ -45,12 +49,14 @@ namespace Ssample.ViewModel.Buying_tickets
         {
             //Initialization of the next view model
             buyingTicketsViewModel = new PurchaseTicketsViewModel();
+            defaultViewModel = new DefaultViewModel();
+            homePageSignedInViewModel = new HomePageSignedInViewModel();
 
             //Setting the data context
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
 
             //Setting the navigation command parameters
-            NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
+            NavCommand = new RelayCommand(Nav);
             NavCommand2 = new RelayCommand<NavigationViewModelBase>(Nav2);
 
             //Provide an item source for the data grid
@@ -60,16 +66,22 @@ namespace Ssample.ViewModel.Buying_tickets
 
         #endregion
 
-        #region Helper functions
+        #region Helper navigation functions
 
         /// <summary>
         /// Navigates back to the previous page (the default view model)
         /// </summary>
-        /// <param name="viewModel">The view model</param>
-        private void Nav(NavigationViewModelBase viewModel)
+        private void Nav()
         {
             Settings.Default.SeatLocation = "";
-            Navigate(viewModel);
+            if(Properties.Settings.Default.Email == "")
+            {
+                Navigate(defaultViewModel);
+            }
+            else
+            {
+                Navigate(homePageSignedInViewModel);
+            }
         }
 
         /// <summary>

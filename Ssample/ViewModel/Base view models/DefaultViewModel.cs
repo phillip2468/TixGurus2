@@ -70,6 +70,7 @@ namespace Ssample.ViewModel.Base_view_models
         /// </summary>
         public DefaultViewModel()
         {
+            Properties.Settings.Default.Email = "";
             #region Initialization of user controls
 
             registerViewModel = new RegisterViewModel();

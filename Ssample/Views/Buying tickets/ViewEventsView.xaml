@@ -50,9 +50,6 @@
                 Command="{Binding NavCommand}"
                 Margin="10 10 10 10"
                 Content="Go back">
-            <Button.CommandParameter>
-                <baseViewModels:DefaultViewModel />
-            </Button.CommandParameter>
         </Button>
 
         <!--#endregion-->

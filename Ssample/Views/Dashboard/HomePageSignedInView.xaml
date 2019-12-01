@@ -8,13 +8,17 @@
              xmlns:viewModel="clr-namespace:Ssample.ViewModel"
              xmlns:dashboard="clr-namespace:Ssample.ViewModel.Dashboard"
              xmlns:baseViewModels="clr-namespace:Ssample.ViewModel.Base_view_models"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:buyingTickets="clr-namespace:Ssample.ViewModel.Buying_tickets"
              mc:Ignorable="d"
-             d:DesignHeight="450"
-             d:DesignWidth="800">
+             d:DesignHeight="800"
+             d:DesignWidth="1200">
     <Grid Background="Green">
 
-        <!--Definitions for layout-->
+        <!--#region Column/row definitions-->
+
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
@@ -28,7 +32,11 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
+        <!--#endregion-->
 
         <!--Label for page-->
         <Label Grid.Column="0"
@@ -38,7 +46,7 @@
                Margin="10 10 10 10" />
 
         <!--Button which changes to show personal details-->
-        <Button Grid.Column="3"
+        <Button Grid.Column="4"
                 Grid.Row="0"
                 Content="My account"
                 Margin="10 10 10 10"
@@ -49,7 +57,7 @@
         </Button>
 
         <!--Textblock which shows which account is logged in-->
-        <TextBlock Grid.Column="4"
+        <TextBlock Grid.Column="5"
                    Grid.Row="0"
                    TextWrapping="Wrap"
                    FontSize="14">
@@ -57,8 +65,8 @@
             <Run Text="{Binding Source={x:Static properties:Settings.Default},Path=Email}" />
         </TextBlock>
 
-        <Button Grid.Column="3"
-                Grid.Row="4"
+        <Button Grid.Column="5"
+                Grid.Row="6"
                 Content="Logout"
                 Margin="10 10 10 10"
                 Command="{Binding NavLogoutCommand}">
@@ -66,6 +74,68 @@
                 <baseViewModels:DefaultViewModel/>
             </Button.CommandParameter>
         </Button>
+
+
+
+        <!--#region Tile view-->
+        <syncfusion:TileViewControl Grid.Column="0"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="6"
+                                    Grid.RowSpan="5"
+                                    ItemsSource="{Binding Events}"
+                                    IsSynchronizedWithCurrentItem="True"
+                                    SelectedItem="{Binding SelectedItem,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+            <syncfusion:TileViewControl.ItemTemplate>
+                <DataTemplate>
+                    <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Event Name:" />
+                                <TextBlock Text="{Binding eventTitle }"
+                                           Margin="5,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Event Genre:" />
+                                <TextBlock Text="{Binding eventGenre }"
+                                           Margin="5,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Event Genre:" />
+                                <TextBlock Text="{Binding eventDescription }"
+                                           Margin="5,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <ListBoxItem.DataContext>
+                                <baseViewModels:DefaultViewModel />
+                            </ListBoxItem.DataContext>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Go to page:" />
+                                <Button Command="{Binding NavigateTicketDetailsCommand}"
+                                        Content="Go to book">
+                                    <Button.CommandParameter>
+                                        <buyingTickets:ViewEventsViewModel />
+                                    </Button.CommandParameter>
+                                </Button>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </DataTemplate>
+
+            </syncfusion:TileViewControl.ItemTemplate>
+
+            <syncfusion:TileViewControl.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding eventTitle}" />
+                </DataTemplate>
+            </syncfusion:TileViewControl.HeaderTemplate>
+        </syncfusion:TileViewControl>
+
+        <!--#endregion-->
 
     </Grid>
 </UserControl>
