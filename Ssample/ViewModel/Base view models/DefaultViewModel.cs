@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -123,7 +122,6 @@ namespace Ssample.ViewModel.Base_view_models
 
         private void Nav3(NavigationViewModelBase viewModel)
         {
-            MessageBox.Show(Properties.Settings.Default.EventTitle);
             Navigate(viewModel);
         }
         #endregion

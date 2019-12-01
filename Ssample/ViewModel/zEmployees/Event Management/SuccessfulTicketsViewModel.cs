@@ -23,7 +23,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
         public SuccessfulTicketsViewModel()
         {
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-            TicketList = (List<Ticket_Details>)(from data in context.Ticket_Details select data).ToList();
+            TicketList = (from data in context.Ticket_Details select data).ToList();
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
         }
 

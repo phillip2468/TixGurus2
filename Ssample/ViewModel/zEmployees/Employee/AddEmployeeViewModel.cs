@@ -15,7 +15,7 @@ namespace Ssample.ViewModel.zEmployees.Employee
         {
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-            EmployeeDetails = (List<Employee_Details>)(from data in context.Employee_Details select data).ToList();
+            EmployeeDetails = (from data in context.Employee_Details select data).ToList();
         }
 
         private void Nav(NavigationViewModelBase viewModel)

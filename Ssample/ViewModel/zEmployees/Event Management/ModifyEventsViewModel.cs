@@ -35,7 +35,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
 
             //Generate a list of events from context
-            EventList = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
+            EventList = (from data in context.Event_Details select data).ToList();
         }
 
         #endregion

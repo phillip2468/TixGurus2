@@ -125,6 +125,24 @@ namespace Ssample.ViewModel.Buying_tickets
             }
         }
 
+        private BitmapImage _imageOfLocation;
+        /// <summary>
+        /// Loads the image from the view model
+        /// </summary>
+        public BitmapImage ImageOfLocation
+        {
+            get
+            {
+                _image = LoadImage(LoadImageOfLocation());
+                return _image;
+            }
+            set
+            {
+                _image = value;
+                OnPropertyChanged($"ImageOfLocation");
+            }
+        }
+
         /// <summary>
         /// Function which converts imageData to
         /// an actual image
@@ -151,14 +169,29 @@ namespace Ssample.ViewModel.Buying_tickets
 
         /// <summary>
         /// A function which loads the image
+        /// of the layout of the location
         /// </summary>
         /// <returns></returns>
         public byte[] LoadImage()
         {
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-            Event = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
+            Event = (from data in context.Event_Details select data).ToList();
             var selectedEvent = Event.Find(x => x.eventTitle == Settings.Default.EventTitle);
             byte[] selectedImage = selectedEvent.eventLayout;
+            return selectedImage;
+        }
+
+        /// <summary>
+        /// A function which loads the image
+        /// of the layout of the location
+        /// </summary>
+        /// <returns></returns>
+        public byte[] LoadImageOfLocation()
+        {
+            CustomerDatabaseEntities context = new CustomerDatabaseEntities();
+            Event = (from data in context.Event_Details select data).ToList();
+            var selectedEvent = Event.Find(x => x.eventTitle == Settings.Default.EventTitle);
+            byte[] selectedImage = selectedEvent.eventPicture;
             return selectedImage;
         }
 

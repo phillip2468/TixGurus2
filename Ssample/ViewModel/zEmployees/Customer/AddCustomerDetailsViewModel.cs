@@ -29,7 +29,7 @@ namespace Ssample.ViewModel.zEmployees.Customer
 
             //Creating the list of customers
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-            CustomerDetails = (List<Customer_Details>)(from data in context.Customer_Details select data).ToList();
+            CustomerDetails = (from data in context.Customer_Details select data).ToList();
         }
 
         #endregion

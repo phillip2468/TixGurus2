@@ -60,9 +60,9 @@
         <!--#region Data grid for tickets-->
         <Syncfusion:SfDataGrid Grid.Column="0"
                                Name="DataGrid"
-                               Grid.Row="1"
+                               Grid.Row="4"
                                Grid.ColumnSpan="4"
-                               Grid.RowSpan="5"
+                               Grid.RowSpan="2"
                                ItemsSource="{Binding Tickets}"
                                Background="White"
                                SelectionMode="Extended"
@@ -88,6 +88,37 @@
                HorizontalAlignment="Center"
                Grid.ColumnSpan="2"
                FontSize="12" />
+
+        <!--Label of event layout-->
+        <TextBlock Grid.Column="0"
+                   Grid.Row="1"
+                   Text="Picture of place: Note hover over image to get full sized image"
+                   TextWrapping="Wrap"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Grid.ColumnSpan="2"
+                   FontSize="12" />
+
+        <!--Image of event layout-->
+        <Image x:Name="ImageOfLocation"
+               Grid.Row="2"
+               Grid.Column="0"
+               Grid.ColumnSpan="2"
+               Grid.RowSpan="2"
+               Margin="10 10 10 10"
+               Source="{Binding ImageOfLocation}">
+            <Image.ToolTip>
+                <ToolTip DataContext="{Binding PlacementTarget, 
+            RelativeSource={RelativeSource Self}}">
+                    <Border BorderBrush="Black"
+                            BorderThickness="1"
+                            Margin="5,7,5,5">
+                        <Image Source="{Binding Source}"
+                               Stretch="None" />
+                    </Border>
+                </ToolTip>
+            </Image.ToolTip>
+        </Image>
 
         <!--Image of event layout-->
         <Image x:Name="MyImage"

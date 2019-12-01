@@ -13,7 +13,7 @@ namespace Ssample.ViewModel
         public ModifyEmployeeDetailsViewModel()
         {
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
-            EmployeeList = (List<Employee_Details>)(from data in context.Employee_Details select data).ToList();
+            EmployeeList = (from data in context.Employee_Details select data).ToList();
 
             NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
         }

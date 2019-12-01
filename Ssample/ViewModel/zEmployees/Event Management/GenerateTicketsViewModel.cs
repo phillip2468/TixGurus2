@@ -50,7 +50,7 @@ namespace Ssample.ViewModel.zEmployees.Event_Management
             CustomerDatabaseEntities context = new CustomerDatabaseEntities();
 
             //Generate a list using the context
-            EventList = (List<Event_Details>)(from data in context.Event_Details select data).ToList();
+            EventList = (from data in context.Event_Details select data).ToList();
 
             #endregion
 
