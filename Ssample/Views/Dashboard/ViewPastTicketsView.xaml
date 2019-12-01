@@ -59,7 +59,7 @@
                 BorderThickness="4">
             <Syncfusion:SfDataGrid x:Name="DataGridTickets"
                                    Background="White"
-                                   ItemsSource="{Binding GuestTicketDetails}" />
+                                   ItemsSource="{Binding CustomerTicketDetails}" />
         </Border>
 
 
@@ -96,7 +96,7 @@
                 BorderThickness="4">
             <Syncfusion:SfDataGrid x:Name="DataGridTransactions"
                                    Background="White"
-                                   ItemsSource="{Binding GuestTransactionsDetails}" />
+                                   ItemsSource="{Binding CustomerTransactions}" />
         </Border>
 
 

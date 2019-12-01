@@ -48,22 +48,6 @@
                HorizontalAlignment="Center"
                FontSize="22" />
 
-        <!--Label for booked events-->
-        <Label Content="Booked events"
-               Grid.Column="1"
-               Grid.Row="1"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Center"
-               FontSize="22" />
-
-        <!--Label for saved events-->
-        <Label Content="Saved events"
-               Grid.Column="3"
-               Grid.Row="1"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Center"
-               FontSize="22" />
-
         <!--#endregion-->
 
         <!--#region Buttons for navigation-->
@@ -97,7 +81,12 @@
                 Grid.Column="3"
                 Grid.Row="4"
                 Content="View past transactions"
-                Margin="10 10 10 10" />
+                Margin="10 10 10 10"
+                Command="{Binding NavCommand}">
+            <Button.CommandParameter>
+                <viewModel:ViewPastTicketsViewModel/>
+            </Button.CommandParameter>
+        </Button>
 
         <!--Button to log out of account-->
         <Button Grid.Column="4"

@@ -237,6 +237,9 @@
     <Compile Include="Views\zEmployees\Customer\AddCustomerDetailsView.xaml.cs">
       <DependentUpon>AddCustomerDetailsView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\zEmployees\Customer\ModifyGuestTicketsView.xaml.cs">
+      <DependentUpon>ModifyGuestTicketsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\zEmployees\EmployeeDashboardView.xaml.cs">
       <DependentUpon>EmployeeDashboardView.xaml</DependentUpon>
     </Compile>
@@ -340,6 +343,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\zEmployees\Customer\AddCustomerDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\zEmployees\Customer\ModifyGuestTicketsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

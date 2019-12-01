@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using Ssample.ViewModel.Dashboard;
 
 namespace Ssample.Views.Dashboard
 {
@@ -15,6 +16,7 @@ namespace Ssample.Views.Dashboard
         public ViewPastTicketsView()
         {
             InitializeComponent();
+            DataContext = new ViewPastTicketsViewModel();
         }
 
         private void Buttonforprintingtickets_OnClick(object sender, RoutedEventArgs e)
