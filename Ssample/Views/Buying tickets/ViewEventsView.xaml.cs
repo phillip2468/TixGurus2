@@ -13,12 +13,8 @@ namespace Ssample.Views.Buying_tickets
         public ViewEventsView()
         {
             InitializeComponent();
-            DataGrid.AutoGeneratingColumn += SfDataGrid_OnAutoGeneratingColumn;
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
             DataContext = new ViewEventsViewModel();
+            DataGrid.AutoGeneratingColumn += SfDataGrid_OnAutoGeneratingColumn;
         }
 
         private void SfDataGrid_OnAutoGeneratingColumn(object sender, AutoGeneratingColumnArgs e)

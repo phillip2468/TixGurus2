@@ -35,17 +35,6 @@ namespace Ssample.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CustomerDatabase;Integrated Se" +
-            "curity=True")]
-        public string CustomerDatabaseConnectionString {
-            get {
-                return ((string)(this["CustomerDatabaseConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Not a value")]
@@ -151,6 +140,17 @@ namespace Ssample.Properties {
             }
             set {
                 this["customerTransactionId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CustomerDatabase;Integrated Se" +
+            "curity=True")]
+        public string CustomerDatabaseConnectionString {
+            get {
+                return ((string)(this["CustomerDatabaseConnectionString"]));
             }
         }
     }

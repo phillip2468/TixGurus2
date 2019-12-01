@@ -69,6 +69,7 @@ namespace Ssample.ViewModel.Buying_tickets
         private void Nav(NavigationViewModelBase viewModel)
         {
             Settings.Default.SeatLocation = "";
+            Properties.Settings.Default.SearchText = "";
             Navigate(viewModel);
         }
 

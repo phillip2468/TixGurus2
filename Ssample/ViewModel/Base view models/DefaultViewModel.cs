@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -116,8 +117,17 @@ namespace Ssample.ViewModel.Base_view_models
         /// <param name="viewModel"></param>
         private void Nav2(NavigationViewModelBase viewModel)
         {
-            Properties.Settings.Default.SearchText = SearchText.Trim();
-            Navigate(viewModel);
+
+            Properties.Settings.Default.SearchText = SearchText;
+            if (string.IsNullOrEmpty(SearchText))
+            {
+                MessageBox.Show("You need to type something");
+            }
+            else
+            {
+                Properties.Settings.Default.SearchText = SearchText.Trim();
+                Navigate(viewModel);
+            }
         }
 
         private void Nav3(NavigationViewModelBase viewModel)

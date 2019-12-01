@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using Ssample.ViewModel.Base_view_models;
 
 namespace Ssample.Views.Base_View
 {
@@ -10,6 +11,7 @@ namespace Ssample.Views.Base_View
         public SearchEventView()
         {
             InitializeComponent();
+            DataContext = new SearchEventViewModel();
         }
     }
 }

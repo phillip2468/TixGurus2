@@ -6,6 +6,8 @@
              xmlns:local="clr-namespace:Ssample.Views.Base_View"
              xmlns:viewModel="clr-namespace:Ssample.ViewModel"
              xmlns:baseViewModels="clr-namespace:Ssample.ViewModel.Base_view_models"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:buyingTickets="clr-namespace:Ssample.ViewModel.Buying_tickets"
              mc:Ignorable="d"
              d:DesignHeight="650"
              d:DesignWidth="800">
@@ -44,27 +46,77 @@
             </Button.CommandParameter>
         </Button>
 
-        <TextBox Grid.Column="1"
-                 Grid.Row="1"
-                 Grid.ColumnSpan="3"
-                 FontSize="24"
-                 VerticalAlignment="Center"
-                 Text="{Binding SearchText}">
-        </TextBox>
-
-        <Button Grid.Column="4"
-                Grid.Row="1"
-                Content="Search"
-                Margin="0 28 10 28" />
 
         <TextBlock Grid.Column="1"
-               Grid.Row="2"
+               Grid.Row="1"
                Grid.ColumnSpan="4"
                FontSize="24"
                >
             <TextBlock Text="Events matching "/>
             <TextBlock Text="{Binding TextOfSearch}"/>
         </TextBlock>
+
+
+        <!--#region Tile view-->
+        <syncfusion:TileViewControl Grid.Column="0"
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="6"
+                                    Grid.RowSpan="4"
+                                    ItemsSource="{Binding MatchingEvent}"
+                                    IsSynchronizedWithCurrentItem="True"
+                                    SelectedItem="{Binding SelectedItem,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+            <syncfusion:TileViewControl.ItemTemplate>
+                <DataTemplate>
+                    <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Event Name:" />
+                                <TextBlock Text="{Binding eventTitle }"
+                                           Margin="5,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Event Genre:" />
+                                <TextBlock Text="{Binding eventGenre }"
+                                           Margin="5,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Event Genre:" />
+                                <TextBlock Text="{Binding eventDescription }"
+                                           Margin="5,0,0,0" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem>
+                            <ListBoxItem.DataContext>
+                                <baseViewModels:DefaultViewModel />
+                            </ListBoxItem.DataContext>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Go to page:" />
+                                <Button Command="{Binding NavigateTicketDetailsCommand}"
+                                        Content="Go to book">
+                                    <Button.CommandParameter>
+                                        <buyingTickets:ViewEventsViewModel />
+                                    </Button.CommandParameter>
+                                </Button>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                </DataTemplate>
+
+            </syncfusion:TileViewControl.ItemTemplate>
+
+            <syncfusion:TileViewControl.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding eventTitle}" />
+                </DataTemplate>
+            </syncfusion:TileViewControl.HeaderTemplate>
+        </syncfusion:TileViewControl>
+
+        <!--#endregion-->
+
 
     </Grid>
 </UserControl>
