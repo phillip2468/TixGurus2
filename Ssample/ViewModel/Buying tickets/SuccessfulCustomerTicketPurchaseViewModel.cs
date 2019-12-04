@@ -35,9 +35,6 @@ namespace Ssample.ViewModel.Buying_tickets
             CustomerTransactionsDetails = (from data in context.Customer_Transaction
                                            where data.transactionId.ToString().Contains(Settings.Default.customerTransactionId)
                                            select data).ToList();
-
-            //Command parameter
-            //NavCommand = new RelayCommand<NavigationViewModelBase>(Nav);
         }
         public List<Customer_Ticket_Details> CustomerTicketDetails { get; set; } = new List<Customer_Ticket_Details>();
 
